@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TelecareLive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,70 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJP-s1-PdD">
+                                <items>
+                                    <navigationItem title="Login" id="dzp-Cz-7ea"/>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ta-Jo-mL4">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ie4-k8-Ogp">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvf-L2-fVT">
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WL1-6a-b0Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj1-K0-hCj">
+                                <state key="normal" title="Forgot Password"/>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uno-CJ-YkD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-RW-uTi">
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1g-dG-6WS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Uvf-L2-fVT" firstAttribute="top" secondItem="JdQ-RW-uTi" secondAttribute="bottom" constant="41" id="5jY-zX-3ag"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6hc-Yb-Rya"/>
+                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="top" secondItem="5Ta-Jo-mL4" secondAttribute="bottom" constant="14" id="709-Wg-wz2"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="top" secondItem="IJP-s1-PdD" secondAttribute="bottom" constant="14" id="7hw-6J-QGy"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="centerX" secondItem="5Ta-Jo-mL4" secondAttribute="centerX" id="Ixe-iq-J9y"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="KQ2-Vk-4pE"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="ie4-k8-Ogp" secondAttribute="leading" id="Kd5-5u-1z8"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="trailing" secondItem="ie4-k8-Ogp" secondAttribute="trailing" id="NxR-8j-KLh"/>
+                            <constraint firstItem="Yj1-K0-hCj" firstAttribute="top" secondItem="Uvf-L2-fVT" secondAttribute="bottom" constant="34" id="SFd-I3-eE1"/>
+                            <constraint firstItem="Uvf-L2-fVT" firstAttribute="centerX" secondItem="Yj1-K0-hCj" secondAttribute="centerX" id="Up2-hD-6zU"/>
+                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="centerX" secondItem="JdQ-RW-uTi" secondAttribute="centerX" id="aoq-3F-x7e"/>
+                            <constraint firstAttribute="trailing" secondItem="IJP-s1-PdD" secondAttribute="trailing" id="ii0-cy-9ro"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q6X-Gt-meU"/>
+                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="centerX" secondItem="Uvf-L2-fVT" secondAttribute="centerX" id="ugI-jo-U0D"/>
+                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="top" secondItem="ie4-k8-Ogp" secondAttribute="bottom" constant="45" id="ydZ-1G-3Zt"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="email" destination="5Ta-Jo-mL4" id="tDA-Qw-irb"/>
+                        <outlet property="password" destination="ie4-k8-Ogp" id="BV4-cK-TmO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
