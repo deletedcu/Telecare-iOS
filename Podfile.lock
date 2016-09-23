@@ -1,12 +1,18 @@
 PODS:
+  - Alamofire (4.0.0)
   - KeychainSwift (6.0.2)
+  - SwiftyJSON (3.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - KeychainSwift (~> 6.0)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   KeychainSwift: a261364334000afa8fab0894390d5d00dd226d4c
+  SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 54bf7256478766c690069a4e784a1bb037267cfd
+PODFILE CHECKSUM: 2d82494de704740f086a5856debba0b79a9223be
 
 COCOAPODS: 1.1.0.rc.2

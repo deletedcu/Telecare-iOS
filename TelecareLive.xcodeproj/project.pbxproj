@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50E4C90DF4CA0615537CF1C5 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */; };
 		FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893C1D935BB600127B66 /* AppDelegate.swift */; };
 		FF00893F1D935BB600127B66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893E1D935BB600127B66 /* ViewController.swift */; };
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
@@ -14,9 +15,12 @@
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
 		FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33A1D95F51300375804 /* KeychainSwift.framework */; };
 		FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */; };
+		FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E3401D95F66100375804 /* Alamofire.framework */; };
+		FF19E3431D95F66100375804 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E3411D95F66100375804 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelecareLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.release.xcconfig"; sourceTree = "<group>"; };
 		F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0089391D935BB600127B66 /* TelecareLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelecareLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +32,8 @@
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF19E33A1D95F51300375804 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/KeychainSwift/KeychainSwift.framework"; sourceTree = "<group>"; };
 		FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TelecareLive.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Pods_TelecareLive.framework"; sourceTree = "<group>"; };
+		FF19E3401D95F66100375804 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		FF19E3411D95F66100375804 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,8 +41,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */,
+				FF19E3431D95F66100375804 /* SwiftyJSON.framework in Frameworks */,
 				FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */,
 				FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */,
+				50E4C90DF4CA0615537CF1C5 /* Pods_TelecareLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,8 +55,11 @@
 		5AE5EA9F4986E6C68DC8F894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF19E3401D95F66100375804 /* Alamofire.framework */,
+				FF19E3411D95F66100375804 /* SwiftyJSON.framework */,
 				FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */,
 				FF19E33A1D95F51300375804 /* KeychainSwift.framework */,
+				0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
