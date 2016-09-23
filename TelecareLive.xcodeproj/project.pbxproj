@@ -12,9 +12,13 @@
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
 		FF0089441D935BB600127B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0089431D935BB600127B66 /* Assets.xcassets */; };
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
+		FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33A1D95F51300375804 /* KeychainSwift.framework */; };
+		FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.release.xcconfig"; sourceTree = "<group>"; };
+		F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0089391D935BB600127B66 /* TelecareLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelecareLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF00893C1D935BB600127B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF00893E1D935BB600127B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		FF0089431D935BB600127B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF0089461D935BB600127B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF19E33A1D95F51300375804 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/KeychainSwift/KeychainSwift.framework"; sourceTree = "<group>"; };
+		FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TelecareLive.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Pods_TelecareLive.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */,
+				FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AE5EA9F4986E6C68DC8F894 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */,
+				FF19E33A1D95F51300375804 /* KeychainSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95356C7B1FB76DC70C64F307 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */,
+				30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF0089301D935BB600127B66 = {
 			isa = PBXGroup;
 			children = (
 				FF00893B1D935BB600127B66 /* TelecareLive */,
 				FF00893A1D935BB600127B66 /* Products */,
+				95356C7B1FB76DC70C64F307 /* Pods */,
+				5AE5EA9F4986E6C68DC8F894 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +99,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF00894B1D935BB600127B66 /* Build configuration list for PBXNativeTarget "TelecareLive" */;
 			buildPhases = (
+				03403DE70001AB75A83F88D8 /* [CP] Check Pods Manifest.lock */,
 				FF0089351D935BB600127B66 /* Sources */,
 				FF0089361D935BB600127B66 /* Frameworks */,
 				FF0089371D935BB600127B66 /* Resources */,
+				A5B95426F062154ADEEC37D5 /* [CP] Embed Pods Frameworks */,
+				799729F5BC2EC75EE467C5C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +162,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03403DE70001AB75A83F88D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		799729F5BC2EC75EE467C5C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5B95426F062154ADEEC37D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF0089351D935BB600127B66 /* Sources */ = {
@@ -257,6 +336,7 @@
 		};
 		FF00894C1D935BB600127B66 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8DA4VRM89P;
@@ -270,6 +350,7 @@
 		};
 		FF00894D1D935BB600127B66 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8DA4VRM89P;
@@ -300,6 +381,7 @@
 				FF00894D1D935BB600127B66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
