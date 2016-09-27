@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CEDF77BD431DDD4C760DA8511DE86596"
+               BlueprintIdentifier = "7B38E515BB0A2766F67866BC99D08B40"
                BuildableName = "Pods_TelecareLive.framework"
                BlueprintName = "Pods-TelecareLive"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
