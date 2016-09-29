@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 import KeychainSwift
 
-class ViewController: UIViewController {
-
+class ViewController: RestViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,44 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func login(_ sender: AnyObject) {
-        let username = email.text
-        let pass = password.text
-        
-        // Refactor later
-        
-        print(username!)
-        print(pass!)
-        
-        let passcombination = username! + ":" + pass!
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Basic " + passcombination.toBase64(),
-            "Accept": "application/json"
-        ]
-        
-        
-        Alamofire.request("http://dev-telecarelive.pantheonsite.io/api/v1/auth", headers: headers)
-            .responseJSON{ response in
-//                debugPrint(response)
-                let json = JSON(data: response.data!)
-                
-                debugPrint(json)
-                
-                let alert = UIAlertView()
-                alert.title = "Alert"
-                alert.message = json["sid"].string
-                alert.addButton(withTitle: "Ok")
-                alert.show()
-                
-                let keychain = KeychainSwift()
-                keychain.set(username!, forKey: "username")
-                keychain.set(json["sid"].string!, forKey: "sid")
-                
-                print(keychain.get("sid"))
-                print(keychain.get("username"))
-            }
-        
-        
+        restManager?.logIn(username: email.text!, password: password.text!, caller: self)
     }
     
     @IBAction func register(_ sender: AnyObject) {
@@ -75,20 +38,31 @@ class ViewController: UIViewController {
     @IBAction func forgotPassword(_ sender: AnyObject) {
     }
     
-}
+    func loginSuccessful(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
+        appDelegate.window?.rootViewController = tabBarViewController
+        appDelegate.window?.makeKeyAndVisible()
+    }
 
-extension String
-{
-    func fromBase64() -> String
-    {
-        let data = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
-        return String(data: data! as Data, encoding: String.Encoding.utf8)!
+    func loginFailed(){
+        var message = "The service could not be reached. Please check you internet connection."
+        
+        if getCurrentErrorMessage() !=  "" {
+            message = getCurrentErrorMessage()
+        }
+        
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //            let DestructiveAction = UIAlertAction(title: "Destructive", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+        //                print("Destructive")
+        //            }
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        //            alertController.addAction(DestructiveAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
-    
-    func toBase64() -> String
-    {
-        let data = self.data(using: String.Encoding.utf8)
-        return data!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-    }
+
 }
 
