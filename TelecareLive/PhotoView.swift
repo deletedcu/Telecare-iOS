@@ -18,13 +18,14 @@ class PhotoView : UIView {
     
     @IBOutlet weak var cancelButton: UIButton!
     
+    var delegate: AccountViewController?
     
     @IBAction func takePhoto(_ sender: UIButton) {
-        
+        delegate?.getPhotoFromCamera()
     }
     
     @IBAction func openGallery(_ sender: UIButton) {
-        
+       delegate?.getPhotoFromLibrary()
     }
     
     @IBAction func cancel(_ sender: UIButton) {
@@ -114,7 +115,7 @@ class PhotoView : UIView {
         }
     }
     
-    private func hideView() {
+    func hideView() {
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
             self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }) { (finished) -> Void in

@@ -37,5 +37,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This App is trying to access your photo library so you can upload a profile image</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This App is trying to access your camera so you can upload a profile image</string>
 </dict>
 </plist>

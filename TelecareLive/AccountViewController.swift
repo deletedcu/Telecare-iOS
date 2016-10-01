@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import KeychainSwift
 
-class AccountViewController : RestViewController, UITextFieldDelegate {
+class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var fullName: UITextField!
@@ -25,6 +25,7 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
     var activeField: UITextField?
     var originalContentInset: UIEdgeInsets?
     var originalScrollIndicatorInsets: UIEdgeInsets?
+    let picker = UIImagePickerController()
     
     lazy var photoView: PhotoView = {
         let photoView = PhotoView()
@@ -40,7 +41,8 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
         birthday.delegate = self
         phone.delegate = self
         lockCode.delegate = self
-        
+        picker.delegate = self
+        photoView.delegate = self
         originalContentInset = scrollView.contentInset
         originalScrollIndicatorInsets = scrollView.scrollIndicatorInsets
         
@@ -55,6 +57,18 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
         
 //        RestManager.
         
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        profileImage.contentMode = .scaleAspectFit
+        profileImage.setBackgroundImage(chosenImage, for: UIControlState.normal)
+        dismiss(animated: true, completion: nil) //5
+        photoView.hideView()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func populate(restData: JSON){
@@ -81,11 +95,37 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
         }
     }
     
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        datePicker.date = Date().fromString(string: birthday.text!)
-//        datePicker.isHidden = false
-//        return true
-//    }
+    func getPhotoFromLibrary(){
+        picker.allowsEditing = false //2
+        picker.sourceType = .photoLibrary //3
+        present(picker, animated: true, completion: nil)//4
+    }
+    
+    func getPhotoFromCamera(){
+        if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            picker.cameraCaptureMode = .photo
+            present(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC,
+                              animated: true,
+                              completion: nil)
+    }
     
     @IBAction func replaceImage(_ sender: UIButton) {
         photoView.displayView(onView: view)
