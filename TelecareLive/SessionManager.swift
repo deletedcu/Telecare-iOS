@@ -14,6 +14,8 @@ class SessionManager{
     
     var restManager:RestManager?
     
+    var gcmId = ""
+    
     var lockSession = -1 // Perhapms move this to a permanent store
     
     func primeManager(){

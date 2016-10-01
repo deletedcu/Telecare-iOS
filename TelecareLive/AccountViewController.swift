@@ -13,7 +13,7 @@ import KeychainSwift
 
 class AccountViewController : RestViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var fullName: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var birthday: UITextField!
@@ -44,15 +44,20 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
+        
+//        RestManager.
+        
     }
     
     func populate(restData: JSON){
         print(restData)
 
         if (restData["data"]["user_image"].count < 1){
-            profileImage.image = UIImage(named: "Default")
+            profileImage.setBackgroundImage(UIImage(named: "Default"), for: UIControlState.normal)
         } else {
-            profileImage.setImageFromURl(stringImageUrl: restData["data"]["user_image"][0].string!)
+            let image = UIImageView()
+            image.setImageFromURl(stringImageUrl: restData["data"]["user_image"][0].string!)
+            profileImage.setBackgroundImage(image.image!, for: UIControlState.normal)
         }
         
         fullName.text = restData["data"]["user_full_name"].string!
@@ -74,6 +79,9 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
 //        return true
 //    }
     
+    @IBAction func replaceImage(_ sender: UIButton) {
+        
+    }
     // Much thanks to http://blog.apoorvmote.com/change-textfield-input-to-datepicker/
     
     @IBAction func editBirthday(_ sender: AnyObject) {

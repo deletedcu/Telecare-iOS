@@ -19,7 +19,8 @@ class RestManager {
     
     var endpoints = [
         "login" : "auth",
-        "getAccountData" : "user"
+        "getAccountData" : "user",
+        "saveAccountData": "user"
     ]
     
     var keychain = KeychainSwift()
@@ -103,6 +104,50 @@ class RestManager {
             }
 
         }
+    }
+    
+    func saveAccountData(caller:AccountViewController, callback: @escaping (JSON)->()){
+        
+        // Refactor data handling to controller later
+        var date = Date.init()
+        var notifications = "1"
+        
+        if(!caller.notificationsToggle.isOn){
+            notifications = "0"
+        }
+        
+        var data = [
+            "registration_id":(sessionManager?.gcmId)!,
+            "encoded":"",
+            "user_full_name":caller.fullName.text!,
+            "user_phone":caller.phone.text!,
+            "user_birthdate":String(date.fromString(string: caller.birthday.text!).timeIntervalSince1970),
+            "user_notifications":notifications,
+            "user_lock_code":caller.lockCode.text!
+        ] as Dictionary<String,String>
+        
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+//        Alamofire.request(baseUrl + endpoints["saveAccountData"]!, method: .post, headers: headers,  parameters: data).validate().responseJSON{ response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+//                
+//                if(json["status"] == 200){
+//                    callback(json)
+//                } else {
+//                    print("In the Error")
+//                    print(json)
+//                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//            
+//        }
     }
     
     func sidIsValid(sid: String) -> Bool{
