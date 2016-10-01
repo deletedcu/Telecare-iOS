@@ -26,6 +26,11 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
     var originalContentInset: UIEdgeInsets?
     var originalScrollIndicatorInsets: UIEdgeInsets?
     
+    lazy var photoView: PhotoView = {
+        let photoView = PhotoView()
+        return photoView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyboardNotifications()
@@ -40,7 +45,10 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
         originalScrollIndicatorInsets = scrollView.scrollIndicatorInsets
         
         restManager?.getAccountData(caller: self, callback: populate)
+        
     }
+    
+
     
     override func viewWillDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
@@ -80,8 +88,9 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
 //    }
     
     @IBAction func replaceImage(_ sender: UIButton) {
-        
+        photoView.displayView(onView: view)
     }
+    
     // Much thanks to http://blog.apoorvmote.com/change-textfield-input-to-datepicker/
     
     @IBAction func editBirthday(_ sender: AnyObject) {
@@ -147,4 +156,5 @@ class AccountViewController : RestViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField){
             activeField = nil
     }
+
 }

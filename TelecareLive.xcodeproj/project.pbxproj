@@ -13,8 +13,10 @@
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
 		FF0089441D935BB600127B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0089431D935BB600127B66 /* Assets.xcassets */; };
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
+		FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0EEF191D9F67BC00F25356 /* PhotoView.xib */; };
+		FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EEF221D9F711500F25356 /* PhotoView.swift */; };
 		FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */; };
-		FF1547601D9C865400375F9A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475F1D9C865400375F9A /* extensions.swift */; };
+		FF1547601D9C865400375F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475F1D9C865400375F9A /* Extensions.swift */; };
 		FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33A1D95F51300375804 /* KeychainSwift.framework */; };
 		FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */; };
 		FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E3401D95F66100375804 /* Alamofire.framework */; };
@@ -36,8 +38,10 @@
 		FF0089431D935BB600127B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF0089461D935BB600127B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF0EEF191D9F67BC00F25356 /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
+		FF0EEF221D9F711500F25356 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		FF15475F1D9C865400375F9A /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		FF15475F1D9C865400375F9A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF19E33A1D95F51300375804 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/KeychainSwift/KeychainSwift.framework"; sourceTree = "<group>"; };
 		FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TelecareLive.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Pods_TelecareLive.framework"; sourceTree = "<group>"; };
 		FF19E3401D95F66100375804 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -109,21 +113,55 @@
 		FF00893B1D935BB600127B66 /* TelecareLive */ = {
 			isa = PBXGroup;
 			children = (
-				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
-				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
+				FF0EEF201D9F6B7300F25356 /* Main */,
+				FF0EEF1F1D9F6B6700F25356 /* Login */,
+				FF0EEF1E1D9F6B4D00F25356 /* Account */,
+				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
+			);
+			path = TelecareLive;
+			sourceTree = "<group>";
+		};
+		FF0EEF1E1D9F6B4D00F25356 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */,
+				FF0EEF191D9F67BC00F25356 /* PhotoView.xib */,
+				FF0EEF221D9F711500F25356 /* PhotoView.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		FF0EEF1F1D9F6B6700F25356 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF19E34F1D9B733E00375804 /* PinViewController.swift */,
 				FF00893E1D935BB600127B66 /* ViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FF0EEF201D9F6B7300F25356 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
+				FF15475F1D9C865400375F9A /* Extensions.swift */,
 				FF0089401D935BB600127B66 /* Main.storyboard */,
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
+				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
 				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
 				FF0089481D935BB600127B66 /* Info.plist */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		FF0EEF211D9F6BA500F25356 /* REST and Session management */ = {
+			isa = PBXGroup;
+			children = (
 				FF19E3471D9B420C00375804 /* SessionManager.swift */,
 				FF19E3491D9B422F00375804 /* RestViewController.swift */,
 				FF19E34B1D9B426E00375804 /* RestManager.swift */,
-				FF19E34F1D9B733E00375804 /* PinViewController.swift */,
-				FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */,
-				FF15475F1D9C865400375F9A /* extensions.swift */,
 			);
-			path = TelecareLive;
+			name = "REST and Session management";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +235,7 @@
 				FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */,
 				FF0089441D935BB600127B66 /* Assets.xcassets in Resources */,
 				FF0089421D935BB600127B66 /* Main.storyboard in Resources */,
+				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +297,8 @@
 				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
 				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
 				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,
-				FF1547601D9C865400375F9A /* extensions.swift in Sources */,
+				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
+				FF1547601D9C865400375F9A /* Extensions.swift in Sources */,
 				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,

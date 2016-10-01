@@ -1,3 +1,4 @@
+pod 'SwiftOverlays'
 use_frameworks!
 target 'TelecareLive'
 
