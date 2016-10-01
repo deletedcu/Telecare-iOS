@@ -17,7 +17,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="276" height="207"/>
+            <rect key="frame" x="0.0" y="0.0" width="276" height="203"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="52M-7N-IVw">
@@ -80,10 +80,10 @@
                 <constraint firstItem="hVF-9t-TFO" firstAttribute="leading" secondItem="tbh-Gp-VH3" secondAttribute="leading" id="a8G-5u-gix"/>
                 <constraint firstAttribute="bottom" secondItem="tbh-Gp-VH3" secondAttribute="bottom" constant="12" id="dLK-FH-aD9"/>
                 <constraint firstItem="hVF-9t-TFO" firstAttribute="trailing" secondItem="tbh-Gp-VH3" secondAttribute="trailing" id="di9-jB-0pT"/>
-                <constraint firstItem="tbh-Gp-VH3" firstAttribute="top" secondItem="hVF-9t-TFO" secondAttribute="bottom" constant="5" id="eEd-F6-Wes"/>
+                <constraint firstItem="tbh-Gp-VH3" firstAttribute="top" secondItem="hVF-9t-TFO" secondAttribute="bottom" constant="8" symbolic="YES" id="eEd-F6-Wes"/>
                 <constraint firstItem="6Vd-g9-1UH" firstAttribute="trailing" secondItem="hVF-9t-TFO" secondAttribute="trailing" id="hZa-JA-N9X"/>
                 <constraint firstItem="52M-7N-IVw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ixf-lP-uhs"/>
-                <constraint firstItem="hVF-9t-TFO" firstAttribute="top" secondItem="6Vd-g9-1UH" secondAttribute="bottom" constant="-2" id="jq2-Yn-75W"/>
+                <constraint firstItem="hVF-9t-TFO" firstAttribute="top" secondItem="6Vd-g9-1UH" secondAttribute="bottom" constant="8" symbolic="YES" id="jq2-Yn-75W"/>
                 <constraint firstAttribute="bottom" secondItem="52M-7N-IVw" secondAttribute="bottom" id="naZ-aO-xgA"/>
                 <constraint firstItem="6Vd-g9-1UH" firstAttribute="leading" secondItem="hVF-9t-TFO" secondAttribute="leading" id="pij-5W-VYf"/>
                 <constraint firstItem="6Vd-g9-1UH" firstAttribute="top" secondItem="PuK-S8-cA9" secondAttribute="bottom" constant="14" id="qip-Mb-pXF"/>
@@ -95,7 +95,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-49" y="-215.5"/>
+            <point key="canvasLocation" x="-49" y="-217.5"/>
         </view>
     </objects>
 </document>
