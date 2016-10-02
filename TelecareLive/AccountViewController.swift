@@ -45,23 +45,44 @@ class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePi
         photoView.delegate = self
         originalContentInset = scrollView.contentInset
         originalScrollIndicatorInsets = scrollView.scrollIndicatorInsets
-        
-        restManager?.getAccountData(caller: self, callback: populate)
-        
+        populateFromLoggedInPerson()
     }
     
-
+    override func refreshData(){
+        restManager?.getAccountData(caller: self, callback: finishGetAccountData)
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
+        restManager?.saveAccountData(caller: self, callback: finishUpdate)
+    }
+    
+    func updateAccountFailed(){
+        var message = "The update was unsuccessful. Check your internet connection and try again."
         
-//        RestManager.
+        if getCurrentErrorMessage() !=  "" {
+            message = getCurrentErrorMessage()
+        }
+        
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        //            let DestructiveAction = UIAlertAction(title: "Destructive", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+        //                print("Destructive")
+        //            }
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        //            alertController.addAction(DestructiveAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func finishUpdate(restData: JSON){
         
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
-        profileImage.contentMode = .scaleAspectFit
+        profileImage.contentMode = .scaleAspectFill
         profileImage.setBackgroundImage(chosenImage, for: UIControlState.normal)
         dismiss(animated: true, completion: nil) //5
         photoView.hideView()
@@ -71,28 +92,24 @@ class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-    func populate(restData: JSON){
+    func finishGetAccountData(restData: JSON){
         print(restData)
-
-        if (restData["data"]["user_image"].count < 1){
-            profileImage.setBackgroundImage(UIImage(named: "Default"), for: UIControlState.normal)
-        } else {
-            let image = UIImageView()
-            image.setImageFromURl(stringImageUrl: restData["data"]["user_image"][0].string!)
-            profileImage.setBackgroundImage(image.image!, for: UIControlState.normal)
-        }
         
-        fullName.text = restData["data"]["user_full_name"].string!
-        email.text = restData["data"]["mail"].string!
-        birthday.text = Date.init(timeIntervalSince1970: Double(restData["data"]["user_birthdate"].int!)).toReadable()
-        phone.text = restData["data"]["user_phone"].string!
-        lockCode.text = restData["data"]["user_lock_code"].string!
+        let person = PersonManager.getPersonUsing(json: restData)
+        appDelegate.currentlyLoggedInPerson = person
+        populateFromLoggedInPerson()
+    }
+    
+    func populateFromLoggedInPerson(){
+        let person = appDelegate.currentlyLoggedInPerson
         
-        if restData["data"]["user_notifications"] == 1{
-            notificationsToggle.isOn = true
-        } else {
-            notificationsToggle.isOn = false
-        }
+        profileImage.setBackgroundImage(person?.userImage!, for:UIControlState.normal)
+        fullName.text = person?.fullName!
+        email.text = person?.email!
+        birthday.text = person?.birthdate!.toReadable()
+        phone.text = person?.phone!
+        lockCode.text = person?.lockCode!
+        notificationsToggle.isOn = (person?.notifications!)!
     }
     
     func getPhotoFromLibrary(){

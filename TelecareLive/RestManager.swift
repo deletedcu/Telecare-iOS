@@ -20,7 +20,8 @@ class RestManager {
     var endpoints = [
         "login" : "auth",
         "getAccountData" : "user",
-        "saveAccountData": "user"
+        "saveAccountData": "user",
+        "getConversations"    : "conversations"
     ]
     
     var keychain = KeychainSwift()
@@ -29,7 +30,7 @@ class RestManager {
         sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager
     }
     
-    func logIn(username: String, password: String, caller: ViewController){
+    func logIn(username: String, password: String, caller: ViewController, callback: @escaping (JSON)->()){
         
         primeManager()
         
@@ -56,8 +57,7 @@ class RestManager {
 //                    print("JSON: \(json)")
                     
                     self.sessionManager?.lockSession = 0
-                    caller.loginSuccessful()
-                    
+                   callback(json)
                 } else {
                     (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
                     self.sessionManager?.lockSession = -1
@@ -109,45 +109,77 @@ class RestManager {
     func saveAccountData(caller:AccountViewController, callback: @escaping (JSON)->()){
         
         // Refactor data handling to controller later
-        var date = Date.init()
+        let date = Date.init()
         var notifications = "1"
         
         if(!caller.notificationsToggle.isOn){
             notifications = "0"
         }
         
-        var data = [
+        let image = caller.profileImage.backgroundImage(for: UIControlState.normal)
+        
+        let parameters = [
             "registration_id":(sessionManager?.gcmId)!,
-            "encoded":"",
+            "user_image":"data:image/png;base64," + (image?.toBase64())!,
             "user_full_name":caller.fullName.text!,
             "user_phone":caller.phone.text!,
-            "user_birthdate":String(date.fromString(string: caller.birthday.text!).timeIntervalSince1970),
-            "user_notifications":notifications,
+            "user_birthdate":date.fromString(string: caller.birthday.text!).timeIntervalSince1970,
+            "user_notifications":Int(notifications),
             "user_lock_code":caller.lockCode.text!
-        ] as Dictionary<String,String>
+        ] as Dictionary<String,Any>
+        
+        print(parameters["encoded"])
         
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),
             "Accept": "application/json"
         ]
         
-//        Alamofire.request(baseUrl + endpoints["saveAccountData"]!, method: .post, headers: headers,  parameters: data).validate().responseJSON{ response in
-//            switch response.result {
-//            case .success(let value):
-//                let json = JSON(value)
-//                
-//                if(json["status"] == 200){
-//                    callback(json)
-//                } else {
-//                    print("In the Error")
-//                    print(json)
-//                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//            
-//        }
+        Alamofire.request(baseUrl + endpoints["saveAccountData"]!, method: .post, parameters: parameters, headers: headers)
+            .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+                    caller.updateAccountFailed()
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func getAllConversations(person: Person, callback: @escaping (JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+
+        Alamofire.request(baseUrl + endpoints["getConversations"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+//                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
     }
     
     func sidIsValid(sid: String) -> Bool{

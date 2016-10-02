@@ -268,7 +268,7 @@
         <!--Patients-->
         <scene sceneID="gKZ-ui-nAw">
             <objects>
-                <viewController id="ttv-F7-9eQ" sceneMemberID="viewController">
+                <viewController id="ttv-F7-9eQ" customClass="PatientsViewController" customModule="TelecareLive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nYN-oD-E22"/>
                         <viewControllerLayoutGuide type="bottom" id="0GE-BJ-myA"/>
@@ -276,13 +276,37 @@
                     <view key="view" contentMode="scaleToFill" id="eQ9-zU-1mX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="chd-QU-dw9">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zbc-Pt-NxP">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="zbc-Pt-NxP" id="6NW-UN-Y9n">
+                                            <frame key="frameInset" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="bottom" secondItem="0GE-BJ-myA" secondAttribute="top" id="ChX-d2-2Pp"/>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="leading" secondItem="eQ9-zU-1mX" secondAttribute="leading" id="Vnk-f0-AdD"/>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="top" secondItem="eQ9-zU-1mX" secondAttribute="top" id="fQg-6T-giR"/>
+                            <constraint firstAttribute="trailing" secondItem="chd-QU-dw9" secondAttribute="trailing" id="llk-yf-jQa"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Patients" id="scc-5N-oGp"/>
+                    <connections>
+                        <outlet property="tableView" destination="chd-QU-dw9" id="CCI-Xs-6NM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPg-qH-jDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="-761"/>
+            <point key="canvasLocation" x="2624.8000000000002" y="-761.46926536731644"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7lW-hb-N9f">

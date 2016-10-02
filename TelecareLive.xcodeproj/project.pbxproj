@@ -25,6 +25,19 @@
 		FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E3491D9B422F00375804 /* RestViewController.swift */; };
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
+		FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */; };
+		FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */; };
+		FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8C1DA07AB200D43119 /* Person.swift */; };
+		FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8E1DA0807500D43119 /* Conversation.swift */; };
+		FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D901DA0825700D43119 /* PersonManager.swift */; };
+		FF9A3D931DA0832000D43119 /* Consult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D921DA0832000D43119 /* Consult.swift */; };
+		FF9A3D951DA0833400D43119 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D941DA0833400D43119 /* Message.swift */; };
+		FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D971DA0838600D43119 /* ConversationManager.swift */; };
+		FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D991DA083B800D43119 /* ConsultManager.swift */; };
+		FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */; };
+		FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */; };
+		FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */; };
+		FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +65,19 @@
 		FF19E3491D9B422F00375804 /* RestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestViewController.swift; sourceTree = "<group>"; };
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProactiveTabBarController.swift; sourceTree = "<group>"; };
+		FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
+		FF9A3D8C1DA07AB200D43119 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FF9A3D8E1DA0807500D43119 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		FF9A3D901DA0825700D43119 /* PersonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
+		FF9A3D921DA0832000D43119 /* Consult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consult.swift; sourceTree = "<group>"; };
+		FF9A3D941DA0833400D43119 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FF9A3D971DA0838600D43119 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		FF9A3D991DA083B800D43119 /* ConsultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultManager.swift; sourceTree = "<group>"; };
+		FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultCell.swift; sourceTree = "<group>"; };
+		FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +142,7 @@
 				FF0EEF201D9F6B7300F25356 /* Main */,
 				FF0EEF1F1D9F6B6700F25356 /* Login */,
 				FF0EEF1E1D9F6B4D00F25356 /* Account */,
+				FF9A3D891DA079E600D43119 /* Patients */,
 				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
 			);
 			path = TelecareLive;
@@ -143,13 +170,20 @@
 		FF0EEF201D9F6B7300F25356 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				FF9A3D9B1DA083D300D43119 /* ModelManagers */,
+				FF9A3D961DA0834000D43119 /* Models */,
 				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
 				FF15475F1D9C865400375F9A /* Extensions.swift */,
+				FF19E3491D9B422F00375804 /* RestViewController.swift */,
+				FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */,
 				FF0089401D935BB600127B66 /* Main.storyboard */,
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
 				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
 				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
 				FF0089481D935BB600127B66 /* Info.plist */,
+				FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */,
+				FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */,
+				FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -158,10 +192,39 @@
 			isa = PBXGroup;
 			children = (
 				FF19E3471D9B420C00375804 /* SessionManager.swift */,
-				FF19E3491D9B422F00375804 /* RestViewController.swift */,
 				FF19E34B1D9B426E00375804 /* RestManager.swift */,
 			);
 			name = "REST and Session management";
+			sourceTree = "<group>";
+		};
+		FF9A3D891DA079E600D43119 /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */,
+			);
+			name = Patients;
+			sourceTree = "<group>";
+		};
+		FF9A3D961DA0834000D43119 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D8C1DA07AB200D43119 /* Person.swift */,
+				FF9A3D8E1DA0807500D43119 /* Conversation.swift */,
+				FF9A3D921DA0832000D43119 /* Consult.swift */,
+				FF9A3D941DA0833400D43119 /* Message.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FF9A3D9B1DA083D300D43119 /* ModelManagers */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D901DA0825700D43119 /* PersonManager.swift */,
+				FF9A3D971DA0838600D43119 /* ConversationManager.swift */,
+				FF9A3D991DA083B800D43119 /* ConsultManager.swift */,
+				FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */,
+			);
+			name = ModelManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,13 +359,26 @@
 			files = (
 				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
 				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
+				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
+				FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */,
+				FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */,
+				FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */,
 				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,
+				FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */,
+				FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */,
 				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
+				FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */,
 				FF1547601D9C865400375F9A /* Extensions.swift in Sources */,
+				FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */,
+				FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */,
 				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
+				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
+				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
+				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,
 				FF19E3481D9B420C00375804 /* SessionManager.swift in Sources */,
+				FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

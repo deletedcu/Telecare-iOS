@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RestViewController : UIViewController {
+class RestViewController : UIViewController, UITabBarControllerDelegate {
     
     var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
@@ -23,6 +23,11 @@ class RestViewController : UIViewController {
         sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager!
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.delegate = self
+    }
+    
     func getCurrentErrorMessage() -> String {
         return appDelegate.currentErrorMessage
     }
@@ -33,5 +38,13 @@ class RestViewController : UIViewController {
     
     func setCurrentErrorMessage(message: String) {
         appDelegate.currentErrorMessage = message
+    }
+    
+    func refreshData(){
+        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        self.refreshData()
     }
 }

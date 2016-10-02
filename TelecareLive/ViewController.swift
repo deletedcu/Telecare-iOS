@@ -28,7 +28,7 @@ class ViewController: RestViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func login(_ sender: AnyObject) {
-        restManager?.logIn(username: email.text!, password: password.text!, caller: self)
+        restManager?.logIn(username: email.text!, password: password.text!, caller: self, callback:loginSuccessful)
     }
     
     @IBAction func register(_ sender: AnyObject) {
@@ -38,11 +38,12 @@ class ViewController: RestViewController {
     @IBAction func forgotPassword(_ sender: AnyObject) {
     }
     
-    func loginSuccessful(){
+    func loginSuccessful(restData: JSON){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
         appDelegate.window?.rootViewController = tabBarViewController
         appDelegate.window?.makeKeyAndVisible()
+        appDelegate.currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
     }
 
     func loginFailed(){

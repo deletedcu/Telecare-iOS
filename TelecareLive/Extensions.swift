@@ -57,3 +57,15 @@ extension Date {
         return dateformatter.date(from: string)!
     }
 }
+
+extension UIImage {
+    func toBase64() -> String {
+        let data = UIImagePNGRepresentation(self)
+        return (data?.base64EncodedString())!
+    }
+    
+    func fromBase64(string: String) -> UIImage {
+        let data = Data.init(base64Encoded: string)
+        return UIImage.init(data: data!)!
+    }
+}
