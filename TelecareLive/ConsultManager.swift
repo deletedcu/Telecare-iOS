@@ -9,7 +9,7 @@
 import Foundation
 
 class ConsultManager : ModelManager{
-    static func getMessagesForConsult(consult: Consult) -> [Int:Message]{
-        return [:]
+    static func getMessagesForConsult(consult: Consult) -> [Message]{
+        return []
     }
 }

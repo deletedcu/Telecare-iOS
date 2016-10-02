@@ -10,25 +10,31 @@ import Foundation
 import SwiftyJSON
 
 class PersonManager : ModelManager{
-    static func getPeopleForLoggedInUser() -> [Int:Person]{
-        return [:]
+    static var currentRestController:RestViewController?
+    
+    static func getPeopleForLoggedInUser() -> [Person]{
+        return []
     }
     
-    static func getConversations(person:Person) -> [Int:Conversation]{
+    static func getConversations(person:Person){
         restManager?.getAllConversations(person:person, callback: finishGetConversations)
-        return [:]
     }
     
-    static func finishGetConversations(restData: JSON){
-        var conversations:[Int:Conversation]?
+    static func finishGetConversations(person: Person, restData: JSON){
+        print(restData)
+        var conversations: [Conversation] = []
         
-        for(key,jsonSub) in restData {
-            
+        for(_,jsonSub) in restData["data"] {
+            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
         }
+        
+        person.conversations = conversations
+        
+        currentRestController?.refreshData()
     }
     
-    static func getConsults(person:Person) -> [Int:Consult]{
-        return [:]
+    static func getConsults(person:Person) -> [Consult]{
+        return []
     }
     
     static func getPersonUsing(json: JSON) -> Person{
@@ -60,9 +66,13 @@ class PersonManager : ModelManager{
         person.isDoctor = (json["data"]["doctor"].int! == 1)
         person.lockCode = json["data"]["user_lock_code"].string!
         
-        person.conversations = PersonManager.getConversations(person: person)
+        PersonManager.getConversations(person: person)
         person.consults = PersonManager.getConsults(person: person)
         
         return person
     }
+    
+//    static func getPersonUsing(id: String) -> Person{
+//        
+//    }
 }

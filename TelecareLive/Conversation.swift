@@ -9,11 +9,11 @@
 import Foundation
 
 class Conversation {
-    var entityId: Int?
-    var organizationId: Int?
-    var recipientId: Int?
-    var status: Int?
-    var lastActivity: Double?
+    var entityId: String?
+    var organizationId: String?
+    var recipientId: String?
+    var status: String?
+    var lastActivity: String?
     var person: Person?
     
     

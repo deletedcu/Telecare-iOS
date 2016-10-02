@@ -15,16 +15,24 @@ class RestManager {
     
     var sessionManager:SessionManager?
     
+    var errorManager:ErrorManager?
+    
     var baseUrl = "http://dev-telecarelive.pantheonsite.io/api/v1/"
     
     var endpoints = [
         "login" : "auth",
         "getAccountData" : "user",
-        "saveAccountData": "user",
-        "getConversations"    : "conversations"
+        "saveAccountData"     : "user",
+        "getConversations"    : "conversations",
+        "getMessagesP1"         : "conversation/",
+        "getMessagesP2"         : "/messages"
     ]
     
     var keychain = KeychainSwift()
+    
+    init(){
+        errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager
+    }
     
     func primeManager(){
         sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager
@@ -46,27 +54,25 @@ class RestManager {
             case .success(let value):
                 let json = JSON(value)
                 
-                print(json)
+//                print(json)
                 
                 if(json["status"] == 200){
                     self.keychain.set(username, forKey: "username")
                     self.keychain.set(json["sid"].string!, forKey: "sid")
                     
-                    print(self.keychain.get("sid"))
-//                    print(keychain.get("username"))
-//                    print("JSON: \(json)")
+//                    print(self.keychain.get("sid"))
                     
                     self.sessionManager?.lockSession = 0
                    callback(json)
                 } else {
-                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+                    self.errorManager?.currentErrorMessage = json["message"].string!
                     self.sessionManager?.lockSession = -1
                     caller.loginFailed()
                 }
                 
 
             case .failure(let error):
-                print(error)
+//                print(error)
                 self.sessionManager?.lockSession = -1
             }
         }
@@ -97,7 +103,7 @@ class RestManager {
                 } else {
                     print("In the Error")
                     print(json)
-                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+                    self.errorManager?.currentErrorMessage = json["message"].string!
                 }
             case .failure(let error):
                 print(error)
@@ -146,7 +152,7 @@ class RestManager {
                 } else {
                     print("In the Error")
                     print(json)
-                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+                    self.errorManager?.currentErrorMessage = json["message"].string!
                     caller.updateAccountFailed()
                 }
             case .failure(let error):
@@ -156,7 +162,7 @@ class RestManager {
         }
     }
     
-    func getAllConversations(person: Person, callback: @escaping (JSON)->()){
+    func getAllConversations(person: Person, callback: @escaping (Person, JSON)->()){
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),
             "Accept": "application/json"
@@ -168,12 +174,39 @@ class RestManager {
                 let json = JSON(value)
                 
                 if(json["status"] == 200){
-                    callback(json)
+                    callback(person, json)
                 } else {
                     print("In the Error")
                     print(json)
-                    (UIApplication.shared.delegate as! AppDelegate).currentErrorMessage = json["message"].string!
+                    self.errorManager?.currentErrorMessage = json["message"].string!
 //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    // Decouple later
+    func getAllMessages(conversation: Conversation, callback: @escaping (Conversation, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getMessagesP1"]! + conversation.entityId! + endpoints["getMessagesP2"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(conversation, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
                 }
             case .failure(let error):
                 print(error)

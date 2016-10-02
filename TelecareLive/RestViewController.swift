@@ -17,10 +17,13 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
     
     var sessionManager: SessionManager?
     
+    var errorManager: ErrorManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         restManager = (UIApplication.shared.delegate as! AppDelegate).restManager!
         sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager!
+        errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,15 +32,15 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
     }
     
     func getCurrentErrorMessage() -> String {
-        return appDelegate.currentErrorMessage
+        return errorManager!.currentErrorMessage!
     }
     
     func resetCurrentErrorMessage(){
-        appDelegate.currentErrorMessage = ""
+        errorManager?.currentErrorMessage = ""
     }
     
     func setCurrentErrorMessage(message: String) {
-        appDelegate.currentErrorMessage = message
+        errorManager?.currentErrorMessage = message
     }
     
     func refreshData(){

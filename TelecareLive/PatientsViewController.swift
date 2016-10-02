@@ -9,40 +9,56 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import AlamofireImage
 
-class PatientsViewController : RestViewController {
+class PatientsViewController : RestViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    
     override func viewDidLoad() {
-        
+//        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func refreshData(){
-//        restManager?.getAllConversations(person: self, callback: populate)
+        tableView.reloadData()
     }
     
     func populate(restData: JSON){
-        
+        print(restData)
     }
     
     func getConversationsFailed(){
-        var message = "Getting your conversations was unsuccessful. Check your internet connection and try again."
+        let message = "Getting your conversations was unsuccessful. Check your internet connection and try again."
+        errorManager?.postErrorMessage(controller: self, message: message)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let conversations = appDelegate.currentlyLoggedInPerson?.conversations
         
-        if getCurrentErrorMessage() !=  "" {
-            message = getCurrentErrorMessage()
+        if(conversations == nil){
+            return 0
+        } else {
+            return (conversations?.count)!
         }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let conversation = appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row]
+
+        let cell:ConversationCell = self.tableView.dequeueReusableCell(withIdentifier: "ConversationCell")! as! ConversationCell
+        let person = conversation?.person
+        let fullname = person?.fullName!
         
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        //            let DestructiveAction = UIAlertAction(title: "Destructive", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-        //                print("Destructive")
-        //            }
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        //            alertController.addAction(DestructiveAction)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        cell.nameField.text = fullname
+        cell.birthdateField.text = "Birth Date : " + (person?.birthdate?.toReadable())!
+        cell.profileImage.image = person?.userImage?.af_imageRoundedIntoCircle()
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
 }

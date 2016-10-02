@@ -16,14 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var restManager: RestManager?
     
     var sessionManager: SessionManager?
-    
-    var currentErrorMessage = ""
-    
+        
     var currentlyLoggedInPerson: Person?
+    
+    var errorManager: ErrorManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        errorManager = ErrorManager()
         restManager = RestManager()
         sessionManager = SessionManager()
         

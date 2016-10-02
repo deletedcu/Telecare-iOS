@@ -19,6 +19,6 @@ class Person {
     var notifications: Bool? = true
     var isDoctor: Bool? = false
     var lockCode: String?
-    var conversations: [Int:Conversation]?
-    var consults: [Int:Consult]?
+    var conversations: [Conversation]?
+    var consults: [Consult]?
 }

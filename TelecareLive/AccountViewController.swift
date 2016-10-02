@@ -58,22 +58,8 @@ class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePi
     }
     
     func updateAccountFailed(){
-        var message = "The update was unsuccessful. Check your internet connection and try again."
-        
-        if getCurrentErrorMessage() !=  "" {
-            message = getCurrentErrorMessage()
-        }
-        
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        //            let DestructiveAction = UIAlertAction(title: "Destructive", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-        //                print("Destructive")
-        //            }
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        //            alertController.addAction(DestructiveAction)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        let message = "The update was unsuccessful. Check your internet connection and try again."
+        errorManager?.postErrorMessage(controller: self, message: message)
     }
     
     func finishUpdate(restData: JSON){
@@ -82,7 +68,7 @@ class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePi
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
-        profileImage.contentMode = .scaleAspectFill
+        profileImage.contentMode = .scaleAspectFit
         profileImage.setBackgroundImage(chosenImage, for: UIControlState.normal)
         dismiss(animated: true, completion: nil) //5
         photoView.hideView()

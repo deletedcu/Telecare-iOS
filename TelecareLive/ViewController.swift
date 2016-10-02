@@ -43,26 +43,15 @@ class ViewController: RestViewController {
         let tabBarViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
         appDelegate.window?.rootViewController = tabBarViewController
         appDelegate.window?.makeKeyAndVisible()
+        let firstController = tabBarViewController.childViewControllers[0] as? RestViewController
+        PersonManager.currentRestController = firstController
         appDelegate.currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
+        
     }
 
     func loginFailed(){
-        var message = "The service could not be reached. Please check you internet connection."
-        
-        if getCurrentErrorMessage() !=  "" {
-            message = getCurrentErrorMessage()
-        }
-        
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        //            let DestructiveAction = UIAlertAction(title: "Destructive", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-        //                print("Destructive")
-        //            }
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        //            alertController.addAction(DestructiveAction)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        let message = "The service could not be reached. Please check you internet connection."
+        errorManager?.postErrorMessage(controller: self, message: message)
     }
 
 }
