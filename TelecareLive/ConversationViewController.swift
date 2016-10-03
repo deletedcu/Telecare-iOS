@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ConversationViewController : RestViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate {
+class ConversationViewController : RestViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,10 +17,17 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     var currentConversation:Conversation? = Conversation()
     
-    @IBOutlet weak var navbarTitle: UINavigationItem!
+    @IBOutlet weak var chatInputField: UITextField!
+    
+    @IBOutlet weak var chatBarView: UIView!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func refreshData(){
         tableView.reloadData()
+        // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
     }
     
     override func viewDidLoad() {
@@ -28,10 +35,20 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         tableView.delegate = self
         tableView.dataSource = self
         navigationController?.navigationBar.topItem?.title = ""
+        self.tabBarController?.tabBar.isHidden = true
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (currentConversation?.messages?.count)!
+    }
+    
+    @IBAction func didClickInChatBox(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func sendMessage(_ sender: AnyObject) {
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,5 +88,4 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
 }
