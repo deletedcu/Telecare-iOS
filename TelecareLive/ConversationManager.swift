@@ -11,15 +11,16 @@ import UIKit
 import SwiftyJSON
 
 class ConversationManager : ModelManager{
-    static func getMessagesForConversation(conversation: Conversation) -> [Conversation]{
+    static func populateMessagesForConversation(conversation: Conversation){
         restManager?.getAllMessages(conversation: conversation, callback: finishGettingAllMessages)
-        return []
     }
     
     static func finishGettingAllMessages(conversation: Conversation, restData: JSON){
         let messages: [Message] = []
         
         // FINISH THIS OUT
+        print(restData)
+        print("ABOVE IS REST DATA FROM MESSAGES")
     }
     
     static func getConversationUsing(json: JSON)-> Conversation{

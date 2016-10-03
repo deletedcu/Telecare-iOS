@@ -14,4 +14,6 @@ class ConversationCell : UITableViewCell {
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var birthdateField: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    
+    
 }

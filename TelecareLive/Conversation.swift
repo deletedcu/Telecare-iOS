@@ -15,6 +15,6 @@ class Conversation {
     var status: String?
     var lastActivity: String?
     var person: Person?
-    
+    var messages: [Message]? = []
     
 }

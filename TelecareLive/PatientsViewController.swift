@@ -58,7 +58,20 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ConversationManager.populateMessagesForConversation(conversation: (appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row])!)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(sender)
+        print("ABOVE IS THE SENDER")
+        switch segue.identifier! {
+            case "patientMessage" :
+                let destination = segue.destination as? ConversationViewController
+                
+                destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[(tableView.indexPathForSelectedRow?.row)!]
+
+            default:break
+        }
     }
 }

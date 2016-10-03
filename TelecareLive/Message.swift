@@ -9,5 +9,6 @@
 import Foundation
 
 class Message {
-    
+    var message:String? = ""
+    var messageDate:Date? = Date()
 }

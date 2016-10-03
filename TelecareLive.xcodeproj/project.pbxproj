@@ -16,6 +16,7 @@
 		FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0EEF191D9F67BC00F25356 /* PhotoView.xib */; };
 		FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EEF221D9F711500F25356 /* PhotoView.swift */; };
 		FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */; };
+		FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */; };
 		FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */; };
 		FF1547601D9C865400375F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475F1D9C865400375F9A /* Extensions.swift */; };
 		FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33A1D95F51300375804 /* KeychainSwift.framework */; };
@@ -55,6 +56,7 @@
 		FF0EEF191D9F67BC00F25356 /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
 		FF0EEF221D9F711500F25356 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FF15475F1D9C865400375F9A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF19E33A1D95F51300375804 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/KeychainSwift/KeychainSwift.framework"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */,
+				FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */,
 			);
 			name = Patients;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 			files = (
 				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
 				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
+				FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */,
 				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
 				FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */,
 				FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */,
