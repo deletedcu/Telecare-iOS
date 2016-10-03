@@ -13,9 +13,17 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var navTitle: UINavigationItem!
+    
     var currentConversation:Conversation? = Conversation()
     
     @IBOutlet weak var navbarTitle: UINavigationItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (currentConversation?.messages?.count)!

@@ -305,20 +305,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwp-KX-7tX">
-                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.99963909390000005" green="1" blue="0.99975615740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Patients" id="EWa-8J-jjw"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="chd-QU-dw9">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="58" id="zbc-Pt-NxP" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="58"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="zbc-Pt-NxP" id="6NW-UN-Y9n">
                                             <frame key="frameInset" width="375" height="57"/>
@@ -367,23 +358,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nwp-KX-7tX" firstAttribute="top" secondItem="nYN-oD-E22" secondAttribute="bottom" id="ACp-31-SWy"/>
-                            <constraint firstItem="chd-QU-dw9" firstAttribute="bottom" secondItem="0GE-BJ-myA" secondAttribute="top" id="ChX-d2-2Pp"/>
-                            <constraint firstItem="nwp-KX-7tX" firstAttribute="leading" secondItem="chd-QU-dw9" secondAttribute="leading" id="PP2-OE-9yk"/>
-                            <constraint firstItem="nwp-KX-7tX" firstAttribute="trailing" secondItem="chd-QU-dw9" secondAttribute="trailing" id="Thy-V4-1Oc"/>
-                            <constraint firstItem="chd-QU-dw9" firstAttribute="leading" secondItem="eQ9-zU-1mX" secondAttribute="leading" id="Vnk-f0-AdD"/>
-                            <constraint firstItem="chd-QU-dw9" firstAttribute="top" secondItem="eQ9-zU-1mX" secondAttribute="top" constant="64" id="fQg-6T-giR"/>
-                            <constraint firstAttribute="trailing" secondItem="chd-QU-dw9" secondAttribute="trailing" id="llk-yf-jQa"/>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="top" secondItem="eQ9-zU-1mX" secondAttribute="top" id="WHm-DZ-8i1"/>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="leading" secondItem="eQ9-zU-1mX" secondAttribute="leading" id="buL-hW-I1Q"/>
+                            <constraint firstAttribute="trailing" secondItem="chd-QU-dw9" secondAttribute="trailing" id="m8Q-Th-Q1V"/>
+                            <constraint firstItem="chd-QU-dw9" firstAttribute="bottom" secondItem="0GE-BJ-myA" secondAttribute="top" id="yas-ox-Z96"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Patients" id="scc-5N-oGp"/>
+                    <navigationItem key="navigationItem" title="Patients" id="BdT-4G-fAk"/>
                     <connections>
+                        <outlet property="navTitle" destination="BdT-4G-fAk" id="wqc-tL-oGb"/>
                         <outlet property="tableView" destination="chd-QU-dw9" id="CCI-Xs-6NM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPg-qH-jDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="-761"/>
+            <point key="canvasLocation" x="3564" y="-761.46926536731644"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7lW-hb-N9f">
@@ -395,7 +384,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ttv-F7-9eQ" kind="relationship" relationship="viewControllers" id="Fa4-O1-e1t"/>
+                        <segue destination="KzG-00-lCn" kind="relationship" relationship="viewControllers" id="Fa4-O1-e1t"/>
                         <segue destination="CcD-Wr-Rmd" kind="relationship" relationship="viewControllers" id="Wok-Vd-f72"/>
                         <segue destination="2kQ-RA-GOr" kind="relationship" relationship="viewControllers" id="bky-ZE-YxM"/>
                     </connections>
@@ -480,7 +469,7 @@
             </objects>
             <point key="canvasLocation" x="137" y="900"/>
         </scene>
-        <!--Patients-->
+        <!--Patient Messages-->
         <scene sceneID="6Jh-aq-64V">
             <objects>
                 <viewController storyboardIdentifier="ConversationView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tft-JK-sOy" customClass="ConversationViewController" customModule="TelecareLive" customModuleProvider="target" sceneMemberID="viewController">
@@ -496,7 +485,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="58" id="qtY-dE-kZp" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="58"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="qtY-dE-kZp" id="p9N-LE-cTz">
                                             <frame key="frameInset" width="375" height="57"/>
@@ -533,35 +522,53 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7v-8A-ihR">
-                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.99963909390000005" green="1" blue="0.99975615740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Patient Messages" id="bs6-Hb-tDI"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L7v-8A-ihR" firstAttribute="trailing" secondItem="cxv-IT-MfO" secondAttribute="trailing" id="10o-FJ-8xo"/>
-                            <constraint firstItem="cxv-IT-MfO" firstAttribute="bottom" secondItem="ZZd-Bt-DTv" secondAttribute="top" id="WcK-MW-haT"/>
-                            <constraint firstItem="L7v-8A-ihR" firstAttribute="leading" secondItem="cxv-IT-MfO" secondAttribute="leading" id="cVv-AO-4TH"/>
-                            <constraint firstAttribute="trailing" secondItem="cxv-IT-MfO" secondAttribute="trailing" id="dmz-qh-RVA"/>
-                            <constraint firstItem="cxv-IT-MfO" firstAttribute="top" secondItem="O3P-6m-gQL" secondAttribute="top" constant="64" id="hnU-jQ-5uh"/>
-                            <constraint firstItem="L7v-8A-ihR" firstAttribute="top" secondItem="0UN-xe-ojG" secondAttribute="bottom" id="rPp-i9-HNA"/>
-                            <constraint firstItem="cxv-IT-MfO" firstAttribute="leading" secondItem="O3P-6m-gQL" secondAttribute="leading" id="x9D-ux-Fb5"/>
+                            <constraint firstItem="cxv-IT-MfO" firstAttribute="top" secondItem="O3P-6m-gQL" secondAttribute="top" id="1CY-iO-RSn"/>
+                            <constraint firstItem="cxv-IT-MfO" firstAttribute="bottom" secondItem="ZZd-Bt-DTv" secondAttribute="top" id="Rgv-rj-8Ub"/>
+                            <constraint firstItem="cxv-IT-MfO" firstAttribute="leading" secondItem="O3P-6m-gQL" secondAttribute="leading" id="az3-GC-fAI"/>
+                            <constraint firstAttribute="trailing" secondItem="cxv-IT-MfO" secondAttribute="trailing" id="qa4-z2-68q"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Patients" id="0bH-Zm-KU3"/>
+                    <navigationItem key="navigationItem" title="Patient Messages" id="q0i-Pn-DeN"/>
                     <connections>
+                        <outlet property="navTitle" destination="q0i-Pn-DeN" id="CPR-fQ-UFS"/>
                         <outlet property="tableView" destination="cxv-IT-MfO" id="Kvp-ih-WMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfr-qK-5ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3669.5999999999999" y="-761.46926536731644"/>
+            <point key="canvasLocation" x="4608.8000000000002" y="-761.46926536731644"/>
+        </scene>
+        <!--Patients-->
+        <scene sceneID="3Yj-zO-7gX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="KzG-00-lCn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Patients" id="scc-5N-oGp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="Default" id="Pq0-Qb-1WI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99801206791836827" green="1" blue="0.98228302212949892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99801206791836827" green="1" blue="0.98228302212949892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="0.99801206791836827" green="1" blue="0.98228302212949892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ttv-F7-9eQ" kind="relationship" relationship="rootViewController" id="YIa-8V-8VS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gdb-7q-GJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2624.8000000000002" y="-761.46926536731644"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Default" width="162" height="161"/>
+    </resources>
 </document>

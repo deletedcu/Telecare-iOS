@@ -43,8 +43,10 @@ class ViewController: RestViewController {
         let tabBarViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
         appDelegate.window?.rootViewController = tabBarViewController
         appDelegate.window?.makeKeyAndVisible()
-        let firstController = tabBarViewController.childViewControllers[0] as? RestViewController
-        PersonManager.currentRestController = firstController
+        print(tabBarViewController.childViewControllers.count)
+        print("CHILD VIEW CONTROLLERS ABOVE")
+        let firstController = tabBarViewController.childViewControllers[0] as? UINavigationController
+        PersonManager.currentRestController = firstController?.topViewController as? RestViewController
         appDelegate.currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
         
     }

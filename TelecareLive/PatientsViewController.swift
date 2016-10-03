@@ -11,14 +11,18 @@ import UIKit
 import SwiftyJSON
 import AlamofireImage
 
-class PatientsViewController : RestViewController, UITableViewDelegate, UITableViewDataSource {
+class PatientsViewController : RestViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var navTitle: UINavigationItem!
     
     override func viewDidLoad() {
 //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tabBarController?.hidesBottomBarWhenPushed = true
+        navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     
     override func refreshData(){
