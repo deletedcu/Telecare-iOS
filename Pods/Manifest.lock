@@ -2,6 +2,9 @@ PODS:
   - Alamofire (4.0.0)
   - AlamofireImage (3.0.0):
     - Alamofire (~> 4.0)
+  - Chatto (3.0.0)
+  - ChattoAdditions (3.0.0):
+    - Chatto
   - KeychainSwift (6.0.2)
   - SwiftOverlays (2.0.1)
   - SwiftyJSON (3.0.0)
@@ -9,6 +12,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Chatto
+  - ChattoAdditions
   - KeychainSwift (~> 6.0)
   - SwiftOverlays
   - SwiftyJSON
@@ -16,10 +21,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   AlamofireImage: 6594aa1139a67dcd36cde6da79ea4e5b318e60fb
+  Chatto: c6b8f22892f8b4899d161984b882da69e61d3906
+  ChattoAdditions: 262514a5d932ad1c04966319b99226416aec46b1
   KeychainSwift: a261364334000afa8fab0894390d5d00dd226d4c
   SwiftOverlays: 317afbb3eeb7f9d8545b1e6592500c89aadb6d8f
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 7daf811cdad54c7940f103a45f15d7072d76eedd
+PODFILE CHECKSUM: dfb2dda65587b658ef6118b30251a8a0301bf972
 
 COCOAPODS: 1.1.0.rc.2

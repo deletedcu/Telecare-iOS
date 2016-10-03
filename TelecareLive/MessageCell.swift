@@ -13,4 +13,8 @@ class MessageCell : UITableViewCell {
     
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var messageDate: UILabel!
+    
+    override func layoutMarginsDidChange() {
+        contentView.layoutMargins = layoutMargins
+    }
 }

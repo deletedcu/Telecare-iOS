@@ -48,11 +48,17 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         
         if(message?.isCurrentUsers)!{
             cell.messageDate.textAlignment = NSTextAlignment.right
+            cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
+            cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
+            cell.message.layer.cornerRadius = 10
+            cell.message.layer.backgroundColor = UIColor.init(red: 0, green: 0.25, blue: 0.85, alpha: 0.25).cgColor
         } else {
             cell.messageDate.textAlignment = NSTextAlignment.left
+            cell.layoutMargins = UIEdgeInsetsMake(40, 10, 40, 100)
+            cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
+            cell.message.layer.cornerRadius = 10
+            cell.message.layer.backgroundColor = UIColor.init(red: 0, green: 0.75, blue: 0.25, alpha: 0.35).cgColor
         }
-        
-        
         
         return cell
     }
@@ -65,4 +71,5 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
 }
