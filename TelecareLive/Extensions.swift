@@ -56,6 +56,37 @@ extension Date {
         
         return dateformatter.date(from: string)!
     }
+    
+    func toDateTimeReadable()->String{
+        let myLocale = Locale.current
+        let formatter = DateFormatter()
+        formatter.locale = myLocale
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = myLocale
+        
+        
+        //: ### Fetching `DateComponents` off a `Date`
+        //: Notice how *a locale is needed for the month symbols to be reported correctly*
+        let dateComponents = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: self)
+        let monthName = String(dateComponents.month!)
+        var hour = Int(dateComponents.hour!)
+        
+        var ampm = "AM"
+        if(hour > 11){
+            ampm = "PM"
+            hour -= 12
+        }
+
+        let day = String(dateComponents.day!)
+        let minute = String(dateComponents.minute!)
+        let part1 = monthName + "/" + day
+        let part2 = String(hour) + ":" + minute
+        
+        return part1 + " " + part2 + " " + ampm
+    }
 }
 
 extension UIImage {
@@ -67,5 +98,21 @@ extension UIImage {
     func fromBase64(string: String) -> UIImage {
         let data = Data.init(base64Encoded: string)
         return UIImage.init(data: data!)!
+    }
+}
+
+extension UILabel{
+    
+    func requiredHeight() -> CGFloat{
+        
+        let label:UILabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = self.font
+        label.text = self.text
+        
+        label.sizeToFit()
+        
+        return label.frame.height
     }
 }

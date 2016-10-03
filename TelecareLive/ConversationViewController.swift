@@ -19,10 +19,15 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var navbarTitle: UINavigationItem!
     
+    override func refreshData(){
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         navigationController?.navigationBar.topItem?.title = ""
-        navigationController?.navigationBar
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,8 +44,25 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         let cell:MessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MessageCell")! as! MessageCell
 
         cell.message.text = message?.message
-        cell.messageDate.text = message?.messageDate?.toReadable()
+        cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+        
+        if(message?.isCurrentUsers)!{
+            cell.messageDate.textAlignment = NSTextAlignment.right
+        } else {
+            cell.messageDate.textAlignment = NSTextAlignment.left
+        }
+        
+        
         
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

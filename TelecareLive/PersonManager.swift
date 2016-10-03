@@ -10,7 +10,6 @@ import Foundation
 import SwiftyJSON
 
 class PersonManager : ModelManager{
-    static var currentRestController:RestViewController?
     
     static func getPeopleForLoggedInUser() -> [Person]{
         return []

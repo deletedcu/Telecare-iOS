@@ -481,24 +481,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cxv-IT-MfO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cxv-IT-MfO">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="58" id="qtY-dE-kZp" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="58" id="qtY-dE-kZp" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="qtY-dE-kZp" id="p9N-LE-cTz">
-                                            <frame key="frameInset" width="375" height="57"/>
+                                            <frame key="frameInset" width="375" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAy-wb-wdH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAy-wb-wdH">
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Date / Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05U-yT-IOw">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="LoW-KX-pBN"/>
+                                                        <constraint firstAttribute="height" constant="21" id="92e-Ow-7fm"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.58456120469999995" green="0.58456120469999995" blue="0.58456120469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -506,15 +506,16 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="top" secondItem="p9N-LE-cTz" secondAttribute="top" id="0gd-FE-176"/>
-                                                <constraint firstAttribute="bottom" secondItem="05U-yT-IOw" secondAttribute="bottom" id="4s5-7z-aoc"/>
-                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="leading" secondItem="05U-yT-IOw" secondAttribute="leading" id="KDu-JD-uBY"/>
-                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="trailing" secondItem="p9N-LE-cTz" secondAttribute="trailingMargin" id="Qqb-rV-tdh"/>
-                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="leading" secondItem="p9N-LE-cTz" secondAttribute="leadingMargin" id="ceP-ZK-ldP"/>
-                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="trailing" secondItem="05U-yT-IOw" secondAttribute="trailing" id="rst-h7-DZH"/>
-                                                <constraint firstItem="05U-yT-IOw" firstAttribute="top" secondItem="hAy-wb-wdH" secondAttribute="bottom" constant="7" id="xMJ-8M-oCZ"/>
+                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="trailing" secondItem="p9N-LE-cTz" secondAttribute="trailingMargin" id="3xC-x8-MxK"/>
+                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="leading" secondItem="p9N-LE-cTz" secondAttribute="leadingMargin" id="Q1E-EU-tbz"/>
+                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="top" secondItem="p9N-LE-cTz" secondAttribute="top" id="QTa-li-AVM"/>
+                                                <constraint firstItem="05U-yT-IOw" firstAttribute="top" secondItem="hAy-wb-wdH" secondAttribute="bottom" id="St4-xP-QRR"/>
+                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="leading" secondItem="05U-yT-IOw" secondAttribute="leading" id="Zv0-ak-Tt6"/>
+                                                <constraint firstAttribute="bottom" secondItem="05U-yT-IOw" secondAttribute="bottom" id="kzg-Nr-STb"/>
+                                                <constraint firstItem="hAy-wb-wdH" firstAttribute="trailing" secondItem="05U-yT-IOw" secondAttribute="trailing" id="yFd-Kx-9pP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="message" destination="hAy-wb-wdH" id="qlJ-Ic-MXh"/>
                                             <outlet property="messageDate" destination="05U-yT-IOw" id="FQG-Qz-k3Z"/>

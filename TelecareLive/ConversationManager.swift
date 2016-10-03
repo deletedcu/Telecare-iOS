@@ -16,11 +16,19 @@ class ConversationManager : ModelManager{
     }
     
     static func finishGettingAllMessages(conversation: Conversation, restData: JSON){
-        let messages: [Message] = []
+        var messages: [Message] = []
         
         // FINISH THIS OUT
         print(restData)
         print("ABOVE IS REST DATA FROM MESSAGES")
+        
+        for (_, subJson) in restData["data"]["messages"] {
+            messages.append(ConversationManager.getMessageUsing(json: subJson))
+        }
+        
+        conversation.messages = messages
+        
+        currentRestController?.refreshData()
     }
     
     static func getConversationUsing(json: JSON)-> Conversation{
@@ -57,5 +65,19 @@ class ConversationManager : ModelManager{
         conversation.person = person
         
         return conversation
+    }
+    
+    static func getMessageUsing(json: JSON) -> Message {
+        let message = Message()
+        
+        message.message = json["message_text"].string!
+        message.messageDate = Date.init(timeIntervalSince1970: TimeInterval(json["created"].string!)!)
+        message.isCurrentUsers = (self.appDelegate.currentlyLoggedInPerson?.email == json["name"].string!)
+        message.isUnread = (json["unread"].string! == "0")
+        message.isConsultMessage = (json["consult_id"].string! != "0")
+        message.eid = json["eid"].string!
+        message.name = json["name"].string!
+        
+        return message
     }
 }

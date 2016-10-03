@@ -63,7 +63,7 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ConversationManager.populateMessagesForConversation(conversation: (appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row])!)
+  
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,10 +72,11 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         switch segue.identifier! {
             case "patientMessage" :
                 let destination = segue.destination as? ConversationViewController
-                
-                destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[(tableView.indexPathForSelectedRow?.row)!]
-
-            default:break
+                let row = (tableView.indexPathForSelectedRow?.row)!
+                destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[row]
+                ConversationManager.currentRestController = destination // well... it will be by the time the request completes
+                ConversationManager.populateMessagesForConversation(conversation: (destination?.currentConversation)!)
+        default:break
         }
     }
 }

@@ -11,4 +11,6 @@ import UIKit
 
 class ModelManager {
     static var restManager = (UIApplication.shared.delegate as! AppDelegate).restManager
+    static var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    static var currentRestController: RestViewController?
 }
