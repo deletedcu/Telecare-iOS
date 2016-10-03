@@ -51,10 +51,6 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         return (currentConversation?.messages?.count)!
     }
     
-    @IBAction func didClickInChatBox(_ sender: AnyObject) {
-        
-    }
-    
     @IBAction func sendMessage(_ sender: AnyObject) {
         
     }

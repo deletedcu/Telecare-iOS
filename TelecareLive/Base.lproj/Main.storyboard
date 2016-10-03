@@ -483,6 +483,31 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4du-8a-Zmz">
                                 <subviews>
+                                    <visualEffectView opaque="NO" alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4q-ao-MlX">
+                                        <frame key="frameInset" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="ncE-0c-MWK">
+                                            <frame key="frameInset"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EXT-Gm-ako">
+                                                    <frame key="frameInset"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="DNJ-g2-WbO">
+                                                        <frame key="frameInset"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <vibrancyEffect>
+                                                        <blurEffect style="light"/>
+                                                    </vibrancyEffect>
+                                                </visualEffectView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.93409974096735748" green="0.93409974096735748" blue="0.93409974096735748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <vibrancyEffect>
+                                            <blurEffect style="extraLight"/>
+                                        </vibrancyEffect>
+                                    </visualEffectView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-b1-usC">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="HR4-q1-8g2"/>
@@ -492,7 +517,7 @@
                                             <action selector="sendMessage:" destination="9Ko-rf-1AX" eventType="touchUpInside" id="b7E-PD-RWA"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RqB-P6-SJr">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RqB-P6-SJr">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -501,7 +526,6 @@
                                         </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95023073189999996" green="0.95023073189999996" blue="0.95023073189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="RqB-P6-SJr" firstAttribute="top" secondItem="4du-8a-Zmz" secondAttribute="top" constant="11" id="6O5-Sd-mbr"/>
                                     <constraint firstItem="SFj-b1-usC" firstAttribute="leading" secondItem="RqB-P6-SJr" secondAttribute="trailing" constant="10" id="LCA-YF-bTV"/>
