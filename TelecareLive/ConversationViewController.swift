@@ -23,11 +23,16 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var sendButton: UIButton!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    var originalFrameOriginX:CGFloat?
     
+    var originalFrameOriginY:CGFloat?
+        
     override func refreshData(){
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
     }
     
     override func viewDidLoad() {
@@ -36,6 +41,9 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         tableView.dataSource = self
         navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController?.tabBar.isHidden = true
+        originalFrameOriginX = self.view.frame.origin.x
+        originalFrameOriginY = self.view.frame.origin.y
+        hideKeyboardWhenViewTapped()
     }
     
     
@@ -49,6 +57,24 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     @IBAction func sendMessage(_ sender: AnyObject) {
         
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y = originalFrameOriginY!
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

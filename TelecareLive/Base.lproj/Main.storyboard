@@ -469,7 +469,7 @@
             </objects>
             <point key="canvasLocation" x="137" y="900"/>
         </scene>
-        <!--Conversation View Controller-->
+        <!--Patient Messages-->
         <scene sceneID="d7j-QL-FBb">
             <objects>
                 <viewController storyboardIdentifier="ConversationViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Ko-rf-1AX" customClass="ConversationViewController" customModule="TelecareLive" customModuleProvider="target" sceneMemberID="viewController">
@@ -511,7 +511,7 @@
                                     <constraint firstItem="SFj-b1-usC" firstAttribute="trailing" secondItem="4du-8a-Zmz" secondAttribute="trailingMargin" id="efa-Uk-cJM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="gtm-HO-iGo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="gtm-HO-iGo">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="1sr-4d-EQ3" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
@@ -580,6 +580,7 @@
                             <constraint firstItem="gtm-HO-iGo" firstAttribute="leading" secondItem="4du-8a-Zmz" secondAttribute="leading" id="cFm-8W-Ag3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Patient Messages" id="pfp-Sd-SRA"/>
                     <connections>
                         <outlet property="chatBarView" destination="4du-8a-Zmz" id="KYW-ao-shg"/>
                         <outlet property="chatInputField" destination="RqB-P6-SJr" id="RSn-uh-n8F"/>
