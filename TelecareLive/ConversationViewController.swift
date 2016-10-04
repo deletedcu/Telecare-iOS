@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class ConversationViewController : RestViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate{
     
@@ -30,8 +31,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     override func refreshData(){
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        scrollToBottom()
 
     }
     
@@ -44,15 +44,45 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
         hideKeyboardWhenViewTapped()
+//        scrollToBottom()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (currentConversation?.messages?.count)!
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
+        if(chatInputField.text! == ""){
+            return
+        }
         
+        let message = Message()
+        let messageText = chatInputField.text! as String
+        message.message = messageText
+        message.messageDate = Date()
+        message.isCurrentUsers = true
+        message.conversationId = currentConversation?.entityId
+        currentConversation?.messages?.append(message)
+//        refreshData()
+        restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
+    }
+    
+    func scrollToBottom(){
+        if((currentConversation?.messages?.count)! > 0){
+            tableView.scrollToRow(at: IndexPath.init(row: (currentConversation?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        }
+    }
+    
+    // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
+    func finishSendingMessage(message: Message, restData: JSON){
+        ConversationManager.populateMessagesForConversation(conversation: (self.currentConversation)!)
+        chatInputField.text = ""
+    }
+    
+    func sendMessageFailed(message:Message){
+        errorManager?.postErrorMessage(controller: self)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -109,5 +139,18 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(sender)
+        print("ABOVE IS THE SENDER")
+        switch segue.identifier! {
+        case "viewPatientConsults" :
+            let destination = segue.destination as? ConsultsViewController
+            ConsultManager.currentRestController = destination // well... it will be by the time the request completes
+            destination?.currentConversation = self.currentConversation
+            ConsultManager.populateConsultsForConversation(conversation: (destination?.currentConversation)!)
+        default:break
+        }
     }
 }

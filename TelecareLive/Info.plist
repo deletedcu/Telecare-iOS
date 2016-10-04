@@ -25,6 +25,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This App is trying to access your camera so you can upload a profile image</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This App is trying to access your photo library so you can upload a profile image</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -33,13 +37,11 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This App is trying to access your photo library so you can upload a profile image</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This App is trying to access your camera so you can upload a profile image</string>
 </dict>
 </plist>

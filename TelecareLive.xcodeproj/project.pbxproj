@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		50E4C90DF4CA0615537CF1C5 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */; };
+		FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078441DA31358003D1610 /* ConsultChatViewController.swift */; };
+		FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078461DA318BF003D1610 /* MediaMessageCell.swift */; };
+		FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */; };
+		FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00784A1DA36F5C003D1610 /* MediaButton.swift */; };
 		FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893C1D935BB600127B66 /* AppDelegate.swift */; };
 		FF00893F1D935BB600127B66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893E1D935BB600127B66 /* ViewController.swift */; };
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
@@ -28,6 +32,7 @@
 		FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E3491D9B422F00375804 /* RestViewController.swift */; };
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
+		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */; };
 		FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */; };
 		FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8C1DA07AB200D43119 /* Person.swift */; };
@@ -47,6 +52,10 @@
 		0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelecareLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.release.xcconfig"; sourceTree = "<group>"; };
 		F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0078441DA31358003D1610 /* ConsultChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultChatViewController.swift; sourceTree = "<group>"; };
+		FF0078461DA318BF003D1610 /* MediaMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessageCell.swift; sourceTree = "<group>"; };
+		FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultMessageCell.swift; sourceTree = "<group>"; };
+		FF00784A1DA36F5C003D1610 /* MediaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaButton.swift; sourceTree = "<group>"; };
 		FF0089391D935BB600127B66 /* TelecareLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelecareLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF00893C1D935BB600127B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF00893E1D935BB600127B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +80,7 @@
 		FF19E3491D9B422F00375804 /* RestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestViewController.swift; sourceTree = "<group>"; };
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
 		FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProactiveTabBarController.swift; sourceTree = "<group>"; };
 		FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
 		FF9A3D8C1DA07AB200D43119 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 				FF0EEF1F1D9F6B6700F25356 /* Login */,
 				FF0EEF1E1D9F6B4D00F25356 /* Account */,
 				FF9A3D891DA079E600D43119 /* Patients */,
+				FF3D1A351DA2F3DC003B8009 /* Consults */,
 				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
 			);
 			path = TelecareLive;
@@ -192,6 +203,9 @@
 				FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */,
 				FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */,
 				FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */,
+				FF0078461DA318BF003D1610 /* MediaMessageCell.swift */,
+				FF00784A1DA36F5C003D1610 /* MediaButton.swift */,
+				FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -205,11 +219,20 @@
 			name = "REST and Session management";
 			sourceTree = "<group>";
 		};
+		FF3D1A351DA2F3DC003B8009 /* Consults */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */,
+				FF0078441DA31358003D1610 /* ConsultChatViewController.swift */,
+			);
+			name = Consults;
+			sourceTree = "<group>";
+		};
 		FF9A3D891DA079E600D43119 /* Patients */ = {
 			isa = PBXGroup;
 			children = (
-				FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */,
 				FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */,
+				FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */,
 			);
 			name = Patients;
 			sourceTree = "<group>";
@@ -367,6 +390,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
+				FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */,
+				FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */,
 				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
 				FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */,
 				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
@@ -381,11 +406,14 @@
 				FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */,
 				FF1547601D9C865400375F9A /* Extensions.swift in Sources */,
 				FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */,
+				FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */,
+				FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */,
 				FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */,
 				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
 				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
 				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
 				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,
+				FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
 				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,

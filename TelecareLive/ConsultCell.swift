@@ -10,5 +10,8 @@ import Foundation
 import UIKit
 
 class ConsultCell : UITableViewCell {
+    @IBOutlet weak var issue: UILabel!
+    @IBOutlet weak var birthdateField: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     
 }

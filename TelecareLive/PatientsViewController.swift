@@ -16,7 +16,7 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var navTitle: UINavigationItem!
-    
+        
     override func viewDidLoad() {
 //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         tableView.delegate = self

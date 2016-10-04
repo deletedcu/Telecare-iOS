@@ -43,6 +43,9 @@ class ConversationManager : ModelManager{
         let person = Person()
         person.fullName = json["user_full_name"].string!
         person.birthdate = Date.init(timeIntervalSince1970: TimeInterval(json["user_birthdate"].string!)!)
+        person.userId = json["user_id"].string!
+        
+        print(json)
         
         var userImage: UIImage?
         switch json["user_image"].type {
@@ -77,6 +80,7 @@ class ConversationManager : ModelManager{
         message.isConsultMessage = (json["consult_id"].string! != "0")
         message.eid = json["eid"].string!
         message.name = json["name"].string!
+        message.conversationId = json["conversation_id"].string!
         
         return message
     }

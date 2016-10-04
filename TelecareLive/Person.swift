@@ -21,4 +21,5 @@ class Person {
     var lockCode: String?
     var conversations: [Conversation]?
     var consults: [Consult]?
+    var userId:String?
 }

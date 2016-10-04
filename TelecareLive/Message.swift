@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Message {
     var message:String? = ""
@@ -16,4 +17,12 @@ class Message {
     var isConsultMessage:Bool? = true
     var eid:String?
     var name:String?
+    var conversationId:String?
+    var mediaUrl:String? = ""
+    var hasMedia:Bool? = false
+    var imageMedia:UIImage?
+    var hasAudio:Bool? = false
+    var fileMime:String? = ""
+    var fileId:String? = ""
+    var fileName:String? = ""
 }

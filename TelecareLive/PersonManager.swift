@@ -64,6 +64,7 @@ class PersonManager : ModelManager{
         person.notifications = (json["data"]["user_notifications"].int! == 1)
         person.isDoctor = (json["data"]["doctor"].int! == 1)
         person.lockCode = json["data"]["user_lock_code"].string!
+        person.userId = json["data"]["uid"].string!
         
         PersonManager.getConversations(person: person)
         person.consults = PersonManager.getConsults(person: person)

@@ -24,8 +24,10 @@ class RestManager {
         "getAccountData" : "user",
         "saveAccountData"     : "user",
         "getConversations"    : "conversations",
-        "getMessagesP1"         : "conversation/",
-        "getMessagesP2"         : "/messages"
+        "messagesP1"         : "conversation/",
+        "messagesP2"         : "/messages",
+        "getConsults"      : "consults/",
+        "getConsultMessagesP1": "consult/"
     ]
     
     var keychain = KeychainSwift()
@@ -195,7 +197,7 @@ class RestManager {
             "Accept": "application/json"
         ]
         
-        Alamofire.request(baseUrl + endpoints["getMessagesP1"]! + conversation.entityId! + endpoints["getMessagesP2"]!, headers: headers).validate().responseJSON{ response in
+        Alamofire.request(baseUrl + endpoints["messagesP1"]! + conversation.entityId! + endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -214,6 +216,132 @@ class RestManager {
             
         }
     }
+    
+    func sendMessage(caller: ConversationViewController, message: Message, callback: @escaping (Message, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        let parameters = [
+            "message_text": message.message!,
+            "status": 1,
+            "conversation_id": Int(message.conversationId!)
+        ] as [String : Any]
+
+        Alamofire.request(baseUrl + endpoints["messagesP1"]! + message.conversationId! + endpoints["messagesP2"]!, method: .post, parameters: parameters, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+                        callback(message, json)
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+                        caller.sendMessageFailed(message: message)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                
+        }
+
+    }
+    
+    func getAllConsults(conversation: Conversation, callback: @escaping (Conversation, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        let currentUserId = conversation.person?.userId
+        
+        print(baseUrl + endpoints["getConsults"]! + currentUserId!)
+        
+        Alamofire.request(baseUrl + endpoints["getConsults"]! + currentUserId! + endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(conversation, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+//                    caller.getConsultsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    // Decouple later
+    func getAllConsultMessages(consult: Consult, callback: @escaping (Consult, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getConsultMessagesP1"]! + consult.entityId! + endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(consult, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func sendConsultMessage(caller: ConsultChatViewController, message: Message, callback: @escaping (Message, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        let parameters = [
+            "message_text": message.message!,
+            "status": 1,
+            "conversation_id": Int(message.conversationId!)
+            ] as [String : Any]
+        
+        Alamofire.request(baseUrl + endpoints["messagesP1"]! + message.conversationId! + endpoints["messagesP2"]!, method: .post, parameters: parameters, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+                        callback(message, json)
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+                        caller.sendMessageFailed(message: message)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                
+        }
+        
+    }
+
     
     func sidIsValid(sid: String) -> Bool{
         

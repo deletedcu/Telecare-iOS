@@ -16,5 +16,5 @@ class Conversation {
     var lastActivity: String?
     var person: Person?
     var messages: [Message]? = []
-    
+    var consults: [Consult]? = []
 }
