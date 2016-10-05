@@ -27,7 +27,14 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     var originalFrameOriginX:CGFloat?
     
     var originalFrameOriginY:CGFloat?
-        
+    
+    let picker = UIImagePickerController()
+
+    lazy var photoView: PhotoView = {
+        let photoView = PhotoView()
+        return photoView
+    }()
+    
     override func refreshData(){
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
@@ -152,5 +159,42 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
             ConsultManager.populateConsultsForConversation(conversation: (destination?.currentConversation)!)
         default:break
         }
+    }
+    
+    
+    func getPhotoFromLibrary(){
+        picker.allowsEditing = false //2
+        picker.sourceType = .photoLibrary //3
+        present(picker, animated: true, completion: nil)//4
+    }
+    
+    func getPhotoFromCamera(){
+        if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            picker.cameraCaptureMode = .photo
+            present(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC,
+                animated: true,
+                completion: nil)
+    }
+    
+    @IBAction func replaceImage(_ sender: UIButton) {
+        photoView.displayView(onView: view)
     }
 }

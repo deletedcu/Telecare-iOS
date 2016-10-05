@@ -12,6 +12,9 @@
 		FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078461DA318BF003D1610 /* MediaMessageCell.swift */; };
 		FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */; };
 		FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00784A1DA36F5C003D1610 /* MediaButton.swift */; };
+		FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */; };
+		FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF00784E1DA4649F003D1610 /* AudioView.xib */; };
+		FF0078511DA46967003D1610 /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078501DA46967003D1610 /* AudioView.swift */; };
 		FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893C1D935BB600127B66 /* AppDelegate.swift */; };
 		FF00893F1D935BB600127B66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893E1D935BB600127B66 /* ViewController.swift */; };
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		FF0078461DA318BF003D1610 /* MediaMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessageCell.swift; sourceTree = "<group>"; };
 		FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultMessageCell.swift; sourceTree = "<group>"; };
 		FF00784A1DA36F5C003D1610 /* MediaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaButton.swift; sourceTree = "<group>"; };
+		FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSelectViewController.swift; sourceTree = "<group>"; };
+		FF00784E1DA4649F003D1610 /* AudioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioView.xib; sourceTree = "<group>"; };
+		FF0078501DA46967003D1610 /* AudioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
 		FF0089391D935BB600127B66 /* TelecareLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelecareLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF00893C1D935BB600127B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF00893E1D935BB600127B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 			children = (
 				FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */,
 				FF0078441DA31358003D1610 /* ConsultChatViewController.swift */,
+				FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */,
+				FF00784E1DA4649F003D1610 /* AudioView.xib */,
+				FF0078501DA46967003D1610 /* AudioView.swift */,
 			);
 			name = Consults;
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 				FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */,
 				FF0089441D935BB600127B66 /* Assets.xcassets in Resources */,
 				FF0089421D935BB600127B66 /* Main.storyboard in Resources */,
+				FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */,
 				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,10 +422,12 @@
 				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
 				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
 				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
+				FF0078511DA46967003D1610 /* AudioView.swift in Sources */,
 				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,
 				FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
 				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
+				FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,
 				FF19E3481D9B420C00375804 /* SessionManager.swift in Sources */,
 				FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */,

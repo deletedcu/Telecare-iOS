@@ -33,6 +33,13 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
     
     var audioPlayer:AVAudioPlayer?
     
+    let picker = UIImagePickerController()
+    
+    lazy var audioView: AudioView = {
+        let audioView = AudioView()
+        return audioView
+    }()
+    
     override func refreshData(){
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
@@ -49,6 +56,7 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
         hideKeyboardWhenViewTapped()
+        audioView.delegate = self
         //        scrollToBottom()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -86,25 +94,21 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
         
         let photoAction = UIAlertAction(title: "Take Photo", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
+            self.getPhotoFromCamera()
             print("Photo Taken")
         })
         
         let galleryAction = UIAlertAction(title: "Choose Photo from Gallery", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
+            self.getPhotoFromLibrary()
             print("Photo Chosen")
         })
         
         let recordAction = UIAlertAction(title: "Record Audio", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
+            self.audioView.displayView(onView: self.view)
             print("Audio Recorded")
         })
-        
-        
-        let chooseAudioAction = UIAlertAction(title: "Select Audio", style: .default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            print("Audio Selected")
-        })
-        
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -114,7 +118,6 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
         optionMenu.addAction(photoAction)
         optionMenu.addAction(galleryAction)
         optionMenu.addAction(recordAction)
-        optionMenu.addAction(chooseAudioAction)
         optionMenu.addAction(cancelAction)
         
         
@@ -244,4 +247,37 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func getPhotoFromLibrary(){
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func getPhotoFromCamera(){
+        if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            picker.cameraCaptureMode = .photo
+            present(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC,
+                animated: true,
+                completion: nil)
+    }
+
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioView" customModule="TelecareLive" customModuleProvider="target">
+            <connections>
+                <outlet property="recordingButton" destination="Hby-9y-lgi" id="B5m-x7-2tJ"/>
+                <outlet property="redDot" destination="3fh-JE-Uej" id="26a-eW-vxq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="230" height="303"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gic-H5-nd4">
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rjc-YI-wcj">
+                        <frame key="frameInset"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press and hold to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIr-qM-hE3">
+                                <frame key="frameInset" minX="26" minY="141" width="188" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="RedDot" translatesAutoresizingMaskIntoConstraints="NO" id="3fh-JE-Uej">
+                                <frame key="frameInset" minX="83" minY="38" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="eIr-KA-z7m"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3fh-JE-Uej" firstAttribute="centerX" secondItem="rjc-YI-wcj" secondAttribute="centerX" id="XK7-4y-PDA"/>
+                            <constraint firstItem="3fh-JE-Uej" firstAttribute="top" secondItem="rjc-YI-wcj" secondAttribute="top" constant="49" id="d9e-fU-eni"/>
+                            <constraint firstItem="3fh-JE-Uej" firstAttribute="leading" secondItem="rjc-YI-wcj" secondAttribute="leading" constant="83" id="oQh-Qo-TBt"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hby-9y-lgi">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="e3b-TY-Veo"/>
+                    </constraints>
+                    <state key="normal" image="AudioIcon"/>
+                    <connections>
+                        <action selector="recordAudio:" destination="-1" eventType="touchDown" id="7T9-cQ-WD3"/>
+                        <action selector="stopRecordingAudio:" destination="-1" eventType="touchUpInside" id="fGy-gY-OB8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.88113261010362698" green="0.88113261010362698" blue="0.88113261010362698" alpha="0.52129181338028174" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-5" id="3Vw-JM-px0"/>
+                <constraint firstItem="Hby-9y-lgi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="65" id="CL5-qW-1AH"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="centerX" secondItem="Hby-9y-lgi" secondAttribute="centerX" id="EDA-Y0-oKI"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TcA-Rn-it9"/>
+                <constraint firstAttribute="bottom" secondItem="gic-H5-nd4" secondAttribute="bottom" id="Zoo-Rl-HXx"/>
+                <constraint firstAttribute="bottom" secondItem="Hby-9y-lgi" secondAttribute="bottom" constant="20" id="Zqh-br-7kt"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h22-gm-zVO"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-39" y="-128.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AudioIcon" width="169" height="169"/>
+        <image name="RedDot" width="169" height="169"/>
+    </resources>
+</document>
