@@ -17,33 +17,6 @@ class MediaMessageCell : UITableViewCell {
     @IBOutlet weak var messageDate: UILabel!
     
     var message:Message? = Message()
-    var audioPlayer:AVAudioPlayer?
-    
-    @IBAction func playAudio(_ sender: AnyObject) {
-        if(!(self.message?.hasAudio)!){
-            return
-        }
-        
-        if audioPlayer == nil {
-            audioPlayer = AVAudioPlayer()
-            
-            do {
-                let mediaUrl = URL(fileURLWithPath: (message?.mediaUrl)!)
-                let sound = try AVAudioPlayer(contentsOf: mediaUrl)
-                sound.play()
-            } catch {
-                let nsError = error as NSError
-                print(nsError.localizedDescription)
-            }
-        } else {
-            if (audioPlayer?.isPlaying)! {
-                audioPlayer?.stop()
-            } else {
-                audioPlayer?.play()
-            }
-        }
-    }
-    
     
     
     override func layoutMarginsDidChange() {

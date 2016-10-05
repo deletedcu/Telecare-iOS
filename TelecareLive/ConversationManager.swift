@@ -19,8 +19,6 @@ class ConversationManager : ModelManager{
         var messages: [Message] = []
         
         // FINISH THIS OUT
-        print(restData)
-        print("ABOVE IS REST DATA FROM MESSAGES")
         
         for (_, subJson) in restData["data"]["messages"] {
             messages.append(ConversationManager.getMessageUsing(json: subJson))
@@ -44,8 +42,6 @@ class ConversationManager : ModelManager{
         person.fullName = json["user_full_name"].string!
         person.birthdate = Date.init(timeIntervalSince1970: TimeInterval(json["user_birthdate"].string!)!)
         person.userId = json["user_id"].string!
-        
-        print(json)
         
         var userImage: UIImage?
         switch json["user_image"].type {

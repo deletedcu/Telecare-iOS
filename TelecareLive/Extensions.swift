@@ -117,7 +117,7 @@ extension UILabel{
     }
 }
 
-extension UIButton {
+extension UIView {
     /**
      Fade in a view with a duration
      

@@ -19,7 +19,6 @@ class ConsultManager : ModelManager{
     }
     
     static func finishGettingAllConsults(conversation: Conversation, restData: JSON){
-        print(restData)
         var consults:[Consult] = []
         
         for(_,subJson) in restData["data"]{
@@ -60,7 +59,7 @@ class ConsultManager : ModelManager{
         consult.userImage = userImage
         consult.birthdate = Date.init(timeIntervalSince1970: Double(json["user_birthdate"].string!)!)
         
-        self.populateMessagesForConsult(consult: consult)
+//        self.populateMessagesForConsult(consult: consult)
         
         return consult
     }
@@ -70,12 +69,10 @@ class ConsultManager : ModelManager{
     }
     
     static func finishGettingAllConsultMessages(consult: Consult, restData: JSON){
-        print(consult)
-        print(restData)
+
         var messages:[Message] = []
         
         for(key,subJson) in restData["data"]["messages"]{
-            print(subJson)
             messages.append(self.getConsultMessageUsing(json: subJson))
         }
         
@@ -123,6 +120,15 @@ class ConsultManager : ModelManager{
                 imageView.image = UIImage(named: "AudioIcon")
                 message.hasAudio = true
             case "audio/mp3":
+                imageView.image = UIImage(named: "AudioIcon")
+                message.hasAudio = true
+            case "audio/m4a":
+                imageView.image = UIImage(named: "AudioIcon")
+                message.hasAudio = true
+            case "video/mp4":
+                imageView.image = UIImage(named: "AudioIcon")
+                message.hasAudio = true
+            case "video/mpeg":
                 imageView.image = UIImage(named: "AudioIcon")
                 message.hasAudio = true
             default:break

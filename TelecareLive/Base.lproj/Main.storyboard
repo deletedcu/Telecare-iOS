@@ -297,7 +297,7 @@
                                         <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="zbc-Pt-NxP" id="6NW-UN-Y9n">
-                                            <frame key="frameInset" width="1000" height="75"/>
+                                            <frame key="frameInset" width="1000" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dS2-ap-exY">
@@ -375,10 +375,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConsultCell" rowHeight="75" id="joY-0G-zmR" customClass="ConsultCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="joY-0G-zmR" id="XVJ-kZ-Qna">
-                                            <frame key="frameInset" width="375" height="74"/>
+                                            <frame key="frameInset" width="1000" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGZ-7x-sHl">
@@ -604,10 +604,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="1sr-4d-EQ3" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="1sr-4d-EQ3" id="vDu-HQ-ls3">
-                                            <frame key="frameInset" width="375" height="85"/>
+                                            <frame key="frameInset" width="1000" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foA-kL-1z1" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -775,7 +775,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZI-U0-6Sf">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZI-U0-6Sf">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="SUM-rB-geJ"/>
                                         </constraints>
@@ -863,7 +863,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWZ-xj-maC" customClass="MediaButton" customModule="TelecareLive" customModuleProvider="target">
                                                     <connections>
-                                                        <action selector="testAction:" destination="AKu-WD-qMn" eventType="touchUpInside" id="5wW-4R-Stf"/>
+                                                        <action selector="playAudio:" destination="AKu-WD-qMn" eventType="touchUpInside" id="3OW-EH-jZk"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Date / Time" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhQ-fj-yhn">
@@ -950,6 +950,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attachmentButton" destination="gZI-U0-6Sf" id="ZEg-Gl-7si"/>
                         <outlet property="chatBarView" destination="iQe-Xo-iAu" id="KDS-mx-9fk"/>
                         <outlet property="chatInputField" destination="Kf4-Xf-WeS" id="nAu-ca-2M2"/>
                         <outlet property="navTitle" destination="BFh-2r-Wcg" id="Hi3-4r-AZE"/>
@@ -960,24 +961,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaX-jw-GRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6508" y="-761.46926536731644"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="9rr-nM-2cA">
-            <objects>
-                <viewController id="lq5-qE-u2T" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zrn-Z9-i1n"/>
-                        <viewControllerLayoutGuide type="bottom" id="Kaq-xi-pvc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MaV-bs-4rd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N80-z8-hmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7406" y="-761"/>
         </scene>
     </scenes>
     <resources>

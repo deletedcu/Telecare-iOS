@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class AudioView : UIView {
+class AudioView : UIView, AVAudioRecorderDelegate {
     
-    var audioPlayer: AVAudioPlayer?
     var audioRecorder: AVAudioRecorder?
+    var recordingSession: AVAudioSession!
     
     var delegate: ConsultChatViewController?
     
@@ -21,47 +21,118 @@ class AudioView : UIView {
     
     @IBOutlet weak var recordingButton: UIButton!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var insertButton: UIButton!
+    
+    @IBAction func insertAudio(_ sender: AnyObject) {
+        delegate?.hasAttachment = true
+        delegate?.attachmentType = "audio"
+        delegate?.audioUrl = delegate?.getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        hideView()
+    }
+    
+    @IBAction func cancelAudio(_ sender: AnyObject) {
+        if(delegate?.hasAttachment == false){
+            delegate?.hasAttachment = false
+            delegate?.attachmentType = "none"
+            purgeAudioFiles()
+        }
+        hideView()
+    }
+    
+    func purgeAudioFiles(){
+        let fileManager = FileManager.default
+        let audioUrl = delegate?.getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        
+        do {
+            try fileManager.removeItem(atPath: (audioUrl?.absoluteString)!)
+        } catch {
+            print("Could not purge audio files: \(error)")
+        }
+    }
+    
     @IBAction func recordAudio(_ sender: AnyObject) {
-        if audioRecorder?.isRecording == false {
-            audioRecorder?.record()
-            recordingButton.fadeIn()
+        print(audioRecorder)
+        if audioRecorder == nil || (audioRecorder?.isRecording)! {
+            
+            let audioFilename = delegate?.getDocumentsDirectory().appendingPathComponent("recording.m4a")
+            
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+            
+            do {
+                audioRecorder = try AVAudioRecorder(url: audioFilename!, settings: settings)
+                audioRecorder?.delegate = self
+                audioRecorder?.record()
+                
+            } catch {
+
+            }
+            
+            redDot.fadeIn()
+            insertButton.fadeOut()
+            cancelButton.fadeOut()
+            print(audioRecorder?.isRecording)
         }
     }
     
     @IBAction func stopRecordingAudio(_ sender: AnyObject) {
         if audioRecorder?.isRecording == true {
             audioRecorder?.stop()
-            recordingButton.fadeOut()
-        } else {
-            audioPlayer?.stop()
+            audioRecorder = nil
+            redDot.fadeOut()
+            insertButton.fadeIn()
+            cancelButton.fadeIn()
+        }
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            redDot.fadeOut()
         }
     }
     
     func viewDidLoad() {
-        let dirPaths =
-            NSSearchPathForDirectoriesInDomains(.documentDirectory,
-                                                .userDomainMask, true)
-        let docsDir = dirPaths[0]
-        let soundFilePath =
-            docsDir.appending("sound.caf")
-        let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
-        let recordSettings =
-            [AVFormatIDKey: Int(kAudioFormatMPEGLayer3),
-             AVSampleRateKey: 12000,
-             AVNumberOfChannelsKey: 1,
-             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue] as [String : Any]
+//        let dirPaths =
+//            NSSearchPathForDirectoriesInDomains(.documentDirectory,
+//                                                .userDomainMask, true)
+//        let docsDir = dirPaths[0]
+//        let soundFilePath =
+//            docsDir.appending("sound.caf")
+//        let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
+//        let recordSettings =
+//            [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+//             AVSampleRateKey: 16000,
+//             AVNumberOfChannelsKey: 1,
+//             AVLinearPCMBitDepthKey: 0,
+//              AVLinearPCMIsBigEndianKey: 0,
+//             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue] as [String : Any]
+//        
+//        audioSession = AVAudioSession.sharedInstance()
+//        
+//        do{
+//            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+//            
+//            try audioRecorder = AVAudioRecorder(url: soundFileURL as URL,
+//                                            settings: recordSettings as [String : AnyObject])
+//            
+//                audioRecorder?.prepareToRecord()
+//        } catch {
+//            print("Error info: \(error)")
+//        }
         
-        let audioSession = AVAudioSession.sharedInstance()
+        recordingSession = AVAudioSession.sharedInstance()
         
-        do{
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            
-            try audioRecorder = AVAudioRecorder(url: soundFileURL as URL,
-                                            settings: recordSettings as [String : AnyObject])
-            
-                audioRecorder?.prepareToRecord()
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
         } catch {
-            print("Error info: \(error)")
+            // failed to record!
         }
     }
         
@@ -70,18 +141,17 @@ class AudioView : UIView {
     }
 
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-
-    }
-    
-    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
+    func audioPlayerDecodeErrorDidOccur(error: Error!) {
         print("Audio Play Decode Error")
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
+        audioRecorder?.stop()
+        audioRecorder = nil
+        redDot.fadeOut()
     }
     
-    func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder!, error: NSError!) {
+    func audioRecorderEncodeErrorDidOccur(error: NSError!) {
         print("Audio Record Encode Error")
     }
     
@@ -150,7 +220,7 @@ class AudioView : UIView {
         self.alpha = 0.0
         onView.addSubview(self)
         
-        onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: onView, attribute: .centerY, multiplier: 1.0, constant: 50.0)) // move it a bit upwards
+        onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: onView, attribute: .centerY, multiplier: 1.0, constant: 50.0))
         onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: onView, attribute: .centerX, multiplier: 1.0, constant: 0.0))
         onView.needsUpdateConstraints()
         

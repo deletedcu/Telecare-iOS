@@ -25,4 +25,5 @@ class Message {
     var fileMime:String? = ""
     var fileId:String? = ""
     var fileName:String? = ""
+    var consultId:String? = ""
 }

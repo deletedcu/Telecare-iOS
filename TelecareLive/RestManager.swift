@@ -309,6 +309,22 @@ class RestManager {
     }
     
     func sendConsultMessage(caller: ConsultChatViewController, message: Message, callback: @escaping (Message, JSON)->()){
+        
+        var encoded = ""
+        
+        if(message.hasMedia)!{
+            if message.hasAudio! && message.mediaUrl != nil {
+                do{
+                    let data = try Data.init(contentsOf: URL(string: message.mediaUrl!)!)
+                    encoded = "data:audio/m4a:base64," + data.base64EncodedString()
+                } catch {
+                    
+                }
+            } else if(message.imageMedia != nil){
+                encoded = "data:image/png;base64," + (message.imageMedia?.toBase64())!
+            }
+        }
+        
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),
             "Accept": "application/json"
@@ -317,7 +333,8 @@ class RestManager {
         let parameters = [
             "message_text": message.message!,
             "status": 1,
-            "conversation_id": Int(message.conversationId!)
+            "consult_id": Int(message.consultId!),
+            "encoded": encoded
             ] as [String : Any]
         
         Alamofire.request(baseUrl + endpoints["messagesP1"]! + message.conversationId! + endpoints["messagesP2"]!, method: .post, parameters: parameters, headers: headers)

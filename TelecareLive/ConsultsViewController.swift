@@ -32,7 +32,7 @@ class ConsultsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     func populate(restData: JSON){
-        print(restData)
+//        print(restData)
     }
     
     func getConsultsFailed(){
@@ -71,8 +71,6 @@ class ConsultsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(sender)
-        print("ABOVE IS THE SENDER")
         switch segue.identifier! {
         case "patientConsultChat" :
             let destination = segue.destination as? ConsultChatViewController

@@ -43,5 +43,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app is trying to access your microphone so that you can record and send audio</string>
 </dict>
 </plist>

@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import AVFoundation
 
-class ConsultChatViewController : RestViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate{
+class ConsultChatViewController : RestViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,24 +27,63 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var attachmentButton: UIButton!
+    
     var originalFrameOriginX:CGFloat?
     
     var originalFrameOriginY:CGFloat?
     
-    var audioPlayer:AVAudioPlayer?
+    var audioPlayer:AVPlayer!
+    
+    var attachmentImage:UIImage?
     
     let picker = UIImagePickerController()
+    
+    public var hasAttachment:Bool? = false
+    
+    public var attachmentType:String? = "none"
+    
+    public var audioUrl:URL?
     
     lazy var audioView: AudioView = {
         let audioView = AudioView()
         return audioView
     }()
     
+    @IBAction func playAudio(_ sender: MediaButton) {
+        if(!(sender.message?.hasAudio)!){
+            return
+        }
+        
+        if audioPlayer == nil {
+            let sender = sender
+            
+//            let mediaUrl = URL(string: "http://dev-telecarelive.pantheonsite.io/sites/default/files/user_36_Oct42016115228pm.mp4")
+            print((sender.message?.mediaUrl!)!)
+            let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
+            audioPlayer = AVPlayer(url: mediaUrl!)
+            audioPlayer.play()
+            
+        } else {
+            if (audioPlayer.rate != 0.0) {
+                audioPlayer.pause()
+            } else {
+                audioPlayer.seek(to: CMTimeMake(0, 1))
+                audioPlayer.play()
+            }
+        }
+    }
+    
     override func refreshData(){
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
         scrollToBottom()
-        
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
     override func viewDidLoad() {
@@ -57,9 +96,21 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
         originalFrameOriginY = self.view.frame.origin.y
         hideKeyboardWhenViewTapped()
         audioView.delegate = self
+        picker.delegate = self
+//        if hasAttachment! {
+//            attachmentButton.setBackgroundImage(UIImage(named:"AttachmentIconActive"), for: UIControlState.normal)
+//            attachmentButton.frame.size = CGSize(width: 25, height: 25)
+//        } else {
+//            attachmentButton.setBackgroundImage(UIImage(named:"AttachmentIcon"), for: UIControlState.normal)
+//            attachmentButton.frame.size = CGSize(width: 25, height: 25)
+//        }
         //        scrollToBottom()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    deinit {
+        audioView.purgeAudioFiles()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,21 +119,16 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
     
     @IBAction func testAction(_ sender: AnyObject) {
         if audioPlayer == nil {
-            audioPlayer = AVAudioPlayer()
-            
             let sender = sender as? MediaButton
             
-            do {
                 let mediaUrl = URL(fileURLWithPath: (sender?.message?.mediaUrl)!)
-                let sound = try AVAudioPlayer(contentsOf: mediaUrl)
-                sound.play()
-            } catch {
-                let nsError = error as NSError
-                print(nsError.localizedDescription)
-            }
+                let mediaItem = AVURLAsset(url: mediaUrl)
+                let playerItem = AVPlayerItem(asset: mediaItem)
+                let audioPlayer = AVPlayer(playerItem: playerItem)
+                audioPlayer.play()
         } else {
-            if (audioPlayer?.isPlaying)! {
-                audioPlayer?.stop()
+            if (audioPlayer?.rate != 0.0) {
+                audioPlayer?.pause()
             } else {
                 audioPlayer?.play()
             }
@@ -125,7 +171,7 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if(chatInputField.text! == ""){
+        if(chatInputField.text! == "" && hasAttachment == false){
             return
         }
         
@@ -135,6 +181,22 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
         message.messageDate = Date()
         message.isCurrentUsers = true
         message.conversationId = currentConversation?.entityId
+        message.isUnread = true
+        
+        if hasAttachment! && attachmentType == "audio" {
+            message.mediaUrl = audioUrl?.absoluteString
+            message.hasAudio = true
+            message.hasMedia = true
+            message.fileMime = "audio/m4a"
+        }
+        
+        if hasAttachment! && attachmentType == "image" && attachmentImage != nil{
+            message.imageMedia = attachmentImage!
+            message.hasMedia = true
+        }
+        
+        message.consultId = currentConsult?.entityId
+        
         currentConsult?.messages?.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
     }
@@ -280,4 +342,16 @@ class ConsultChatViewController : RestViewController, UITableViewDataSource, UIT
                 completion: nil)
     }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        attachmentImage = chosenImage
+        attachmentType = "image"
+        hasAttachment = true
+        dismiss(animated: true, completion: nil) //5
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+        attachmentImage = nil
+    }
 }
