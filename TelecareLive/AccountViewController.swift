@@ -31,6 +31,10 @@ class AccountViewController : AVCRestViewController {
         return photoView
     }()
     
+    @IBAction func logOut(_ sender: AnyObject) {
+        restManager?.logOut()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyboardNotifications()

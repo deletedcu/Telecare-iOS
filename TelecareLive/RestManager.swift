@@ -28,7 +28,8 @@ class RestManager {
         "messagesP2"            : "/messages",
         "getConsults"           : "consults/",
         "getConsultMessagesP1"  : "consult/",
-        "getStaffConversations" : "conversations/staff/"
+        "getStaffConversations" : "conversations/staff/",
+        "logout"                : "logout/"
     ]
     
     var keychain = KeychainSwift()
@@ -78,6 +79,33 @@ class RestManager {
 //                print(error)
                 self.sessionManager?.lockSession = -1
             }
+        }
+    }
+    
+    func logOut(){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["logout"]! + getSid(), method: .post, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+                        self.sessionManager?.clearSession()
+                       (UIApplication.shared.delegate as! AppDelegate).resetViewToLogin()
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                
         }
     }
     

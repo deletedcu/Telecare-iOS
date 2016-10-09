@@ -37,4 +37,9 @@ class SessionManager{
         
         return false
     }
+    
+    func clearSession(){
+        let keychain = KeychainSwift()
+        keychain.set("", forKey: "sid")
+    }
 }
