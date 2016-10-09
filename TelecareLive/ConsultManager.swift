@@ -72,7 +72,7 @@ class ConsultManager : ModelManager{
 
         var messages:[Message] = []
         
-        for(key,subJson) in restData["data"]["messages"]{
+        for(_,subJson) in restData["data"]["messages"]{
             messages.append(self.getConsultMessageUsing(json: subJson))
         }
         

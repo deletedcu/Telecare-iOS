@@ -15,6 +15,10 @@ class ConversationManager : ModelManager{
         restManager?.getAllMessages(conversation: conversation, callback: finishGettingAllMessages)
     }
     
+    static func populateMessagesForStaffConversation(conversation: Conversation){
+        restManager?.getAllStaffMessages(conversation: conversation, callback: finishGettingAllStaffMessages)
+    }
+    
     static func finishGettingAllMessages(conversation: Conversation, restData: JSON){
         var messages: [Message] = []
         
@@ -22,6 +26,21 @@ class ConversationManager : ModelManager{
         
         for (_, subJson) in restData["data"]["messages"] {
             messages.append(ConversationManager.getMessageUsing(json: subJson))
+        }
+        
+        conversation.messages = messages
+        
+        currentRestController?.refreshData()
+    }
+    
+    static func finishGettingAllStaffMessages(conversation:Conversation, restData: JSON){
+        print(restData)
+        var messages: [Message] = []
+        
+        // FINISH THIS OUT
+        
+        for (_, subJson) in restData["data"]["messages"] {
+            messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
         }
         
         conversation.messages = messages
@@ -53,6 +72,10 @@ class ConversationManager : ModelManager{
         case .array:
             person.userImageUrl = ""
         default:break
+        }
+        
+        if(json["staff_conversation"] != nil){
+            conversation.staffConversation = (json["staff_conversation"].string! == "1")
         }
         
         if(userImage == nil){

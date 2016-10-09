@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import KeychainSwift
 
-class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AccountViewController : AVCRestViewController {
     
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var fullName: UITextField!
@@ -25,7 +25,6 @@ class AccountViewController : RestViewController, UITextFieldDelegate, UIImagePi
     var activeField: UITextField?
     var originalContentInset: UIEdgeInsets?
     var originalScrollIndicatorInsets: UIEdgeInsets?
-    let picker = UIImagePickerController()
     
     lazy var photoView: PhotoView = {
         let photoView = PhotoView()

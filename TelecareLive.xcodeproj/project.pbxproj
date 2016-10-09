@@ -36,6 +36,9 @@
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
+		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
+		FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */; };
+		FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969861DA987030029F8FA /* AVCRestViewController.swift */; };
 		FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */; };
 		FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */; };
 		FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8C1DA07AB200D43119 /* Person.swift */; };
@@ -49,6 +52,8 @@
 		FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */; };
 		FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */; };
 		FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */; };
+		FFB7A5741DA5E45200EFCE35 /* NewConsult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */; };
+		FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +92,9 @@
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
+		FF8969821DA8CFB10029F8FA /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
+		FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffConversationViewController.swift; sourceTree = "<group>"; };
+		FF8969861DA987030029F8FA /* AVCRestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCRestViewController.swift; sourceTree = "<group>"; };
 		FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProactiveTabBarController.swift; sourceTree = "<group>"; };
 		FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
 		FF9A3D8C1DA07AB200D43119 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -101,6 +109,8 @@
 		FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		FFB7A5711DA49B3700EFCE35 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lame.framework; path = "Pods/mp3lame-for-ios/lame.framework"; sourceTree = "<group>"; };
+		FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConsult.swift; sourceTree = "<group>"; };
+		FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConsult.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +176,7 @@
 				FF0EEF201D9F6B7300F25356 /* Main */,
 				FF0EEF1F1D9F6B6700F25356 /* Login */,
 				FF0EEF1E1D9F6B4D00F25356 /* Account */,
+				FF89697F1DA8BFDA0029F8FA /* Staff */,
 				FF9A3D891DA079E600D43119 /* Patients */,
 				FF3D1A351DA2F3DC003B8009 /* Consults */,
 				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
@@ -200,6 +211,7 @@
 				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
 				FF15475F1D9C865400375F9A /* Extensions.swift */,
 				FF19E3491D9B422F00375804 /* RestViewController.swift */,
+				FF8969861DA987030029F8FA /* AVCRestViewController.swift */,
 				FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */,
 				FF0089401D935BB600127B66 /* Main.storyboard */,
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
@@ -235,8 +247,19 @@
 				FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */,
 				FF00784E1DA4649F003D1610 /* AudioView.xib */,
 				FF0078501DA46967003D1610 /* AudioView.swift */,
+				FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */,
+				FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */,
 			);
 			name = Consults;
+			sourceTree = "<group>";
+		};
+		FF89697F1DA8BFDA0029F8FA /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				FF8969821DA8CFB10029F8FA /* StaffViewController.swift */,
+				FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */,
+			);
+			name = Staff;
 			sourceTree = "<group>";
 		};
 		FF9A3D891DA079E600D43119 /* Patients */ = {
@@ -343,6 +366,7 @@
 				FF0089421D935BB600127B66 /* Main.storyboard in Resources */,
 				FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */,
 				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
+				FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,13 +430,17 @@
 				FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */,
 				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
 				FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */,
+				FFB7A5741DA5E45200EFCE35 /* NewConsult.swift in Sources */,
 				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
 				FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */,
 				FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */,
+				FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */,
 				FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */,
 				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,
+				FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */,
 				FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */,
 				FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */,
+				FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */,
 				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
 				FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */,
 				FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */,

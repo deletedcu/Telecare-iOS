@@ -1,8 +1,8 @@
 //
-//  ConsultChatViewController.swift
+//  StaffConversationViewController.swift
 //  TelecareLive
 //
-//  Created by Scott Metcalf on 10/3/16.
+//  Created by Scott Metcalf on 10/8/16.
 //  Copyright © 2016 Syworks LLC. All rights reserved.
 //
 
@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import AVFoundation
+import AlamofireImage
 
-class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
+class StaffConversationViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,32 +26,10 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     
     @IBOutlet weak var attachmentButton: UIButton!
     
-    @IBOutlet weak var consultSwitch: UISwitch!
-    
     var lastPlayedUrl: String? = ""
     
-    @IBAction func toggleConsultSwitch(_ sender: AnyObject) {
-        if consultSwitch.isOn {
-            consultSwitch.isOn = true
-        } else {
-            consultSwitch.isOn = false
-        }
-        restManager?.toggleConsultSwitch(consult:currentConsult!, callback: finishToggleConsult)
-    }
-    
-    func finishToggleConsult(restData: JSON){
-        if consultSwitch.isOn {
-            currentConsult?.status = "1"
-            chatInputField.isEnabled = true
-        } else {
-            currentConsult?.status = "0"
-            chatInputField.isEnabled = false
-        }
-        self.refreshData()
-    }
-        
     @IBAction func playAudio(_ sender: MediaButton) {
-        if(!(sender.message?.hasAudio)! || (consultSwitch.isOn == false)){
+        if(!(sender.message?.hasAudio)!){
             return
         }
         
@@ -85,34 +64,23 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         tableView.dataSource = self
         navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
+        
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
         hideKeyboardWhenViewTapped()
         audioView.delegate = self
         picker.delegate = self
         
-        if(currentConsult?.status == "1"){
-            consultSwitch.isOn = true
-        } else {
-            consultSwitch.isOn = false
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
-    deinit {
-        audioView.purgeAudioFiles()
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (currentConsult?.messages?.count)!
+        return (currentConversation?.messages?.count)!
     }
     
     @IBAction func showAttachmentActions(_ sender: AnyObject) {
-        if (consultSwitch.isOn == false) {
-            return
-        }
         
         let optionMenu = UIAlertController(title: nil, message: "Select Attachment Type", preferredStyle: .actionSheet)
         
@@ -149,7 +117,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if((chatInputField.text! == "" && hasAttachment == false) || (consultSwitch.isOn == false)){
+        if((chatInputField.text! == "" && hasAttachment == false)){
             return
         }
         
@@ -158,7 +126,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
-        message.conversationId = currentConversation?.entityId
+        message.consultId = currentConversation?.entityId
         message.isUnread = true
         
         if hasAttachment! && attachmentType == "audio" {
@@ -173,21 +141,21 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
             message.hasMedia = true
         }
         
-        message.consultId = currentConsult?.entityId
+//        message.consultId = currentConsult?.entityId
         
-        currentConsult?.messages?.append(message)
+        currentConversation?.messages?.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
     }
     
     func scrollToBottom(){
-        if((currentConsult?.messages?.count)! > 0){
-                    tableView.scrollToRow(at: IndexPath.init(row: (currentConsult?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        if((currentConversation?.messages?.count)! > 0){
+            tableView.scrollToRow(at: IndexPath.init(row: (currentConversation?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
-        ConsultManager.populateMessagesForConsult(consult: (self.currentConsult)!)
+        ConversationManager.populateMessagesForStaffConversation(conversation: (self.currentConversation)!)
         chatInputField.text = ""
     }
     
@@ -214,7 +182,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = currentConsult?.messages?[indexPath.row]
+        let message = currentConversation?.messages?[indexPath.row]
         
         print(message)
         if(message?.hasMedia)!{
@@ -226,10 +194,15 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
-                cell.media.setBackgroundImage(message?.imageMedia, for: UIControlState.normal)
+                var buttonFrame = cell.media.frame
+                buttonFrame.size = CGSize(width: 200, height: 200)
+                cell.media.frame = buttonFrame
+                
+                let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
+                cell.media.setBackgroundImage(image, for: UIControlState.normal)
             }
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
-
+            
             cell.messageText.text = message?.message
             
             if(message?.isCurrentUsers)!{
@@ -246,16 +219,11 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.messageText.layer.backgroundColor = UIColor.init(red: 0, green: 0.75, blue: 0.25, alpha: 0.35).cgColor
             }
             
-            if(consultSwitch.isOn == false){
-                cell.backgroundColor = UIColor.lightGray
-            } else {
-                cell.backgroundColor = UIColor.white
-            }
-            
             return cell
         } else {
             
             let cell:ConsultMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "ConsultMessageCell")! as! ConsultMessageCell
+            
             cell.message.text = message?.message
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
             
@@ -271,12 +239,6 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
                 cell.message.layer.cornerRadius = 10
                 cell.message.layer.backgroundColor = UIColor.init(red: 0, green: 0.75, blue: 0.25, alpha: 0.35).cgColor
-            }
-            
-            if(consultSwitch.isOn == false){
-                cell.backgroundColor = UIColor.lightGray
-            } else {
-                cell.backgroundColor = UIColor.white
             }
             
             return cell
@@ -323,13 +285,13 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 animated: true,
                 completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
         attachmentImage = chosenImage
         attachmentType = "image"
         hasAttachment = true
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil) //5
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

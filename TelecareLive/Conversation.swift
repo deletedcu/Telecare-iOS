@@ -17,4 +17,5 @@ class Conversation {
     var person: Person?
     var messages: [Message]? = []
     var consults: [Consult]? = []
+    var staffConversation: Bool = false
 }

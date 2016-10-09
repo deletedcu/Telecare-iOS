@@ -20,14 +20,15 @@ class RestManager {
     var baseUrl = "http://dev-telecarelive.pantheonsite.io/api/v1/"
     
     var endpoints = [
-        "login" : "auth",
-        "getAccountData" : "user",
-        "saveAccountData"     : "user",
-        "getConversations"    : "conversations",
-        "messagesP1"         : "conversation/",
-        "messagesP2"         : "/messages",
-        "getConsults"      : "consults/",
-        "getConsultMessagesP1": "consult/"
+        "login"                 : "auth",
+        "getAccountData"        : "user",
+        "saveAccountData"       : "user",
+        "getConversations"      : "conversations",
+        "messagesP1"            : "conversation/",
+        "messagesP2"            : "/messages",
+        "getConsults"           : "consults/",
+        "getConsultMessagesP1"  : "consult/",
+        "getStaffConversations" : "conversations/staff/"
     ]
     
     var keychain = KeychainSwift()
@@ -73,7 +74,7 @@ class RestManager {
                 }
                 
 
-            case .failure(let error):
+            case .failure( _):
 //                print(error)
                 self.sessionManager?.lockSession = -1
             }
@@ -188,6 +189,59 @@ class RestManager {
             }
             
         }
+    }
+    
+    func getAllStaffConversations(person: Person, callback: @escaping (Person, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getStaffConversations"]! + "1", headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(person, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func getAllStaffMessages(conversation: Conversation, callback: @escaping (Conversation, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getConsultMessagesP1"]! + conversation.entityId! + endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(conversation, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+
     }
     
     // Decouple later
@@ -308,7 +362,7 @@ class RestManager {
         }
     }
     
-    func sendConsultMessage(caller: ConsultChatViewController, message: Message, callback: @escaping (Message, JSON)->()){
+    func sendConsultMessage(caller: AVCRestViewController, message: Message, callback: @escaping (Message, JSON)->()){
         
         var encoded = ""
         
@@ -337,7 +391,7 @@ class RestManager {
             "encoded": encoded
             ] as [String : Any]
         
-        Alamofire.request(baseUrl + endpoints["messagesP1"]! + message.conversationId! + endpoints["messagesP2"]!, method: .post, parameters: parameters, headers: headers)
+        Alamofire.request(baseUrl + endpoints["messagesP1"]! + message.consultId! + endpoints["messagesP2"]!, method: .post, parameters: parameters, headers: headers)
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
@@ -358,7 +412,83 @@ class RestManager {
         }
         
     }
-
+    
+    func toggleConsultSwitch(consult: Consult,callback: @escaping (JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        var status = 1
+        
+        if consult.status == "0" {
+            status = 0
+        }
+        
+        let parameters = [
+            "status": status,
+            ] as [String : Any]
+        
+        Alamofire.request(baseUrl + endpoints["getConsultMessagesP1"]! + consult.entityId!, method: .post, parameters: parameters, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func launchNewConsult(charge: Bool, title: String, conversation:Conversation, callback: @escaping (JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        let user_id = conversation.person?.userId!
+        
+        var willCharge = 0
+        
+        if charge == true {
+            willCharge = 1
+        }
+        
+        let parameters = [
+            "consult_charge":willCharge,
+            "status": 1,
+            "user_id": user_id!,
+            "issue": title
+            ] as [String : Any]
+        
+        Alamofire.request(baseUrl + endpoints["getConsults"]! + user_id!, method: .post, parameters: parameters, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
     
     func sidIsValid(sid: String) -> Bool{
         

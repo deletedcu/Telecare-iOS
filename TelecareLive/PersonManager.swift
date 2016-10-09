@@ -19,8 +19,27 @@ class PersonManager : ModelManager{
         restManager?.getAllConversations(person:person, callback: finishGetConversations)
     }
     
-    static func finishGetConversations(person: Person, restData: JSON){
+    static func getStaffConversations(person: Person){
+        restManager?.getAllStaffConversations(person: person, callback: finishGetStaffConversations)
+    }
+    
+    static func finishGetStaffConversations(person: Person, restData: JSON){
         print(restData)
+        var conversations: [Conversation] = []
+        
+        for(_,jsonSub) in restData["data"] {
+            if(jsonSub["staff_conversation"] != nil){
+                if(jsonSub["staff_conversation"] == "0"){
+                    continue
+                }
+            }
+            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
+        }
+        
+        person.staffConversations = conversations
+    }
+    
+    static func finishGetConversations(person: Person, restData: JSON){
         var conversations: [Conversation] = []
         
         for(_,jsonSub) in restData["data"] {
@@ -67,6 +86,8 @@ class PersonManager : ModelManager{
         person.userId = json["data"]["uid"].string!
         
         PersonManager.getConversations(person: person)
+        PersonManager.getStaffConversations(person: person)
+        
         person.consults = PersonManager.getConsults(person: person)
         
         return person

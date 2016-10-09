@@ -14,7 +14,7 @@ class ProactiveTabBarController : UITabBarController {
     var registeredForRefresh: Dictionary<Int,ProactiveTab?>?
     
     func refreshRegisteredViewControllers(){
-        for (key, ProactiveTab) in registeredForRefresh! {
+        for (_, ProactiveTab) in registeredForRefresh! {
             ProactiveTab?.refresh()
         }
     }

@@ -15,7 +15,7 @@ class AudioView : UIView, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder?
     var recordingSession: AVAudioSession!
     
-    var delegate: ConsultChatViewController?
+    var delegate: AVCRestViewController?
     
     @IBOutlet weak var redDot: UIImageView!
     
@@ -42,11 +42,20 @@ class AudioView : UIView, AVAudioRecorderDelegate {
     }
     
     func purgeAudioFiles(){
+        if(delegate == nil){
+            return
+        }
+        
         let fileManager = FileManager.default
         let audioUrl = delegate?.getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        print(audioUrl)
         
         do {
-            try fileManager.removeItem(atPath: (audioUrl?.absoluteString)!)
+            let filePath = (audioUrl?.absoluteString)!
+
+            if fileManager.fileExists(atPath: filePath) {
+                try fileManager.removeItem(atPath: filePath)
+            }
         } catch {
             print("Could not purge audio files: \(error)")
         }
