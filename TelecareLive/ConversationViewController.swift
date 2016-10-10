@@ -29,6 +29,8 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     var originalFrameOriginY:CGFloat?
     
     let picker = UIImagePickerController()
+    
+    var firstLoad:Bool? = false
 
     lazy var photoView: PhotoView = {
         let photoView = PhotoView()
@@ -54,6 +56,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
 //        scrollToBottom()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        firstLoad = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +81,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     func scrollToBottom(){
         if((currentConversation?.messages?.count)! > 0){
-            tableView.scrollToRow(at: IndexPath.init(row: (currentConversation?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            tableView.scrollToRow(at: IndexPath.init(row: (currentConversation?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: !firstLoad!)
         }
     }
     

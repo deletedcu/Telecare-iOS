@@ -99,10 +99,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="y5w-bk-W0J" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="y5w-bk-W0J" id="3OP-Fo-RlC">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="1000" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mv-Sj-wUV">
@@ -370,10 +370,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="zbc-Pt-NxP" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="zbc-Pt-NxP" id="6NW-UN-Y9n">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="1000" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dS2-ap-exY">
@@ -451,10 +451,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConsultCell" rowHeight="75" id="joY-0G-zmR" customClass="ConsultCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="joY-0G-zmR" id="XVJ-kZ-Qna">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="1000" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGZ-7x-sHl">
@@ -555,62 +555,58 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-4y-QyG">
                                 <items>
-                                    <navigationItem title="Login" id="pDi-5s-jG3"/>
+                                    <navigationItem title="Locked" id="pDi-5s-jG3"/>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rS4-dz-8cu">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdJ-Dx-1J7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Pin" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdJ-Dx-1J7">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="672-hZ-e0Q">
-                                <state key="normal" title="Register"/>
+                                <state key="normal" title=" Reset Pin"/>
                                 <connections>
-                                    <action selector="register:" destination="FBT-6S-nXm" eventType="touchUpInside" id="Fzs-1e-3rT"/>
+                                    <action selector="resetPin:" destination="FBT-6S-nXm" eventType="touchUpInside" id="U92-VK-1Wu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fza-cb-stH">
-                                <state key="normal" title="Forgot Password"/>
-                                <connections>
-                                    <action selector="forgotPassword:" destination="FBT-6S-nXm" eventType="touchUpInside" id="aoc-2d-zvq"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your 4 digit pin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pla-dE-7j6">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgn-Ew-gsm">
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="login:" destination="FBT-6S-nXm" eventType="touchUpInside" id="WZu-yJ-ZVd"/>
+                                    <action selector="submitPin:" destination="FBT-6S-nXm" eventType="touchUpInside" id="Jqs-4Y-jDp"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jgn-Ew-gsm" firstAttribute="centerX" secondItem="672-hZ-e0Q" secondAttribute="centerX" id="7rW-rG-e9X"/>
-                            <constraint firstItem="ZdJ-Dx-1J7" firstAttribute="top" secondItem="rS4-dz-8cu" secondAttribute="bottom" constant="14" id="AOc-j5-Qr7"/>
-                            <constraint firstItem="rS4-dz-8cu" firstAttribute="leading" secondItem="7Nk-e0-RTw" secondAttribute="leadingMargin" id="CLP-Ot-MSq"/>
-                            <constraint firstItem="9hd-4y-QyG" firstAttribute="top" secondItem="7Nk-e0-RTw" secondAttribute="top" constant="20" id="H24-dL-ZE2"/>
-                            <constraint firstItem="672-hZ-e0Q" firstAttribute="centerX" secondItem="Fza-cb-stH" secondAttribute="centerX" id="KNg-fl-7d1"/>
-                            <constraint firstItem="9hd-4y-QyG" firstAttribute="centerX" secondItem="rS4-dz-8cu" secondAttribute="centerX" id="Nfr-iu-RPt"/>
-                            <constraint firstItem="jgn-Ew-gsm" firstAttribute="top" secondItem="ZdJ-Dx-1J7" secondAttribute="bottom" constant="45" id="StA-tU-jxj"/>
-                            <constraint firstItem="rS4-dz-8cu" firstAttribute="top" secondItem="9hd-4y-QyG" secondAttribute="bottom" constant="14" id="Uag-BG-bvp"/>
-                            <constraint firstAttribute="trailing" secondItem="9hd-4y-QyG" secondAttribute="trailing" id="b7J-yy-GJp"/>
-                            <constraint firstItem="rS4-dz-8cu" firstAttribute="trailing" secondItem="ZdJ-Dx-1J7" secondAttribute="trailing" id="n3b-OS-fZF"/>
-                            <constraint firstItem="672-hZ-e0Q" firstAttribute="top" secondItem="jgn-Ew-gsm" secondAttribute="bottom" constant="41" id="ouK-I7-XBl"/>
-                            <constraint firstItem="ZdJ-Dx-1J7" firstAttribute="centerX" secondItem="jgn-Ew-gsm" secondAttribute="centerX" id="p49-mH-hct"/>
-                            <constraint firstItem="9hd-4y-QyG" firstAttribute="leading" secondItem="7Nk-e0-RTw" secondAttribute="leading" id="qMg-u6-flb"/>
-                            <constraint firstItem="Fza-cb-stH" firstAttribute="top" secondItem="672-hZ-e0Q" secondAttribute="bottom" constant="34" id="sXb-4W-Ond"/>
-                            <constraint firstItem="rS4-dz-8cu" firstAttribute="leading" secondItem="ZdJ-Dx-1J7" secondAttribute="leading" id="tUb-1w-Ucv"/>
+                            <constraint firstItem="pla-dE-7j6" firstAttribute="centerX" secondItem="ZdJ-Dx-1J7" secondAttribute="centerX" id="2z8-aU-h0L"/>
+                            <constraint firstItem="672-hZ-e0Q" firstAttribute="centerY" secondItem="7Nk-e0-RTw" secondAttribute="centerY" id="4TP-ZX-fCB"/>
+                            <constraint firstItem="9hd-4y-QyG" firstAttribute="leading" secondItem="pla-dE-7j6" secondAttribute="leading" id="8PO-fB-9sU"/>
+                            <constraint firstItem="pla-dE-7j6" firstAttribute="leading" secondItem="jgn-Ew-gsm" secondAttribute="leading" id="Af3-iK-kKA"/>
+                            <constraint firstItem="9hd-4y-QyG" firstAttribute="trailing" secondItem="pla-dE-7j6" secondAttribute="trailing" id="BEb-YF-9V6"/>
+                            <constraint firstItem="jgn-Ew-gsm" firstAttribute="trailing" secondItem="672-hZ-e0Q" secondAttribute="trailing" id="D6Y-Rl-6Gv"/>
+                            <constraint firstItem="9hd-4y-QyG" firstAttribute="top" secondItem="ngi-86-kqd" secondAttribute="bottom" id="KrE-ka-nGQ"/>
+                            <constraint firstItem="9hd-4y-QyG" firstAttribute="leading" secondItem="7Nk-e0-RTw" secondAttribute="leading" id="MCn-K1-cha"/>
+                            <constraint firstItem="jgn-Ew-gsm" firstAttribute="leading" secondItem="672-hZ-e0Q" secondAttribute="leading" id="OVY-vg-hRQ"/>
+                            <constraint firstItem="ZdJ-Dx-1J7" firstAttribute="leading" secondItem="7Nk-e0-RTw" secondAttribute="leadingMargin" id="Oqg-9u-sUQ"/>
+                            <constraint firstItem="pla-dE-7j6" firstAttribute="leading" secondItem="9hd-4y-QyG" secondAttribute="leading" id="Rh2-mU-fiy"/>
+                            <constraint firstItem="jgn-Ew-gsm" firstAttribute="top" secondItem="ZdJ-Dx-1J7" secondAttribute="bottom" constant="46" id="UgE-K4-EyD"/>
+                            <constraint firstItem="ZdJ-Dx-1J7" firstAttribute="top" secondItem="pla-dE-7j6" secondAttribute="bottom" constant="37" id="UgW-Tp-IGJ"/>
+                            <constraint firstItem="9hd-4y-QyG" firstAttribute="trailing" secondItem="pla-dE-7j6" secondAttribute="trailing" id="gXo-5J-h7q"/>
+                            <constraint firstAttribute="trailing" secondItem="9hd-4y-QyG" secondAttribute="trailing" id="hrf-9R-zaa"/>
+                            <constraint firstItem="672-hZ-e0Q" firstAttribute="top" secondItem="jgn-Ew-gsm" secondAttribute="bottom" constant="40" id="ibj-2f-JDy"/>
+                            <constraint firstItem="pla-dE-7j6" firstAttribute="trailing" secondItem="9hd-4y-QyG" secondAttribute="trailing" id="sUW-hr-kT9"/>
+                            <constraint firstItem="pla-dE-7j6" firstAttribute="trailing" secondItem="jgn-Ew-gsm" secondAttribute="trailing" id="zmj-UK-AGX"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="email" destination="rS4-dz-8cu" id="KJF-38-uz8"/>
-                        <outlet property="password" destination="ZdJ-Dx-1J7" id="mRU-c8-47w"/>
+                        <outlet property="pinNumberField" destination="ZdJ-Dx-1J7" id="7Di-sV-e7A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZH-39-y97" sceneMemberID="firstResponder"/>
@@ -883,10 +879,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsultMessageCell" rowHeight="85" id="rom-sx-xWD" customClass="ConsultMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="ConversationCell" tableViewCell="rom-sx-xWD" id="r84-sG-PAg">
-                                            <frame key="frameInset" width="375" height="85"/>
+                                            <frame key="frameInset" width="1000" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvw-W9-Ctd" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -935,10 +931,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaMessageCell" rowHeight="150" id="6Md-VR-yEI" customClass="MediaMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="113" width="1000" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6Md-VR-yEI" id="8Qq-nE-oda">
-                                            <frame key="frameInset" width="375" height="150"/>
+                                            <frame key="frameInset" width="1000" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWZ-xj-maC" customClass="MediaButton" customModule="TelecareLive" customModuleProvider="target">
