@@ -26,7 +26,7 @@ class PinViewController : RestViewController {
     }
     
     @IBAction func resetPin(_ sender: AnyObject) {
-        UIApplication.shared.open(URL(string: "http://www.stackoverflow.com")!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: "http://www.telecarelive.com/user")!, options: [:], completionHandler: nil)
     }
     
     override func viewDidLoad() {
