@@ -8,21 +8,65 @@
 
 /* Begin PBXBuildFile section */
 		50E4C90DF4CA0615537CF1C5 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */; };
+		FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078441DA31358003D1610 /* ConsultChatViewController.swift */; };
+		FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078461DA318BF003D1610 /* MediaMessageCell.swift */; };
+		FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */; };
+		FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00784A1DA36F5C003D1610 /* MediaButton.swift */; };
+		FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */; };
+		FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF00784E1DA4649F003D1610 /* AudioView.xib */; };
+		FF0078511DA46967003D1610 /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0078501DA46967003D1610 /* AudioView.swift */; };
 		FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893C1D935BB600127B66 /* AppDelegate.swift */; };
 		FF00893F1D935BB600127B66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF00893E1D935BB600127B66 /* ViewController.swift */; };
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
 		FF0089441D935BB600127B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0089431D935BB600127B66 /* Assets.xcassets */; };
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
+		FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0EEF191D9F67BC00F25356 /* PhotoView.xib */; };
+		FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EEF221D9F711500F25356 /* PhotoView.swift */; };
+		FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */; };
+		FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */; };
+		FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */; };
+		FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */; };
+		FF1547601D9C865400375F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF15475F1D9C865400375F9A /* Extensions.swift */; };
 		FF19E33B1D95F51300375804 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33A1D95F51300375804 /* KeychainSwift.framework */; };
 		FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */; };
 		FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E3401D95F66100375804 /* Alamofire.framework */; };
 		FF19E3431D95F66100375804 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF19E3411D95F66100375804 /* SwiftyJSON.framework */; };
+		FF19E3481D9B420C00375804 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E3471D9B420C00375804 /* SessionManager.swift */; };
+		FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E3491D9B422F00375804 /* RestViewController.swift */; };
+		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
+		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
+		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
+		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
+		FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */; };
+		FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969861DA987030029F8FA /* AVCRestViewController.swift */; };
+		FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */; };
+		FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */; };
+		FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8C1DA07AB200D43119 /* Person.swift */; };
+		FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D8E1DA0807500D43119 /* Conversation.swift */; };
+		FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D901DA0825700D43119 /* PersonManager.swift */; };
+		FF9A3D931DA0832000D43119 /* Consult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D921DA0832000D43119 /* Consult.swift */; };
+		FF9A3D951DA0833400D43119 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D941DA0833400D43119 /* Message.swift */; };
+		FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D971DA0838600D43119 /* ConversationManager.swift */; };
+		FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3D991DA083B800D43119 /* ConsultManager.swift */; };
+		FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */; };
+		FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */; };
+		FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */; };
+		FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */; };
+		FFB7A5741DA5E45200EFCE35 /* NewConsult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */; };
+		FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0558B3279EF470A72B4031F4 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TelecareLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.release.xcconfig"; sourceTree = "<group>"; };
 		F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelecareLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelecareLive/Pods-TelecareLive.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0078441DA31358003D1610 /* ConsultChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultChatViewController.swift; sourceTree = "<group>"; };
+		FF0078461DA318BF003D1610 /* MediaMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessageCell.swift; sourceTree = "<group>"; };
+		FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultMessageCell.swift; sourceTree = "<group>"; };
+		FF00784A1DA36F5C003D1610 /* MediaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaButton.swift; sourceTree = "<group>"; };
+		FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSelectViewController.swift; sourceTree = "<group>"; };
+		FF00784E1DA4649F003D1610 /* AudioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioView.xib; sourceTree = "<group>"; };
+		FF0078501DA46967003D1610 /* AudioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
 		FF0089391D935BB600127B66 /* TelecareLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelecareLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF00893C1D935BB600127B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF00893E1D935BB600127B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,12 +74,43 @@
 		FF0089431D935BB600127B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF0089461D935BB600127B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF0EEF191D9F67BC00F25356 /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
+		FF0EEF221D9F711500F25356 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
+		FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		FF15475F1D9C865400375F9A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF19E33A1D95F51300375804 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/KeychainSwift/KeychainSwift.framework"; sourceTree = "<group>"; };
 		FF19E33C1D95F55900375804 /* Pods_TelecareLive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TelecareLive.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Pods_TelecareLive.framework"; sourceTree = "<group>"; };
 		FF19E3401D95F66100375804 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		FF19E3411D95F66100375804 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		FF19E3441D95FED300375804 /* SwiftyBase64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBase64.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TelecareLive-ffjuqnjlnepxznflblipqvuudjnv/Build/Products/Debug-iphonesimulator/SwiftyBase64/SwiftyBase64.framework"; sourceTree = "<group>"; };
 		FF19E3461D96043600375804 /* TelecareLive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TelecareLive.entitlements; sourceTree = "<group>"; };
+		FF19E3471D9B420C00375804 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		FF19E3491D9B422F00375804 /* RestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestViewController.swift; sourceTree = "<group>"; };
+		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
+		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
+		FF8969821DA8CFB10029F8FA /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
+		FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffConversationViewController.swift; sourceTree = "<group>"; };
+		FF8969861DA987030029F8FA /* AVCRestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCRestViewController.swift; sourceTree = "<group>"; };
+		FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProactiveTabBarController.swift; sourceTree = "<group>"; };
+		FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
+		FF9A3D8C1DA07AB200D43119 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FF9A3D8E1DA0807500D43119 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		FF9A3D901DA0825700D43119 /* PersonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
+		FF9A3D921DA0832000D43119 /* Consult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consult.swift; sourceTree = "<group>"; };
+		FF9A3D941DA0833400D43119 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FF9A3D971DA0838600D43119 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		FF9A3D991DA083B800D43119 /* ConsultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultManager.swift; sourceTree = "<group>"; };
+		FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultCell.swift; sourceTree = "<group>"; };
+		FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		FFB7A5711DA49B3700EFCE35 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lame.framework; path = "Pods/mp3lame-for-ios/lame.framework"; sourceTree = "<group>"; };
+		FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConsult.swift; sourceTree = "<group>"; };
+		FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConsult.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +132,7 @@
 		5AE5EA9F4986E6C68DC8F894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFB7A5711DA49B3700EFCE35 /* lame.framework */,
 				FF19E3441D95FED300375804 /* SwiftyBase64.framework */,
 				FF19E3401D95F66100375804 /* Alamofire.framework */,
 				FF19E3411D95F66100375804 /* SwiftyJSON.framework */,
@@ -97,15 +173,124 @@
 		FF00893B1D935BB600127B66 /* TelecareLive */ = {
 			isa = PBXGroup;
 			children = (
-				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
-				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
-				FF00893E1D935BB600127B66 /* ViewController.swift */,
-				FF0089401D935BB600127B66 /* Main.storyboard */,
-				FF0089431D935BB600127B66 /* Assets.xcassets */,
-				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
-				FF0089481D935BB600127B66 /* Info.plist */,
+				FF0EEF201D9F6B7300F25356 /* Main */,
+				FF0EEF1F1D9F6B6700F25356 /* Login */,
+				FF0EEF1E1D9F6B4D00F25356 /* Account */,
+				FF89697F1DA8BFDA0029F8FA /* Staff */,
+				FF9A3D891DA079E600D43119 /* Patients */,
+				FF3D1A351DA2F3DC003B8009 /* Consults */,
+				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
 			);
 			path = TelecareLive;
+			sourceTree = "<group>";
+		};
+		FF0EEF1E1D9F6B4D00F25356 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FF15475D1D9C7F4D00375F9A /* AccountViewController.swift */,
+				FF0EEF191D9F67BC00F25356 /* PhotoView.xib */,
+				FF0EEF221D9F711500F25356 /* PhotoView.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		FF0EEF1F1D9F6B6700F25356 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF19E34F1D9B733E00375804 /* PinViewController.swift */,
+				FF00893E1D935BB600127B66 /* ViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FF0EEF201D9F6B7300F25356 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D9B1DA083D300D43119 /* ModelManagers */,
+				FF9A3D961DA0834000D43119 /* Models */,
+				FF00893C1D935BB600127B66 /* AppDelegate.swift */,
+				FF15475F1D9C865400375F9A /* Extensions.swift */,
+				FF19E3491D9B422F00375804 /* RestViewController.swift */,
+				FF8969861DA987030029F8FA /* AVCRestViewController.swift */,
+				FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */,
+				FF0089401D935BB600127B66 /* Main.storyboard */,
+				FF0089431D935BB600127B66 /* Assets.xcassets */,
+				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
+				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
+				FF0089481D935BB600127B66 /* Info.plist */,
+				FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */,
+				FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */,
+				FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */,
+				FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */,
+				FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */,
+				FF0078461DA318BF003D1610 /* MediaMessageCell.swift */,
+				FF00784A1DA36F5C003D1610 /* MediaButton.swift */,
+				FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		FF0EEF211D9F6BA500F25356 /* REST and Session management */ = {
+			isa = PBXGroup;
+			children = (
+				FF19E3471D9B420C00375804 /* SessionManager.swift */,
+				FF19E34B1D9B426E00375804 /* RestManager.swift */,
+			);
+			name = "REST and Session management";
+			sourceTree = "<group>";
+		};
+		FF3D1A351DA2F3DC003B8009 /* Consults */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */,
+				FF0078441DA31358003D1610 /* ConsultChatViewController.swift */,
+				FF00784C1DA46474003D1610 /* AudioSelectViewController.swift */,
+				FF00784E1DA4649F003D1610 /* AudioView.xib */,
+				FF0078501DA46967003D1610 /* AudioView.swift */,
+				FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */,
+				FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */,
+			);
+			name = Consults;
+			sourceTree = "<group>";
+		};
+		FF89697F1DA8BFDA0029F8FA /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				FF8969821DA8CFB10029F8FA /* StaffViewController.swift */,
+				FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */,
+			);
+			name = Staff;
+			sourceTree = "<group>";
+		};
+		FF9A3D891DA079E600D43119 /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */,
+				FF9A3D8A1DA079FC00D43119 /* PatientsViewController.swift */,
+			);
+			name = Patients;
+			sourceTree = "<group>";
+		};
+		FF9A3D961DA0834000D43119 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D8C1DA07AB200D43119 /* Person.swift */,
+				FF9A3D8E1DA0807500D43119 /* Conversation.swift */,
+				FF9A3D921DA0832000D43119 /* Consult.swift */,
+				FF9A3D941DA0833400D43119 /* Message.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FF9A3D9B1DA083D300D43119 /* ModelManagers */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A3D901DA0825700D43119 /* PersonManager.swift */,
+				FF9A3D971DA0838600D43119 /* ConversationManager.swift */,
+				FF9A3D991DA083B800D43119 /* ConsultManager.swift */,
+				FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */,
+			);
+			name = ModelManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +364,9 @@
 				FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */,
 				FF0089441D935BB600127B66 /* Assets.xcassets in Resources */,
 				FF0089421D935BB600127B66 /* Main.storyboard in Resources */,
+				FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */,
+				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
+				FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +425,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
+				FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */,
+				FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */,
+				FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */,
+				FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */,
+				FFB7A5741DA5E45200EFCE35 /* NewConsult.swift in Sources */,
+				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
+				FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */,
+				FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */,
+				FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */,
+				FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */,
+				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,
+				FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */,
+				FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */,
+				FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */,
+				FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */,
+				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
+				FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */,
+				FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */,
+				FF1547601D9C865400375F9A /* Extensions.swift in Sources */,
+				FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */,
+				FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */,
+				FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */,
+				FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */,
+				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
+				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
+				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
+				FF0078511DA46967003D1610 /* AudioView.swift in Sources */,
+				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,
+				FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
+				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
+				FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,
+				FF19E3481D9B420C00375804 /* SessionManager.swift in Sources */,
+				FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +504,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -331,6 +554,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -359,9 +583,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F38FFB0811D2264D88403493 /* Pods-TelecareLive.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TelecareLive/TelecareLive.entitlements;
 				DEVELOPMENT_TEAM = 8DA4VRM89P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
+				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.syworks.TelecareLive;
@@ -374,9 +603,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 30010F04894E758F00C8E892 /* Pods-TelecareLive.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TelecareLive/TelecareLive.entitlements;
 				DEVELOPMENT_TEAM = 8DA4VRM89P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
+				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.syworks.TelecareLive;

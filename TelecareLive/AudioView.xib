@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioView" customModule="TelecareLive" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="FlG-fx-BJk" id="uC9-mv-i25"/>
+                <outlet property="insertButton" destination="xQk-wo-rhg" id="PVc-Co-f5K"/>
+                <outlet property="recordingButton" destination="Hby-9y-lgi" id="B5m-x7-2tJ"/>
+                <outlet property="redDot" destination="3fh-JE-Uej" id="26a-eW-vxq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="230" height="303"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gic-H5-nd4">
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rjc-YI-wcj">
+                        <frame key="frameInset"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIr-qM-hE3">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlG-fx-BJk">
+                                <frame key="frameInset" minX="147" minY="62" width="55" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.4790845513343811" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAudio:" destination="-1" eventType="touchUpInside" id="JzK-2w-jhL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQk-wo-rhg">
+                                <frame key="frameInset" minX="37" minY="59" width="55" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Insert">
+                                    <color key="titleColor" red="0.0" green="0.4790845513343811" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="insertAudio:" destination="-1" eventType="touchUpInside" id="G4w-JI-0D8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FIr-qM-hE3" firstAttribute="centerY" secondItem="rjc-YI-wcj" secondAttribute="centerY" id="KHT-Jh-2l6"/>
+                            <constraint firstItem="FIr-qM-hE3" firstAttribute="centerX" secondItem="rjc-YI-wcj" secondAttribute="centerX" id="coF-Yu-B2X"/>
+                        </constraints>
+                    </view>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hby-9y-lgi">
+                    <state key="normal" image="AudioIcon"/>
+                    <connections>
+                        <action selector="recordAudio:" destination="-1" eventType="touchDown" id="7T9-cQ-WD3"/>
+                        <action selector="stopRecordingAudio:" destination="-1" eventType="touchUpInside" id="fGy-gY-OB8"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedDot" translatesAutoresizingMaskIntoConstraints="NO" id="3fh-JE-Uej">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="4X2-4S-Amk"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.88113261010362698" green="0.88113261010362698" blue="0.88113261010362698" alpha="0.52129181338028174" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0wn-rP-UkJ"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Im-xq-Tgu"/>
+                <constraint firstItem="3fh-JE-Uej" firstAttribute="centerX" secondItem="Hby-9y-lgi" secondAttribute="centerX" id="RRH-l2-DCW"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="centerX" secondItem="3fh-JE-Uej" secondAttribute="centerX" id="ah8-cY-6yQ"/>
+                <constraint firstAttribute="bottom" secondItem="gic-H5-nd4" secondAttribute="bottom" id="cIg-Ks-Gs8"/>
+                <constraint firstItem="Hby-9y-lgi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="65" id="cog-gJ-4cn"/>
+                <constraint firstItem="3fh-JE-Uej" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="38" id="d6a-Ul-OoR"/>
+                <constraint firstItem="Hby-9y-lgi" firstAttribute="top" secondItem="3fh-JE-Uej" secondAttribute="bottom" constant="70" id="izX-0b-KNh"/>
+                <constraint firstAttribute="bottom" secondItem="Hby-9y-lgi" secondAttribute="bottom" constant="20" id="jtl-9N-o19"/>
+                <constraint firstItem="3fh-JE-Uej" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="77" id="kcz-Dx-DOY"/>
+                <constraint firstItem="gic-H5-nd4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-5" id="uHk-gn-ASL"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-39" y="-128.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AudioIcon" width="169" height="169"/>
+        <image name="RedDot" width="169" height="169"/>
+    </resources>
+</document>

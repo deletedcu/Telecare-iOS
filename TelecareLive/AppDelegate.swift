@@ -12,16 +12,52 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var restManager: RestManager?
+    
+    var sessionManager: SessionManager?
+        
+    var currentlyLoggedInPerson: Person?
+    
+    var errorManager: ErrorManager?
+    
+    var pinViewIsUp:Bool? = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        errorManager = ErrorManager()
+        restManager = RestManager()
+        sessionManager = SessionManager()
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+        
+        if (sessionManager?.sessionIsActive())! {
+            firstViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as UIViewController
+        }
+        
+        self.window?.rootViewController = firstViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        let topViewController = UIApplication.topViewController()
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
+        
+        if topViewController == self.window?.rootViewController || pinViewIsUp! {
+            return
+        }
+        
+        sessionManager?.lockSession = 1
+
+        pinViewController.delegate = topViewController
+        topViewController?.present(pinViewController, animated: false, completion: nil)
+        pinViewIsUp = true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -31,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -39,6 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func resetViewToLogin(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+        self.window?.rootViewController = firstViewController
+        self.window?.makeKeyAndVisible()
     }
 
 

@@ -9,12 +9,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Chatto.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ChattoAdditions.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-TelecareLive.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftOverlays.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,12 +47,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10265CA2B5A86B2A1D2FAFAC47569C8A</key>
+		<key>137187ECC6456340681706DDFC4848CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>235E47F0873FA4D98AD99DC2EBE6CD5A</key>
+		<key>333E47F1004946B94926B19979768D18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +62,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>625AA648B1B96AD5FE14F537FAE317F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A9DFD855E7D1E301886F2F6A1818958</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4C76AAB19389F527195C4CEF1FCC0A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B110B9018140EF79D33525989E49954F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

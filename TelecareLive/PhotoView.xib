@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoView" customModule="TelecareLive" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="tbh-Gp-VH3" id="cWp-rh-N6P"/>
+                <outlet property="chooseFromGalleryButton" destination="hVF-9t-TFO" id="SpX-3F-MtY"/>
+                <outlet property="photoView" destination="iN0-l3-epB" id="kQJ-bo-cxJ"/>
+                <outlet property="takePhotoButton" destination="6Vd-g9-1UH" id="K18-vw-s22"/>
+                <outlet property="visualEffect" destination="ATB-bJ-mAS" id="L38-JI-CDe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="276" height="203"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="52M-7N-IVw">
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nju-wx-ePJ">
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7VU-7Y-sg9">
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATB-bJ-mAS">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d0H-yl-dbP">
+                                                <frame key="frameInset"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-S8-cA9">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-g9-1UH">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="Xlp-DZ-3bF"/>
+                    </constraints>
+                    <state key="normal" title="Take Photo"/>
+                    <connections>
+                        <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="fL2-VB-1CH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVF-9t-TFO">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="P91-OE-EMc"/>
+                    </constraints>
+                    <state key="normal" title="Choose from Gallery"/>
+                    <connections>
+                        <action selector="openGallery:" destination="-1" eventType="touchUpInside" id="PYj-wL-kY3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-Gp-VH3">
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="8GU-Td-KEr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="52M-7N-IVw" secondAttribute="trailing" id="5xy-5S-KUq"/>
+                <constraint firstItem="6Vd-g9-1UH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="IWA-oo-Rrc"/>
+                <constraint firstItem="PuK-S8-cA9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="L67-Tc-jhA"/>
+                <constraint firstItem="52M-7N-IVw" firstAttribute="centerX" secondItem="6Vd-g9-1UH" secondAttribute="centerX" id="YdZ-3E-rhd"/>
+                <constraint firstItem="hVF-9t-TFO" firstAttribute="leading" secondItem="tbh-Gp-VH3" secondAttribute="leading" id="a8G-5u-gix"/>
+                <constraint firstAttribute="bottom" secondItem="tbh-Gp-VH3" secondAttribute="bottom" constant="12" id="dLK-FH-aD9"/>
+                <constraint firstItem="hVF-9t-TFO" firstAttribute="trailing" secondItem="tbh-Gp-VH3" secondAttribute="trailing" id="di9-jB-0pT"/>
+                <constraint firstItem="tbh-Gp-VH3" firstAttribute="top" secondItem="hVF-9t-TFO" secondAttribute="bottom" constant="8" symbolic="YES" id="eEd-F6-Wes"/>
+                <constraint firstItem="6Vd-g9-1UH" firstAttribute="trailing" secondItem="hVF-9t-TFO" secondAttribute="trailing" id="hZa-JA-N9X"/>
+                <constraint firstItem="52M-7N-IVw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ixf-lP-uhs"/>
+                <constraint firstItem="hVF-9t-TFO" firstAttribute="top" secondItem="6Vd-g9-1UH" secondAttribute="bottom" constant="8" symbolic="YES" id="jq2-Yn-75W"/>
+                <constraint firstAttribute="bottom" secondItem="52M-7N-IVw" secondAttribute="bottom" id="naZ-aO-xgA"/>
+                <constraint firstItem="6Vd-g9-1UH" firstAttribute="leading" secondItem="hVF-9t-TFO" secondAttribute="leading" id="pij-5W-VYf"/>
+                <constraint firstItem="6Vd-g9-1UH" firstAttribute="top" secondItem="PuK-S8-cA9" secondAttribute="bottom" constant="14" id="qip-Mb-pXF"/>
+                <constraint firstItem="52M-7N-IVw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qrd-BG-5Rt"/>
+                <constraint firstItem="PuK-S8-cA9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="sMU-kq-lVf"/>
+                <constraint firstItem="PuK-S8-cA9" firstAttribute="centerX" secondItem="6Vd-g9-1UH" secondAttribute="centerX" id="uBS-ue-a3u"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-49" y="-217.5"/>
+        </view>
+    </objects>
+</document>

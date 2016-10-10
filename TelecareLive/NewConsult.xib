@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewConsult" customModule="TelecareLive" customModuleProvider="target">
+            <connections>
+                <outlet property="chargeForConsultSwitch" destination="0Ue-u1-BP9" id="bW6-g7-iWv"/>
+                <outlet property="issueTextField" destination="gfJ-vV-EHN" id="py5-7O-JQf"/>
+                <outlet property="startConsultButton" destination="TIS-uK-wdj" id="7eP-06-d3w"/>
+                <outlet property="visualEffect" destination="dPz-8V-09Q" id="aM3-ik-nXg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="din-io-ET2">
+            <rect key="frame" x="0.0" y="0.0" width="255" height="269"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPz-8V-09Q">
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="csF-Si-Xhg">
+                        <frame key="frameInset"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the issue?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-s8-JOv">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qQg-Hm-7Cb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Issue..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfJ-vV-EHN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cRl-Rt-MVt"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-la-ybk">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Paid Consult">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ue-u1-BP9"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIS-uK-wdj">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="START CONSULT">
+                                    <color key="titleColor" red="0.0" green="0.4790845513343811" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startConsult:" destination="-1" eventType="touchUpInside" id="vUm-Xm-Zwy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gfJ-vV-EHN" firstAttribute="centerX" secondItem="TIS-uK-wdj" secondAttribute="centerX" id="9SJ-7h-abh"/>
+                            <constraint firstItem="9WM-la-ybk" firstAttribute="leading" secondItem="csF-Si-Xhg" secondAttribute="leading" constant="36" id="9h6-k3-NOa"/>
+                            <constraint firstItem="pdP-s8-JOv" firstAttribute="centerX" secondItem="gfJ-vV-EHN" secondAttribute="centerX" id="9w0-ob-wEH"/>
+                            <constraint firstItem="gfJ-vV-EHN" firstAttribute="leading" secondItem="csF-Si-Xhg" secondAttribute="leading" constant="25" id="DOJ-7E-yUe"/>
+                            <constraint firstItem="9WM-la-ybk" firstAttribute="top" secondItem="0Ue-u1-BP9" secondAttribute="top" id="GMx-cr-EyA"/>
+                            <constraint firstItem="TIS-uK-wdj" firstAttribute="top" secondItem="0Ue-u1-BP9" secondAttribute="bottom" constant="34" id="JTI-4a-O7q"/>
+                            <constraint firstItem="gfJ-vV-EHN" firstAttribute="top" secondItem="pdP-s8-JOv" secondAttribute="bottom" constant="25" id="NhD-OO-rFP"/>
+                            <constraint firstItem="TIS-uK-wdj" firstAttribute="leading" secondItem="csF-Si-Xhg" secondAttribute="leading" constant="64" id="QUZ-MD-2cj"/>
+                            <constraint firstItem="0Ue-u1-BP9" firstAttribute="leading" secondItem="9WM-la-ybk" secondAttribute="trailing" constant="34" id="RYq-zl-we4"/>
+                            <constraint firstItem="pdP-s8-JOv" firstAttribute="top" secondItem="csF-Si-Xhg" secondAttribute="top" constant="33" id="Sb1-pI-rbW"/>
+                            <constraint firstAttribute="bottom" secondItem="TIS-uK-wdj" secondAttribute="bottom" constant="38" id="c5q-Ux-Gdt"/>
+                            <constraint firstItem="pdP-s8-JOv" firstAttribute="centerX" secondItem="csF-Si-Xhg" secondAttribute="centerX" id="ejn-fq-oqz"/>
+                            <constraint firstItem="9WM-la-ybk" firstAttribute="top" secondItem="gfJ-vV-EHN" secondAttribute="bottom" constant="27" id="f3D-wP-hBC"/>
+                            <constraint firstItem="pdP-s8-JOv" firstAttribute="leading" secondItem="csF-Si-Xhg" secondAttribute="leading" constant="40" id="hHX-Jn-fvY"/>
+                            <constraint firstItem="9WM-la-ybk" firstAttribute="centerY" secondItem="0Ue-u1-BP9" secondAttribute="centerY" id="hpX-ee-sm9"/>
+                            <constraint firstItem="pdP-s8-JOv" firstAttribute="trailing" secondItem="0Ue-u1-BP9" secondAttribute="trailing" id="jZz-Rt-4FO"/>
+                        </constraints>
+                    </view>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" red="0.88113261009999999" green="0.88113261009999999" blue="0.88113261009999999" alpha="0.52129181339999997" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dPz-8V-09Q" firstAttribute="leading" secondItem="din-io-ET2" secondAttribute="leading" constant="-5" id="TPR-gq-8Qj"/>
+                <constraint firstItem="dPz-8V-09Q" firstAttribute="top" secondItem="din-io-ET2" secondAttribute="top" id="UUS-aj-7x3"/>
+                <constraint firstItem="dPz-8V-09Q" firstAttribute="centerX" secondItem="din-io-ET2" secondAttribute="centerX" id="gct-MP-8B0"/>
+                <constraint firstAttribute="bottom" secondItem="dPz-8V-09Q" secondAttribute="bottom" id="hBH-IA-CrG"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-133.5" y="-156.5"/>
+        </view>
+    </objects>
+</document>
