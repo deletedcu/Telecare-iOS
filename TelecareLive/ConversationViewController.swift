@@ -52,6 +52,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         self.tabBarController?.tabBar.isHidden = true
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
+        navTitle.title = currentConversation?.person?.fullName
         hideKeyboardWhenViewTapped()
 //        scrollToBottom()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

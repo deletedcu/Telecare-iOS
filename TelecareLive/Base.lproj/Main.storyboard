@@ -185,7 +185,7 @@
                                     <navigationItem title="Account" id="Jdp-li-GWL">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="jVg-69-qpL">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R89-fA-ZtS">
-                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <rect key="frame" x="901" y="963" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Log Out">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -680,10 +680,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="1sr-4d-EQ3" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="1sr-4d-EQ3" id="vDu-HQ-ls3">
-                                            <frame key="frameInset" width="375" height="85"/>
+                                            <frame key="frameInset" width="1000" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foA-kL-1z1" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -763,6 +763,7 @@
                     <connections>
                         <outlet property="chatBarView" destination="4du-8a-Zmz" id="KYW-ao-shg"/>
                         <outlet property="chatInputField" destination="RqB-P6-SJr" id="RSn-uh-n8F"/>
+                        <outlet property="navTitle" destination="pfp-Sd-SRA" id="fhN-u1-oC5"/>
                         <outlet property="sendButton" destination="SFj-b1-usC" id="SwZ-3l-Upk"/>
                         <outlet property="tableView" destination="gtm-HO-iGo" id="iMN-fD-g5Z"/>
                     </connections>
@@ -879,10 +880,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsultMessageCell" rowHeight="85" id="rom-sx-xWD" customClass="ConsultMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="ConversationCell" tableViewCell="rom-sx-xWD" id="r84-sG-PAg">
-                                            <frame key="frameInset" width="1000" height="85"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvw-W9-Ctd" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -931,10 +932,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaMessageCell" rowHeight="150" id="6Md-VR-yEI" customClass="MediaMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113" width="1000" height="150"/>
+                                        <rect key="frame" x="0.0" y="113" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6Md-VR-yEI" id="8Qq-nE-oda">
-                                            <frame key="frameInset" width="1000" height="150"/>
+                                            <frame key="frameInset" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWZ-xj-maC" customClass="MediaButton" customModule="TelecareLive" customModuleProvider="target">

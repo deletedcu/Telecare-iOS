@@ -91,6 +91,8 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         audioView.delegate = self
         picker.delegate = self
         
+        navTitle.title = currentConversation?.person?.fullName
+        
         if(currentConsult?.status == "1"){
             consultSwitch.isOn = true
         } else {

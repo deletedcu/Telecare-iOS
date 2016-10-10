@@ -24,7 +24,9 @@ class ConsultsViewController : RestViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         newConsultView.delegate = self
+        navigationController?.navigationBar.topItem?.title = ""
         tabBarController?.hidesBottomBarWhenPushed = true
+        navTitle.title = currentConversation?.person?.fullName
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     

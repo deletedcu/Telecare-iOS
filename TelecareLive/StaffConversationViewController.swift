@@ -65,12 +65,15 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
+        navigationController?.navigationBar.tintColor = UIColor.white;
         
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
         hideKeyboardWhenViewTapped()
         audioView.delegate = self
         picker.delegate = self
+        
+        navTitle.title = currentConversation?.person?.fullName
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
