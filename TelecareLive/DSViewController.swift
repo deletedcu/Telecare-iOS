@@ -1,16 +1,17 @@
 //
-//  StaffViewController.swift
+//  DSViewController.swift
 //  TelecareLive
 //
-//  Created by Scott Metcalf on 10/7/16.
+//  Created by Scott Metcalf on 10/10/16.
 //  Copyright © 2016 Syworks LLC. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import SwiftyJSON
+import AlamofireImage
 
-class StaffViewController : RestViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate {
+class DSViewController : RestViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,6 +19,7 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         tableView.delegate = self
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true
@@ -28,10 +30,17 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
-    // MARK: - UITableViewDelegate Methods
+    func populate(restData: JSON){
+        print(restData)
+    }
+    
+    func getConversationsFailed(){
+        let message = "Getting your conversations was unsuccessful. Check your internet connection and try again."
+        errorManager?.postErrorMessage(controller: self, message: message)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let conversations = appDelegate.currentlyLoggedInPerson?.staffConversations
+        let conversations = appDelegate.currentlyLoggedInPerson?.conversations
         
         if(conversations == nil){
             return 0
@@ -41,13 +50,14 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let conversation = appDelegate.currentlyLoggedInPerson?.staffConversations?[indexPath.row]
-        
+        let conversation = appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row]
+        print(appDelegate.currentlyLoggedInPerson?.conversations)
         let cell:ConversationCell = self.tableView.dequeueReusableCell(withIdentifier: "ConversationCell")! as! ConversationCell
         let person = conversation?.person
         let fullname = person?.fullName!
         
         cell.nameField.text = fullname
+        cell.birthdateField.text = "Birth Date : " + (person?.birthdate?.toReadable())!
         cell.profileImage.image = person?.userImage?.af_imageRoundedIntoCircle()
         
         return cell
@@ -57,19 +67,16 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
         
     }
     
-    // MARK: - Segue Methods
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(sender)
         print("ABOVE IS THE SENDER")
         switch segue.identifier! {
-        case "myConsult" :
-            let destination = segue.destination as? AVCRestViewController
+        case "dsMessage" :
+            let destination = segue.destination as? DSConversationViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
-            destination?.delegate = self
-            destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.staffConversations?[row]
+            destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[row]
             ConversationManager.currentRestController = destination // well... it will be by the time the request completes
-            ConversationManager.populateMessagesForStaffConversation(conversation: (destination?.currentConversation)!)
+            ConversationManager.populateMessagesForConversation(conversation: (destination?.currentConversation)!)
         default:break
         }
     }

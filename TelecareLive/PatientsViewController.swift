@@ -19,6 +19,7 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         
     override func viewDidLoad() {
 //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
+        super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true

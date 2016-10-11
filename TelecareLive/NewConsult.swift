@@ -19,19 +19,20 @@ class NewConsult : UIView {
     @IBOutlet weak var chargeForConsultSwitch: UISwitch!
     
     @IBAction func startConsult(_ sender: AnyObject) {
-        if(chargeForConsultSwitch.isOn){
-            delegate?.addChargedConsult(title: issueTextField.text!)
-            (UIApplication.shared.delegate as! AppDelegate).restManager?.launchNewConsult(charge: true, title: issueTextField.text!, conversation:(delegate?.currentConversation)!, callback: (delegate?.finishAddingNewConsult)!)
-        } else {
-            delegate?.addFreeConsult(title: issueTextField.text!)
-                        (UIApplication.shared.delegate as! AppDelegate).restManager?.launchNewConsult(charge: false, title: issueTextField.text!, conversation:(delegate?.currentConversation)!, callback: (delegate?.finishAddingNewConsult)!)
+        if((UIApplication.shared.delegate as! AppDelegate).currentlyLoggedInPerson?.isDoctor)!{
+            if(chargeForConsultSwitch.isOn){
+                delegate?.addChargedConsult(title: issueTextField.text!)
+                (UIApplication.shared.delegate as! AppDelegate).restManager?.launchNewConsult(charge: true, title: issueTextField.text!, conversation:(delegate?.currentConversation)!, callback: (delegate?.finishAddingNewConsult)!)
+            } else {
+                delegate?.addFreeConsult(title: issueTextField.text!)
+                (UIApplication.shared.delegate as! AppDelegate).restManager?.launchNewConsult(charge: false, title: issueTextField.text!, conversation:(delegate?.currentConversation)!, callback: (delegate?.finishAddingNewConsult)!)
+            }
+            delegate?.removeCloseNewConsultViewWhenTapped()
+            
         }
-        delegate?.removeCloseNewConsultViewWhenTapped()
         delegate?.refreshData()
         self.hideView()
     }
-    
-    
     
     var newConsult: UIView!
     

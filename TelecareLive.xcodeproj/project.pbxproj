@@ -22,6 +22,11 @@
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
 		FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0EEF191D9F67BC00F25356 /* PhotoView.xib */; };
 		FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EEF221D9F711500F25356 /* PhotoView.swift */; };
+		FF108EDC1DAC4F2800C34DC5 /* DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EDB1DAC4F2800C34DC5 /* DSViewController.swift */; };
+		FF108EDE1DAC4F3900C34DC5 /* DSConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EDD1DAC4F3900C34DC5 /* DSConversationViewController.swift */; };
+		FF108EE01DAC4F5E00C34DC5 /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EDF1DAC4F5E00C34DC5 /* MCViewController.swift */; };
+		FF108EE21DAC4F6B00C34DC5 /* MCChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EE11DAC4F6B00C34DC5 /* MCChatViewController.swift */; };
+		FF108EE41DAC560C00C34DC5 /* RestConsultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */; };
 		FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */; };
 		FF12D8BA1DA1C2AD00D3B23C /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */; };
 		FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */; };
@@ -76,6 +81,11 @@
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF0EEF191D9F67BC00F25356 /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
 		FF0EEF221D9F711500F25356 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		FF108EDB1DAC4F2800C34DC5 /* DSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSViewController.swift; sourceTree = "<group>"; };
+		FF108EDD1DAC4F3900C34DC5 /* DSConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSConversationViewController.swift; sourceTree = "<group>"; };
+		FF108EDF1DAC4F5E00C34DC5 /* MCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
+		FF108EE11DAC4F6B00C34DC5 /* MCChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCChatViewController.swift; sourceTree = "<group>"; };
+		FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestConsultViewController.swift; sourceTree = "<group>"; };
 		FF12D8B71DA0BCD800D3B23C /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		FF12D8B91DA1C2AD00D3B23C /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		FF12D8BB1DA22F3500D3B23C /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
@@ -176,7 +186,9 @@
 				FF0EEF201D9F6B7300F25356 /* Main */,
 				FF0EEF1F1D9F6B6700F25356 /* Login */,
 				FF0EEF1E1D9F6B4D00F25356 /* Account */,
+				FF108ED91DAC4E4C00C34DC5 /* My Consults */,
 				FF89697F1DA8BFDA0029F8FA /* Staff */,
+				FF108EDA1DAC4E6200C34DC5 /* Doctors / Staff */,
 				FF9A3D891DA079E600D43119 /* Patients */,
 				FF3D1A351DA2F3DC003B8009 /* Consults */,
 				FF0EEF211D9F6BA500F25356 /* REST and Session management */,
@@ -226,6 +238,7 @@
 				FF0078461DA318BF003D1610 /* MediaMessageCell.swift */,
 				FF00784A1DA36F5C003D1610 /* MediaButton.swift */,
 				FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */,
+				FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -237,6 +250,24 @@
 				FF19E34B1D9B426E00375804 /* RestManager.swift */,
 			);
 			name = "REST and Session management";
+			sourceTree = "<group>";
+		};
+		FF108ED91DAC4E4C00C34DC5 /* My Consults */ = {
+			isa = PBXGroup;
+			children = (
+				FF108EDF1DAC4F5E00C34DC5 /* MCViewController.swift */,
+				FF108EE11DAC4F6B00C34DC5 /* MCChatViewController.swift */,
+			);
+			name = "My Consults";
+			sourceTree = "<group>";
+		};
+		FF108EDA1DAC4E6200C34DC5 /* Doctors / Staff */ = {
+			isa = PBXGroup;
+			children = (
+				FF108EDB1DAC4F2800C34DC5 /* DSViewController.swift */,
+				FF108EDD1DAC4F3900C34DC5 /* DSConversationViewController.swift */,
+			);
+			name = "Doctors / Staff";
 			sourceTree = "<group>";
 		};
 		FF3D1A351DA2F3DC003B8009 /* Consults */ = {
@@ -425,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF108EE41DAC560C00C34DC5 /* RestConsultViewController.swift in Sources */,
 				FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */,
 				FF0078491DA348D8003D1610 /* ConsultMessageCell.swift in Sources */,
 				FF00784B1DA36F5C003D1610 /* MediaButton.swift in Sources */,
@@ -440,6 +472,7 @@
 				FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */,
 				FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */,
 				FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */,
+				FF108EDC1DAC4F2800C34DC5 /* DSViewController.swift in Sources */,
 				FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */,
 				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
 				FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */,
@@ -448,14 +481,17 @@
 				FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */,
 				FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */,
 				FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */,
+				FF108EE01DAC4F5E00C34DC5 /* MCViewController.swift in Sources */,
 				FF9B4A791DA085CA0022A8B4 /* ConversationCell.swift in Sources */,
 				FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */,
 				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
+				FF108EE21DAC4F6B00C34DC5 /* MCChatViewController.swift in Sources */,
 				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
 				FF0078511DA46967003D1610 /* AudioView.swift in Sources */,
 				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,
 				FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */,
 				FF00893F1D935BB600127B66 /* ViewController.swift in Sources */,
+				FF108EDE1DAC4F3900C34DC5 /* DSConversationViewController.swift in Sources */,
 				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
 				FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,

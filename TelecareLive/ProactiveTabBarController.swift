@@ -19,6 +19,25 @@ class ProactiveTabBarController : UITabBarController {
         }
     }
     
+    override func viewDidLoad() {
+        (UIApplication.shared.delegate as! AppDelegate).tabBarController = self
+    }
+    
+    func trimTabBarController() {
+            let doctorIndex = 0
+            let patientIndex = 2
+            if (viewControllers?.count)! > 3 {
+                var tempViewControllers = viewControllers
+                if ((UIApplication.shared.delegate as! AppDelegate).currentlyLoggedInPerson?.isDoctor)! {
+                    tempViewControllers?.remove(at: patientIndex)
+                    tempViewControllers?.remove(at: patientIndex)
+                } else {
+                    tempViewControllers?.remove(at: doctorIndex)
+                    tempViewControllers?.remove(at: doctorIndex)
+                }
+                viewControllers = tempViewControllers
+            }
+    }
     
 }
 

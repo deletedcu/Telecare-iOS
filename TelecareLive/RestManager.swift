@@ -299,7 +299,7 @@ class RestManager {
         }
     }
     
-    func sendMessage(caller: ConversationViewController, message: Message, callback: @escaping (Message, JSON)->()){
+    func sendMessage(caller: RestViewController, message: Message, callback: @escaping (Message, JSON)->()){
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),
             "Accept": "application/json"
@@ -323,7 +323,7 @@ class RestManager {
                         print("In the Error")
                         print(json)
                         self.errorManager?.currentErrorMessage = json["message"].string!
-                        caller.sendMessageFailed(message: message)
+//                        caller.sendMessageFailed(message: message)
                     }
                 case .failure(let error):
                     print(error)
@@ -355,6 +355,36 @@ class RestManager {
                     print(json)
                     self.errorManager?.currentErrorMessage = json["message"].string!
 //                    caller.getConsultsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func getAllConsults(person: Person, callback: @escaping (Person, JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        let currentUserId = person.userId
+        
+        print(baseUrl + endpoints["getConsults"]! + currentUserId!)
+        
+        Alamofire.request(baseUrl + endpoints["getConsults"]! + currentUserId!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(person, json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConsultsFailed() // Abstract this later
                 }
             case .failure(let error):
                 print(error)

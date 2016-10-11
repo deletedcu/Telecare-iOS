@@ -51,8 +51,20 @@ class PersonManager : ModelManager{
         currentRestController?.refreshData()
     }
     
-    static func getConsults(person:Person) -> [Consult]{
-        return []
+    static func getConsults(person:Person){
+        restManager?.getAllConsults(person: person, callback: finishGettingConsults)
+    }
+    
+    static func finishGettingConsults(person:Person, restData:JSON){
+        var consults: [Consult] = []
+        
+        for(_,jsonSub) in restData["data"] {
+            consults.append(ConsultManager.getConsultUsing(json: jsonSub))
+        }
+        
+        person.consults = consults
+        
+        currentRestController?.refreshData()
     }
     
     static func getPersonUsing(json: JSON) -> Person{
@@ -88,7 +100,14 @@ class PersonManager : ModelManager{
         PersonManager.getConversations(person: person)
         PersonManager.getStaffConversations(person: person)
         
-        person.consults = PersonManager.getConsults(person: person)
+        let currentLoggedInPerson = appDelegate.currentlyLoggedInPerson
+        
+        if( currentLoggedInPerson == nil || (currentLoggedInPerson?.isDoctor)!
+&& appDelegate.currentlyLoggedInPerson?.email == person.email){
+            PersonManager.getConsults(person: person)
+        }
+        
+        person.consults = [Consult]()
         
         return person
     }

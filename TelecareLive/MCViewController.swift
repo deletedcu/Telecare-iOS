@@ -1,8 +1,8 @@
 //
-//  ConsultsViewController.swift
+//  MCViewController.swift
 //  TelecareLive
 //
-//  Created by Scott Metcalf on 10/3/16.
+//  Created by Scott Metcalf on 10/10/16.
 //  Copyright © 2016 Syworks LLC. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import AlamofireImage
 
-class ConsultsViewController : RestConsultViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UIGestureRecognizerDelegate {
+class MCViewController : RestViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,8 +24,7 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        newConsultView.delegate = self
-        navigationController?.navigationBar.topItem?.title = ""
+//        navigationController?.navigationBar.topItem?.title = ""
         tabBarController?.hidesBottomBarWhenPushed = true
         navTitle.title = currentConversation?.person?.fullName
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
@@ -51,7 +50,7 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     func populate(restData: JSON){
-//        print(restData)
+        //        print(restData)
     }
     
     lazy var newConsultView: NewConsult = {
@@ -77,15 +76,15 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         print(restData)
         // Add a if(!super.backfromrest()){return/display error} validation
         
-//        let consult = Consult()
-//        consult.entityId = restData["data"]["eid"].string!
-//        consult.organizationId = restData["data"]["organization_id"].string!
-//        consult.recipientId = restData["data"]["uid"].string!
-//        consult.status = restData["data"]["status"].string!
-//        consult.lastActivity = restData["data"]["last_activity"].string!
-//        consult.issue = restData["data"]["issue"].string!
+        //        let consult = Consult()
+        //        consult.entityId = restData["data"]["eid"].string!
+        //        consult.organizationId = restData["data"]["organization_id"].string!
+        //        consult.recipientId = restData["data"]["uid"].string!
+        //        consult.status = restData["data"]["status"].string!
+        //        consult.lastActivity = restData["data"]["last_activity"].string!
+        //        consult.issue = restData["data"]["issue"].string!
         
-            self.refreshData()
+        self.refreshData()
     }
     
     func getConsultsFailed(){
@@ -94,7 +93,7 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let consults = currentConversation?.consults
+        let consults = appDelegate.currentlyLoggedInPerson?.consults
         
         if(consults == nil){
             return 0
@@ -104,9 +103,9 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let consult = currentConversation?.consults?[indexPath.row]
+        let consult = appDelegate.currentlyLoggedInPerson?.consults?[indexPath.row]
         
-        let cell:ConsultCell = self.tableView.dequeueReusableCell(withIdentifier: "ConsultCell")! as! ConsultCell
+        let cell:ConsultCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultCell")! as! ConsultCell
         
         cell.issue.text = consult?.issue
         cell.birthdateField.text = "Birth Date : " + (consult?.birthdate?.toReadable())!
@@ -127,11 +126,11 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-        case "patientConsultChat" :
-            let destination = segue.destination as? ConsultChatViewController
+        case "myConsult" :
+            let destination = segue.destination as? MCChatViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
             (destination! as AVCRestViewController).currentConversation = self.currentConversation
-            destination?.currentConsult = destination?.currentConversation?.consults?[row]
+            destination?.currentConsult = appDelegate.currentlyLoggedInPerson?.consults?[row]
             destination?.delegate = self
             ConsultManager.currentRestController = destination // well... it will be by the time the request completes
             ConsultManager.populateMessagesForConsult(consult: (destination?.currentConsult)!)
@@ -139,6 +138,7 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         }
     }
     
-
+    
     
 }
+

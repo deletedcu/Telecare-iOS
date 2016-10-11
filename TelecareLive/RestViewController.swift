@@ -24,6 +24,8 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
         restManager = (UIApplication.shared.delegate as! AppDelegate).restManager!
         sessionManager = (UIApplication.shared.delegate as! AppDelegate).sessionManager!
         errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager!
+        PersonManager.currentRestController = self
+        navigationController?.navigationBar.tintColor = UIColor.white;
     }
     
     override func viewDidAppear(_ animated: Bool) {

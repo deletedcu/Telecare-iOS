@@ -1,8 +1,8 @@
 //
-//  ConsultChatViewController.swift
+//  MCChatViewController.swift
 //  TelecareLive
 //
-//  Created by Scott Metcalf on 10/3/16.
+//  Created by Scott Metcalf on 10/10/16.
 //  Copyright © 2016 Syworks LLC. All rights reserved.
 //
 
@@ -11,12 +11,12 @@ import UIKit
 import SwiftyJSON
 import AVFoundation
 
-class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
+class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var navTitle: UINavigationItem!
-            
+    
     @IBOutlet weak var chatInputField: UITextField!
     
     @IBOutlet weak var chatBarView: UIView!
@@ -25,32 +25,19 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     
     @IBOutlet weak var attachmentButton: UIButton!
     
-    @IBOutlet weak var consultSwitch: UISwitch!
-    
     var lastPlayedUrl: String? = ""
     
-    @IBAction func toggleConsultSwitch(_ sender: AnyObject) {
-        if consultSwitch.isOn {
-            consultSwitch.isOn = true
-        } else {
-            consultSwitch.isOn = false
-        }
-        restManager?.toggleConsultSwitch(consult:currentConsult!, callback: finishToggleConsult)
-    }
-    
     func finishToggleConsult(restData: JSON){
-        if consultSwitch.isOn {
-            currentConsult?.status = "1"
+        if currentConsult?.status == "1" {
             chatInputField.isEnabled = true
         } else {
-            currentConsult?.status = "0"
             chatInputField.isEnabled = false
         }
         self.refreshData()
     }
-        
+    
     @IBAction func playAudio(_ sender: MediaButton) {
-        if(!(sender.message?.hasAudio)! || (consultSwitch.isOn == false)){
+        if(!(sender.message?.hasAudio)! || currentConsult?.status == "0"){
             return
         }
         
@@ -90,12 +77,6 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         hideKeyboardWhenViewTapped()
         audioView.delegate = self
         picker.delegate = self
-                
-        if(currentConsult?.status == "1"){
-            consultSwitch.isOn = true
-        } else {
-            consultSwitch.isOn = false
-        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -110,7 +91,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     @IBAction func showAttachmentActions(_ sender: AnyObject) {
-        if (consultSwitch.isOn == false) {
+        if (currentConsult?.status == "0") {
             return
         }
         
@@ -149,7 +130,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if((chatInputField.text! == "" && hasAttachment == false) || (consultSwitch.isOn == false)){
+        if((chatInputField.text! == "" && hasAttachment == false) || currentConsult?.status == "0"){
             return
         }
         
@@ -181,7 +162,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     
     func scrollToBottom(){
         if((currentConsult?.messages?.count)! > 0){
-                    tableView.scrollToRow(at: IndexPath.init(row: (currentConsult?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            tableView.scrollToRow(at: IndexPath.init(row: (currentConsult?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
@@ -218,7 +199,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         
         print(message)
         if(message?.hasMedia)!{
-            let cell:MediaMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MediaMessageCell")! as! MediaMessageCell
+            let cell:MediaMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultMediaMessageCell")! as! MediaMessageCell
             
             cell.media.message = Message()
             
@@ -229,7 +210,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.media.setBackgroundImage(message?.imageMedia, for: UIControlState.normal)
             }
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
-
+            
             cell.messageText.text = message?.message
             
             if(message?.isCurrentUsers)!{
@@ -246,7 +227,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.messageText.layer.backgroundColor = UIColor.init(red: 0, green: 0.75, blue: 0.25, alpha: 0.35).cgColor
             }
             
-            if(consultSwitch.isOn == false){
+            if(currentConsult?.status == "0"){
                 cell.backgroundColor = UIColor.lightGray
             } else {
                 cell.backgroundColor = UIColor.white
@@ -255,7 +236,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
             return cell
         } else {
             
-            let cell:ConsultMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "ConsultMessageCell")! as! ConsultMessageCell
+            let cell:ConsultMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultMessageCell")! as! ConsultMessageCell
             cell.message.text = message?.message
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
             
@@ -273,7 +254,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.message.layer.backgroundColor = UIColor.init(red: 0, green: 0.75, blue: 0.25, alpha: 0.35).cgColor
             }
             
-            if(consultSwitch.isOn == false){
+            if(currentConsult?.status == "0"){
                 cell.backgroundColor = UIColor.lightGray
             } else {
                 cell.backgroundColor = UIColor.white
@@ -323,7 +304,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 animated: true,
                 completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         attachmentImage = chosenImage
