@@ -24,20 +24,20 @@
                                     <navigationItem title="Login" id="dzp-Cz-7ea"/>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="scott@syworks.io" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ta-Jo-mL4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="info@nybergtechnology.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ta-Jo-mL4">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test123" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ie4-k8-Ogp">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="w33dman1" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ie4-k8-Ogp">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvf-L2-fVT">
-                                <state key="normal" title="Register"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-RW-uTi">
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WL1-6a-b0Z"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1g-dG-6WS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj1-K0-hCj">
@@ -46,30 +46,22 @@
                                     <action selector="forgotPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uno-CJ-YkD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-RW-uTi">
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1g-dG-6WS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Uvf-L2-fVT" firstAttribute="top" secondItem="JdQ-RW-uTi" secondAttribute="bottom" constant="41" id="5jY-zX-3ag"/>
-                            <constraint firstItem="IJP-s1-PdD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6hc-Yb-Rya"/>
-                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="top" secondItem="5Ta-Jo-mL4" secondAttribute="bottom" constant="14" id="709-Wg-wz2"/>
-                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="top" secondItem="IJP-s1-PdD" secondAttribute="bottom" constant="14" id="7hw-6J-QGy"/>
-                            <constraint firstItem="IJP-s1-PdD" firstAttribute="centerX" secondItem="5Ta-Jo-mL4" secondAttribute="centerX" id="Ixe-iq-J9y"/>
-                            <constraint firstItem="IJP-s1-PdD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="KQ2-Vk-4pE"/>
-                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="ie4-k8-Ogp" secondAttribute="leading" id="Kd5-5u-1z8"/>
-                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="trailing" secondItem="ie4-k8-Ogp" secondAttribute="trailing" id="NxR-8j-KLh"/>
-                            <constraint firstItem="Yj1-K0-hCj" firstAttribute="top" secondItem="Uvf-L2-fVT" secondAttribute="bottom" constant="34" id="SFd-I3-eE1"/>
-                            <constraint firstItem="Uvf-L2-fVT" firstAttribute="centerX" secondItem="Yj1-K0-hCj" secondAttribute="centerX" id="Up2-hD-6zU"/>
-                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="centerX" secondItem="JdQ-RW-uTi" secondAttribute="centerX" id="aoq-3F-x7e"/>
-                            <constraint firstAttribute="trailing" secondItem="IJP-s1-PdD" secondAttribute="trailing" id="ii0-cy-9ro"/>
-                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q6X-Gt-meU"/>
-                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="centerX" secondItem="Uvf-L2-fVT" secondAttribute="centerX" id="ugI-jo-U0D"/>
-                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="top" secondItem="ie4-k8-Ogp" secondAttribute="bottom" constant="45" id="ydZ-1G-3Zt"/>
+                            <constraint firstItem="Yj1-K0-hCj" firstAttribute="top" secondItem="JdQ-RW-uTi" secondAttribute="bottom" constant="39" id="0UX-rV-dYp"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="trailing" secondItem="ie4-k8-Ogp" secondAttribute="trailing" id="3H0-yo-Qff"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="ie4-k8-Ogp" secondAttribute="leading" id="4Im-Ww-1Yd"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BUj-li-Bc3"/>
+                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="centerX" secondItem="Yj1-K0-hCj" secondAttribute="centerX" id="Eis-0J-x52"/>
+                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="top" secondItem="5Ta-Jo-mL4" secondAttribute="bottom" constant="14" id="bkY-39-bzz"/>
+                            <constraint firstItem="JdQ-RW-uTi" firstAttribute="top" secondItem="ie4-k8-Ogp" secondAttribute="bottom" constant="45" id="ffN-hL-dGa"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="centerX" secondItem="5Ta-Jo-mL4" secondAttribute="centerX" id="fsq-LD-xSo"/>
+                            <constraint firstAttribute="trailing" secondItem="IJP-s1-PdD" secondAttribute="trailing" id="hRA-KV-TQ0"/>
+                            <constraint firstItem="IJP-s1-PdD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="igN-jf-sui"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="top" secondItem="IJP-s1-PdD" secondAttribute="bottom" constant="14" id="nNZ-cE-PyG"/>
+                            <constraint firstItem="5Ta-Jo-mL4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ryz-4C-3hE"/>
+                            <constraint firstItem="ie4-k8-Ogp" firstAttribute="centerX" secondItem="JdQ-RW-uTi" secondAttribute="centerX" id="w8G-yD-cg9"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -99,10 +91,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="y5w-bk-W0J" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="y5w-bk-W0J" id="3OP-Fo-RlC">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="1000" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mv-Sj-wUV">
@@ -1314,10 +1306,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyConsultCell" rowHeight="75" id="2ws-5v-FY8" customClass="ConsultCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="2ws-5v-FY8" id="cIB-pC-AXA">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="1000" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsQ-zh-0i4">
@@ -1782,10 +1774,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="YR1-O7-x2J" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="YR1-O7-x2J" id="xQS-ke-I7f">
-                                            <frame key="frameInset" width="1000" height="85"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WC-y3-Pv3" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">

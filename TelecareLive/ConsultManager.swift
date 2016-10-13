@@ -92,7 +92,7 @@ class ConsultManager : ModelManager{
         message.isUnread = (json["unread"].string! == "0")
         message.isConsultMessage = (json["consult_id"].string! != "0")
         message.eid = json["eid"].string!
-        message.name = json["name"].string!
+        message.name = (json["name"].string != nil) ? json["name"].string! : ""
         message.conversationId = json["conversation_id"].string!
         message.fileId = json["fid"].string!
         

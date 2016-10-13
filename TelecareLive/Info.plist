@@ -27,6 +27,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This App is trying to access your camera so you can upload a profile image</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app is trying to access your microphone so that you can record and send audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This App is trying to access your photo library so you can upload a profile image</string>
 	<key>UILaunchStoryboardName</key>
@@ -43,7 +45,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app is trying to access your microphone so that you can record and send audio</string>
 </dict>
 </plist>

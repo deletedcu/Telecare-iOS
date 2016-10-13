@@ -442,6 +442,7 @@ class RestManager {
             "Accept": "application/json"
         ]
         
+        
         let parameters = [
             "message_text": message.message!,
             "status": 1,

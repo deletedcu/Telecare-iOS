@@ -359,7 +359,7 @@
 				TargetAttributes = {
 					FF0089381D935BB600127B66 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8DA4VRM89P;
+						DevelopmentTeam = RNYYTH6NRL;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -622,14 +622,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TelecareLive/TelecareLive.entitlements;
-				DEVELOPMENT_TEAM = 8DA4VRM89P;
+				DEVELOPMENT_TEAM = RNYYTH6NRL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
 				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.syworks.TelecareLive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tcive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -642,14 +642,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TelecareLive/TelecareLive.entitlements;
-				DEVELOPMENT_TEAM = 8DA4VRM89P;
+				DEVELOPMENT_TEAM = RNYYTH6NRL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
 				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.syworks.TelecareLive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tcive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

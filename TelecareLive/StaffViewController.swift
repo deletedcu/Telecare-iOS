@@ -63,7 +63,7 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
         print(sender)
         print("ABOVE IS THE SENDER")
         switch segue.identifier! {
-        case "myConsult" :
+        case "staffMessage" :
             let destination = segue.destination as? AVCRestViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
             destination?.delegate = self
