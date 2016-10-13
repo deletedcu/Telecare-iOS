@@ -177,7 +177,7 @@
                                     <navigationItem title="Account" id="Jdp-li-GWL">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="jVg-69-qpL">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R89-fA-ZtS">
-                                                <rect key="frame" x="901" y="963" width="83" height="30"/>
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Log Out">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -330,6 +330,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" selectedImage="Default" systemItem="featured" id="96A-xZ-AeO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="birthday" destination="E9F-YU-FTo" id="W5c-9c-JgT"/>
@@ -1610,10 +1611,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jks-Qu-SAx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" badgeValue="2" systemItem="bookmarks" id="cJc-aJ-aBw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="32D-fO-AfV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="32D-fO-AfV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.14124885201454163" green="0.54509323835372925" blue="0.98934739828109741" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1858,10 +1862,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8va-TK-gZJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="Rsd-o2-NU4"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZJE-a6-Fx0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZJE-a6-Fx0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.14124885201454163" green="0.54509323835372925" blue="0.98934739828109741" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

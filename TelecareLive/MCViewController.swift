@@ -26,7 +26,6 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
 //        navigationController?.navigationBar.topItem?.title = ""
         tabBarController?.hidesBottomBarWhenPushed = true
-        navTitle.title = currentConversation?.person?.fullName
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     
