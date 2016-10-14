@@ -28,26 +28,30 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
     
     var lastPlayedUrl: String? = ""
     
-    @IBAction func playAudio(_ sender: MediaButton) {
-        if(!(sender.message?.hasAudio)!){
+    @IBAction func playMedia(_ sender: MediaButton) {
+        if !(sender.message?.hasMedia)! {
             return
         }
         
-        if audioPlayer == nil || lastPlayedUrl != sender.message?.mediaUrl! {
-            let sender = sender
-            
-            print((sender.message?.mediaUrl!)!)
-            let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
-            audioPlayer = AVPlayer(url: mediaUrl!)
-            audioPlayer.play()
-            lastPlayedUrl = (sender.message?.mediaUrl!)!
+        if(!(sender.message?.hasAudio)!){
             
         } else {
-            if (audioPlayer.rate != 0.0) {
-                audioPlayer.pause()
-            } else {
-                audioPlayer.seek(to: CMTimeMake(0, 1))
+            if audioPlayer == nil || lastPlayedUrl != sender.message?.mediaUrl! {
+                let sender = sender
+                
+                print((sender.message?.mediaUrl!)!)
+                let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
+                audioPlayer = AVPlayer(url: mediaUrl!)
                 audioPlayer.play()
+                lastPlayedUrl = (sender.message?.mediaUrl!)!
+                
+            } else {
+                if (audioPlayer.rate != 0.0) {
+                    audioPlayer.pause()
+                } else {
+                    audioPlayer.seek(to: CMTimeMake(0, 1))
+                    audioPlayer.play()
+                }
             }
         }
     }
@@ -203,6 +207,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
                 
                 let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
                 cell.media.setBackgroundImage(image, for: UIControlState.normal)
+                cell.media.message?.mediaUrl = message?.mediaUrl
             }
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
             
@@ -307,6 +312,27 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         
         if (self.isMovingFromParentViewController){
             delegate?.refreshData()
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let localSender = sender as! MediaButton
+        
+        if (localSender.message?.hasAudio)!{
+            return false
+        }
+        
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "showImage" :
+            let localSender = sender as! MediaButton
+            let destination = segue.destination as? ImageViewController
+            (destination! as ImageViewController).currentMessage = localSender.message
+            destination?.delegate = self
+        default:break
         }
     }
 }

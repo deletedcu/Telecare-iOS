@@ -108,11 +108,11 @@ class ConsultManager : ModelManager{
             
             switch json["filemime"].string! {
             case "image/png":
-                imageView.setImageFromURl(stringImageUrl: message.mediaUrl!)
+                imageView.image = UIImage(named: "Default")
             case "image/jpg":
-                imageView.setImageFromURl(stringImageUrl: message.mediaUrl!)
+                imageView.image = UIImage(named: "Default")
             case "image/jpeg":
-                imageView.setImageFromURl(stringImageUrl: message.mediaUrl!)
+                imageView.image = UIImage(named: "Default")
             case "audio/ogg":
                 imageView.image = UIImage(named: "AudioIcon")
                 message.hasAudio = true

@@ -41,6 +41,8 @@
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
+		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
+		FF43B22C1DB060DE00A64D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */; };
 		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
 		FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */; };
 		FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969861DA987030029F8FA /* AVCRestViewController.swift */; };
@@ -102,6 +104,8 @@
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
+		FF43B2281DB041D800A64D22 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF8969821DA8CFB10029F8FA /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffConversationViewController.swift; sourceTree = "<group>"; };
 		FF8969861DA987030029F8FA /* AVCRestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCRestViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
 				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
 				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
+				FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */,
 				FF0089481D935BB600127B66 /* Info.plist */,
 				FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */,
 				FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */,
@@ -239,6 +244,7 @@
 				FF00784A1DA36F5C003D1610 /* MediaButton.swift */,
 				FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */,
 				FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */,
+				FF43B2281DB041D800A64D22 /* ImageViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */,
 				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
 				FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */,
+				FF43B22C1DB060DE00A64D22 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +473,7 @@
 				FF9A3D9A1DA083B800D43119 /* ConsultManager.swift in Sources */,
 				FF9A3D981DA0838600D43119 /* ConversationManager.swift in Sources */,
 				FF9B4A7B1DA085FD0022A8B4 /* ConsultCell.swift in Sources */,
+				FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */,
 				FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */,
 				FF9A3D911DA0825700D43119 /* PersonManager.swift in Sources */,
 				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,

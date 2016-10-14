@@ -344,4 +344,26 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
             delegate?.refreshData()
         }
     }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let localSender = sender as! MediaButton
+        
+        if (localSender.message?.hasAudio)!{
+            return false
+        }
+        
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "showImage" :
+            let localSender = sender as! MediaButton
+            let destination = segue.destination as? ImageViewController
+            (destination! as ImageViewController).currentMessage = localSender.message
+            destination?.delegate = self
+        default:break
+        }
+    }
+
 }
