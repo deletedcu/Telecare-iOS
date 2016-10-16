@@ -24,9 +24,12 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
-        
         let currentViewController = UIApplication.topViewController()
         print("CURRENT CONTROLLER " + String(describing: type(of: currentViewController)))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navTitle.title = "Patients"
     }
     
     override func refreshData(){

@@ -26,6 +26,14 @@ class ImageViewController : RestViewController {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        imageView.alpha = 1
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        imageView.alpha = 0
+    }
 
     @IBAction func scaleImage(_ sender: UIPinchGestureRecognizer) {
         self.view.transform = self.view.transform.scaledBy(x: sender.scale, y: sender.scale)

@@ -24,6 +24,10 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navTitle.title = "Staff"
+    }
+    
     override func refreshData(){
         tableView.reloadData()
     }

@@ -91,10 +91,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="y5w-bk-W0J" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="y5w-bk-W0J" id="3OP-Fo-RlC">
-                                            <frame key="frameInset" width="1000" height="75"/>
+                                            <frame key="frameInset" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mv-Sj-wUV">
@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="3564" y="898"/>
         </scene>
-        <!--Account View Controller-->
+        <!--Account-->
         <scene sceneID="9Sf-oy-7n9">
             <objects>
                 <viewController storyboardIdentifier="Account" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2kQ-RA-GOr" customClass="AccountViewController" customModule="TelecareLive" customModuleProvider="target" sceneMemberID="viewController">
@@ -329,7 +329,9 @@
                             <constraint firstItem="C6r-sD-cGy" firstAttribute="leading" secondItem="ooh-5g-69T" secondAttribute="leading" id="m8i-s8-HPT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" selectedImage="Default" systemItem="featured" id="96A-xZ-AeO"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="account" selectedImage="account" id="96A-xZ-AeO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -363,10 +365,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="zbc-Pt-NxP" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="zbc-Pt-NxP" id="6NW-UN-Y9n">
-                                            <frame key="frameInset" width="1000" height="75"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dS2-ap-exY">
@@ -444,10 +446,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConsultCell" rowHeight="75" id="joY-0G-zmR" customClass="ConsultCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="joY-0G-zmR" id="XVJ-kZ-Qna">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGZ-7x-sHl">
@@ -500,7 +502,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Patient Name" id="j9M-N7-rzw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hi3-OI-wyZ">
+                        <barButtonItem key="rightBarButtonItem" image="launchinverted" id="Hi3-OI-wyZ">
                             <connections>
                                 <action selector="addNewConsult:" destination="PVC-VP-MIb" id="TYr-Br-CvL"/>
                             </connections>
@@ -523,9 +525,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="1" green="0.97678553239999999" blue="0.95294841519999995" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.0" green="0.47875380516052246" blue="0.99726015329360962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.14124885201454163" green="0.54509323835372925" blue="0.98934739828109741" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="1" green="0.97678553239999999" blue="0.95294841519999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.14130261540412903" green="0.54537105560302734" blue="0.9932747483253479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="KzG-00-lCn" kind="relationship" relationship="viewControllers" id="Fa4-O1-e1t"/>
@@ -678,10 +680,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="1sr-4d-EQ3" customClass="MessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="1sr-4d-EQ3" id="vDu-HQ-ls3">
-                                            <frame key="frameInset" width="375" height="85"/>
+                                            <frame key="frameInset" width="1000" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foA-kL-1z1" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -745,10 +747,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Patient Messages" id="pfp-Sd-SRA">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="NC5-MC-uFh">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfd-sk-Y5f">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nfd-sk-Y5f">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Launch"/>
+                                <state key="normal" image="myconsultsinverted"/>
                                 <connections>
                                     <segue destination="PVC-VP-MIb" kind="show" identifier="viewPatientConsults" id="mrI-Z2-6Yf"/>
                                 </connections>
@@ -770,11 +772,11 @@
             </objects>
             <point key="canvasLocation" x="4558" y="139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Patients-->
         <scene sceneID="3Yj-zO-7gX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KzG-00-lCn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" badgeValue="1" systemItem="topRated" id="scc-5N-oGp"/>
+                    <tabBarItem key="tabBarItem" title="Patients" image="patients" selectedImage="patients" id="scc-5N-oGp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="Default" id="Pq0-Qb-1WI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -878,10 +880,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsultMessageCell" rowHeight="85" id="rom-sx-xWD" customClass="ConsultMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="ConversationCell" tableViewCell="rom-sx-xWD" id="r84-sG-PAg">
-                                            <frame key="frameInset" width="1000" height="85"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvw-W9-Ctd" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -930,10 +932,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaMessageCell" rowHeight="150" id="6Md-VR-yEI" customClass="MediaMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113" width="1000" height="150"/>
+                                        <rect key="frame" x="0.0" y="113" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6Md-VR-yEI" id="8Qq-nE-oda">
-                                            <frame key="frameInset" width="1000" height="150"/>
+                                            <frame key="frameInset" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWZ-xj-maC" customClass="MediaButton" customModule="TelecareLive" customModuleProvider="target">
@@ -1038,11 +1040,11 @@
             </objects>
             <point key="canvasLocation" x="6508" y="139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Staff-->
         <scene sceneID="qPG-H4-HpI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rcd-BV-yhW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="G2Z-Za-xEz"/>
+                    <tabBarItem key="tabBarItem" title="Staff" image="staff" selectedImage="staff" id="G2Z-Za-xEz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3JR-m0-FHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1357,10 +1359,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyConsultCell" rowHeight="75" id="2ws-5v-FY8" customClass="ConsultCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="2ws-5v-FY8" id="cIB-pC-AXA">
-                                            <frame key="frameInset" width="375" height="75"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsQ-zh-0i4">
@@ -1510,10 +1512,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyConsultMessageCell" rowHeight="85" id="CWd-ra-0mI" customClass="ConsultMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="ConversationCell" tableViewCell="CWd-ra-0mI" id="Une-ek-NAn">
-                                            <frame key="frameInset" width="1000" height="85"/>
+                                            <frame key="frameInset" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpH-fY-kAH" customClass="MessageLabel" customModule="TelecareLive" customModuleProvider="target">
@@ -1562,10 +1564,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyConsultMediaMessageCell" rowHeight="150" id="xad-ve-5aA" customClass="MediaMessageCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113" width="1000" height="150"/>
+                                        <rect key="frame" x="0.0" y="113" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="xad-ve-5aA" id="RNu-KD-1rc">
-                                            <frame key="frameInset" width="1000" height="150"/>
+                                            <frame key="frameInset" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDx-lB-M0R" customClass="MediaButton" customModule="TelecareLive" customModuleProvider="target">
@@ -1656,11 +1658,11 @@
             </objects>
             <point key="canvasLocation" x="4558" y="-648"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Consults-->
         <scene sceneID="nKb-HN-Efe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jks-Qu-SAx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" badgeValue="2" systemItem="bookmarks" id="cJc-aJ-aBw"/>
+                    <tabBarItem key="tabBarItem" title="My Consults" image="consults" selectedImage="consults" id="cJc-aJ-aBw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="32D-fO-AfV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1695,10 +1697,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="75" id="PHS-8U-th6" customClass="ConversationCell" customModule="TelecareLive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="1000" height="75"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ConversationCell" tableViewCell="PHS-8U-th6" id="VK6-z3-w3h">
-                                            <frame key="frameInset" width="1000" height="75"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-4L-N0e">
@@ -1907,11 +1909,11 @@
             </objects>
             <point key="canvasLocation" x="4558" y="-1441"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Doctors-->
         <scene sceneID="Bsa-8X-fig">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8va-TK-gZJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Rsd-o2-NU4"/>
+                    <tabBarItem key="tabBarItem" title="Doctors" image="staff" selectedImage="staff" id="Rsd-o2-NU4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZJE-a6-Fx0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1933,8 +1935,14 @@
     </scenes>
     <resources>
         <image name="Default" width="162" height="161"/>
+        <image name="account" width="30" height="30"/>
+        <image name="consults" width="30" height="30"/>
+        <image name="launchinverted" width="30" height="30"/>
+        <image name="myconsultsinverted" width="30" height="30"/>
+        <image name="patients" width="30" height="30"/>
+        <image name="staff" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="57D-eA-3PI"/>
+        <segue reference="9Oc-b6-dbN"/>
     </inferredMetricsTieBreakers>
 </document>

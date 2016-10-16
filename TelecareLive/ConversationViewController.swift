@@ -60,6 +60,10 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         firstLoad = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navTitle.title = currentConversation?.person?.fullName
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (currentConversation?.messages?.count)!
     }

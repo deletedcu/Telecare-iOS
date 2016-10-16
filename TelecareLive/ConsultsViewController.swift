@@ -31,6 +31,10 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navTitle.title = currentConversation?.person?.fullName
+    }
+    
     func closeNewConsultViewWhenTapped(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissNewConsultView))
         view.addGestureRecognizer(tap)
