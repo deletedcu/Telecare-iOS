@@ -226,7 +226,13 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
-                cell.media.setBackgroundImage(message?.imageMedia, for: UIControlState.normal)
+                var buttonFrame = cell.media.frame
+                buttonFrame.size = CGSize(width: 200, height: 200)
+                cell.media.frame = buttonFrame
+                
+                let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
+                cell.media.setBackgroundImage(image, for: UIControlState.normal)
+                cell.media.message?.mediaUrl = message?.mediaUrl
             }
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
 

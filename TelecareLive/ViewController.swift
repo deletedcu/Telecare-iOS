@@ -48,6 +48,7 @@ class ViewController: RestViewController {
         let firstController = tabBarViewController.childViewControllers[0] as? UINavigationController
         PersonManager.currentRestController = firstController?.topViewController as? RestViewController
         appDelegate.currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
+        restManager?.updateFBToken()
         (tabBarViewController as! ProactiveTabBarController).trimTabBarController()
     }
 

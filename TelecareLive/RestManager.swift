@@ -96,7 +96,8 @@ class RestManager {
                     
                     if(json["status"] == 200){
                         self.sessionManager?.clearSession()
-                       (UIApplication.shared.delegate as! AppDelegate).resetViewToLogin()
+                        (UIApplication.shared.delegate as! AppDelegate).currentlyLoggedInPerson = nil
+                        (UIApplication.shared.delegate as! AppDelegate).resetViewToLogin()
                     } else {
                         print("In the Error")
                         print(json)
@@ -156,7 +157,7 @@ class RestManager {
         let image = caller.profileImage.backgroundImage(for: UIControlState.normal)
         
         let parameters = [
-            "registration_id":(sessionManager?.gcmId)!,
+            "registration_id":(UIApplication.shared.delegate as! AppDelegate).FBToken!,
             "user_image":"data:image/png;base64," + (image?.toBase64())!,
             "user_full_name":caller.fullName.text!,
             "user_phone":caller.phone.text!,
@@ -190,6 +191,41 @@ class RestManager {
                 print(error)
             }
             
+        }
+    }
+    
+    func updateFBToken(){
+        // Refactor data handling to controller later
+        
+        let parameters = [
+            "registration_id":(UIApplication.shared.delegate as! AppDelegate).FBToken!,
+        ] as Dictionary<String,Any>
+        
+        print(parameters["encoded"])
+        
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["saveAccountData"]!, method: .post, parameters: parameters, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+//                        callback(json)
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+//                        caller.updateAccountFailed()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                
         }
     }
     

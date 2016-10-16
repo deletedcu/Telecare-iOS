@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1025055417461-2rj73i00krv7pncgvcj42jd6oqaj9k1f.apps.googleusercontent.com</string>
+	<string>1025055417461-kd6raf3qd7vjcd8hnk6lniqkmp6rb03q.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1025055417461-2rj73i00krv7pncgvcj42jd6oqaj9k1f</string>
+	<string>com.googleusercontent.apps.1025055417461-kd6raf3qd7vjcd8hnk6lniqkmp6rb03q</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDoehFJw9GjeqhO1TzKg1yJY7MA8JcOVqg</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.telecarelive.tcive</string>
+	<string>com.telecarelive.tclive</string>
 	<key>PROJECT_ID</key>
 	<string>telecare-live</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1025055417461:ios:4bf6232a4128b12f</string>
+	<string>1:1025055417461:ios:69a2c8b3b9f54eb8</string>
 	<key>DATABASE_URL</key>
 	<string>https://telecare-live.firebaseio.com</string>
 </dict>

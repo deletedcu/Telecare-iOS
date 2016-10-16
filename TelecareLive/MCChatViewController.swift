@@ -61,6 +61,12 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     }
     
     override func refreshData(){
+        if currentConsult?.status == "1" {
+            chatInputField.isEnabled = true
+        } else {
+            chatInputField.isEnabled = false
+        }
+        
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
         scrollToBottom()
@@ -77,6 +83,12 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         hideKeyboardWhenViewTapped()
         audioView.delegate = self
         picker.delegate = self
+        
+        if currentConsult?.status == "1" {
+            chatInputField.isEnabled = true
+        } else {
+            chatInputField.isEnabled = false
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -207,7 +219,13 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
-                cell.media.setBackgroundImage(message?.imageMedia, for: UIControlState.normal)
+                var buttonFrame = cell.media.frame
+                buttonFrame.size = CGSize(width: 200, height: 200)
+                cell.media.frame = buttonFrame
+                
+                let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
+                cell.media.setBackgroundImage(image, for: UIControlState.normal)
+                cell.media.message?.mediaUrl = message?.mediaUrl
             }
             cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
             
@@ -323,6 +341,27 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         
         if (self.isMovingFromParentViewController){
             delegate?.refreshData()
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let localSender = sender as! MediaButton
+        
+        if (localSender.message?.hasAudio)!{
+            return false
+        }
+        
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "showImage" :
+            let localSender = sender as! MediaButton
+            let destination = segue.destination as? ImageViewController
+            (destination! as ImageViewController).currentMessage = localSender.message
+            destination?.delegate = self
+        default:break
         }
     }
 }

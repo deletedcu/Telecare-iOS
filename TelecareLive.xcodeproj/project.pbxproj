@@ -20,6 +20,8 @@
 		FF0089421D935BB600127B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089401D935BB600127B66 /* Main.storyboard */; };
 		FF0089441D935BB600127B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0089431D935BB600127B66 /* Assets.xcassets */; };
 		FF0089471D935BB600127B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0089451D935BB600127B66 /* LaunchScreen.storyboard */; };
+		FF0766E41DB19095001B4104 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF0766E31DB19095001B4104 /* GoogleService-Info.plist */; };
+		FF0766E61DB423A1001B4104 /* MessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0766E51DB423A1001B4104 /* MessageRouter.swift */; };
 		FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0EEF191D9F67BC00F25356 /* PhotoView.xib */; };
 		FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0EEF221D9F711500F25356 /* PhotoView.swift */; };
 		FF108EDC1DAC4F2800C34DC5 /* DSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF108EDB1DAC4F2800C34DC5 /* DSViewController.swift */; };
@@ -42,7 +44,10 @@
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
-		FF43B22C1DB060DE00A64D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */; };
+		FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */; };
+		FF43B2491DB1807F00A64D22 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */; };
+		FF43B24A1DB1808A00A64D22 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */; };
+		FF43B24B1DB180AD00A64D22 /* GoogleIPhoneUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */; };
 		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
 		FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */; };
 		FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969861DA987030029F8FA /* AVCRestViewController.swift */; };
@@ -81,6 +86,8 @@
 		FF0089431D935BB600127B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF0089461D935BB600127B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF0089481D935BB600127B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF0766E31DB19095001B4104 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF0766E51DB423A1001B4104 /* MessageRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageRouter.swift; sourceTree = "<group>"; };
 		FF0EEF191D9F67BC00F25356 /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
 		FF0EEF221D9F711500F25356 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		FF108EDB1DAC4F2800C34DC5 /* DSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +112,23 @@
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
 		FF43B2281DB041D800A64D22 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF43B2311DB1804D00A64D22 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		FF43B2341DB1804D00A64D22 /* GCMConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMConfig.h; sourceTree = "<group>"; };
+		FF43B2351DB1804D00A64D22 /* GCMPubSub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMPubSub.h; sourceTree = "<group>"; };
+		FF43B2361DB1804D00A64D22 /* GCMReceiverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMReceiverDelegate.h; sourceTree = "<group>"; };
+		FF43B2371DB1804D00A64D22 /* GCMService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMService.h; sourceTree = "<group>"; };
+		FF43B2381DB1804D00A64D22 /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleCloudMessaging.h; sourceTree = "<group>"; };
+		FF43B23A1DB1804D00A64D22 /* libGcmLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGcmLib.a; sourceTree = "<group>"; };
+		FF43B23B1DB1804D00A64D22 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
+		FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
+		FF43B24D1DB180BA00A64D22 /* GCMConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMConfig.h; sourceTree = "<group>"; };
+		FF43B24E1DB180BA00A64D22 /* GCMPubSub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMPubSub.h; sourceTree = "<group>"; };
+		FF43B24F1DB180BA00A64D22 /* GCMReceiverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMReceiverDelegate.h; sourceTree = "<group>"; };
+		FF43B2501DB180BA00A64D22 /* GCMService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMService.h; sourceTree = "<group>"; };
+		FF43B2511DB180BA00A64D22 /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleCloudMessaging.h; sourceTree = "<group>"; };
 		FF8969821DA8CFB10029F8FA /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffConversationViewController.swift; sourceTree = "<group>"; };
 		FF8969861DA987030029F8FA /* AVCRestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCRestViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +155,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF43B24B1DB180AD00A64D22 /* GoogleIPhoneUtilities.framework in Frameworks */,
+				FF43B24A1DB1808A00A64D22 /* GoogleInterchangeUtilities.framework in Frameworks */,
+				FF43B2491DB1807F00A64D22 /* GoogleSymbolUtilities.framework in Frameworks */,
+				FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */,
 				FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */,
 				FF19E3431D95F66100375804 /* SwiftyJSON.framework in Frameworks */,
 				FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */,
@@ -146,6 +173,12 @@
 		5AE5EA9F4986E6C68DC8F894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF43B24C1DB180BA00A64D22 /* Public */,
+				FF43B2301DB1804D00A64D22 /* GoogleCloudMessaging */,
+				FF43B23C1DB1804D00A64D22 /* GoogleInterchangeUtilities */,
+				FF43B23F1DB1804D00A64D22 /* GoogleIPhoneUtilities */,
+				FF43B2421DB1804D00A64D22 /* GoogleSymbolUtilities */,
+				FF43B2451DB1804D00A64D22 /* GoogleUtilities */,
 				FFB7A5711DA49B3700EFCE35 /* lame.framework */,
 				FF19E3441D95FED300375804 /* SwiftyBase64.framework */,
 				FF19E3401D95F66100375804 /* Alamofire.framework */,
@@ -233,7 +266,7 @@
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
 				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
 				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
-				FF43B22B1DB060DE00A64D22 /* GoogleService-Info.plist */,
+				FF0766E31DB19095001B4104 /* GoogleService-Info.plist */,
 				FF0089481D935BB600127B66 /* Info.plist */,
 				FF9B4A781DA085CA0022A8B4 /* ConversationCell.swift */,
 				FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */,
@@ -245,6 +278,7 @@
 				FF0078481DA348D8003D1610 /* ConsultMessageCell.swift */,
 				FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */,
 				FF43B2281DB041D800A64D22 /* ImageViewController.swift */,
+				FF0766E51DB423A1001B4104 /* MessageRouter.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -288,6 +322,127 @@
 				FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */,
 			);
 			name = Consults;
+			sourceTree = "<group>";
+		};
+		FF43B2301DB1804D00A64D22 /* GoogleCloudMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2311DB1804D00A64D22 /* CHANGELOG.md */,
+				FF43B2321DB1804D00A64D22 /* Headers */,
+				FF43B2391DB1804D00A64D22 /* Libraries */,
+				FF43B23B1DB1804D00A64D22 /* README.md */,
+			);
+			name = GoogleCloudMessaging;
+			path = Pods/GoogleCloudMessaging;
+			sourceTree = "<group>";
+		};
+		FF43B2321DB1804D00A64D22 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2331DB1804D00A64D22 /* Public */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		FF43B2331DB1804D00A64D22 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2341DB1804D00A64D22 /* GCMConfig.h */,
+				FF43B2351DB1804D00A64D22 /* GCMPubSub.h */,
+				FF43B2361DB1804D00A64D22 /* GCMReceiverDelegate.h */,
+				FF43B2371DB1804D00A64D22 /* GCMService.h */,
+				FF43B2381DB1804D00A64D22 /* GoogleCloudMessaging.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		FF43B2391DB1804D00A64D22 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B23A1DB1804D00A64D22 /* libGcmLib.a */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		FF43B23C1DB1804D00A64D22 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B23D1DB1804D00A64D22 /* Frameworks */,
+			);
+			name = GoogleInterchangeUtilities;
+			path = Pods/GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		FF43B23D1DB1804D00A64D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF43B23F1DB1804D00A64D22 /* GoogleIPhoneUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2401DB1804D00A64D22 /* Frameworks */,
+			);
+			name = GoogleIPhoneUtilities;
+			path = Pods/GoogleIPhoneUtilities;
+			sourceTree = "<group>";
+		};
+		FF43B2401DB1804D00A64D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF43B2421DB1804D00A64D22 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2431DB1804D00A64D22 /* Frameworks */,
+			);
+			name = GoogleSymbolUtilities;
+			path = Pods/GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		FF43B2431DB1804D00A64D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF43B2451DB1804D00A64D22 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2461DB1804D00A64D22 /* Frameworks */,
+			);
+			name = GoogleUtilities;
+			path = Pods/GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		FF43B2461DB1804D00A64D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF43B24C1DB180BA00A64D22 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				FF43B24D1DB180BA00A64D22 /* GCMConfig.h */,
+				FF43B24E1DB180BA00A64D22 /* GCMPubSub.h */,
+				FF43B24F1DB180BA00A64D22 /* GCMReceiverDelegate.h */,
+				FF43B2501DB180BA00A64D22 /* GCMService.h */,
+				FF43B2511DB180BA00A64D22 /* GoogleCloudMessaging.h */,
+			);
+			name = Public;
+			path = Pods/GoogleCloudMessaging/Headers/Public;
 			sourceTree = "<group>";
 		};
 		FF89697F1DA8BFDA0029F8FA /* Staff */ = {
@@ -371,6 +526,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -404,7 +562,7 @@
 				FF00784F1DA4649F003D1610 /* AudioView.xib in Resources */,
 				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
 				FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */,
-				FF43B22C1DB060DE00A64D22 /* GoogleService-Info.plist in Resources */,
+				FF0766E41DB19095001B4104 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +653,7 @@
 				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
 				FF108EE21DAC4F6B00C34DC5 /* MCChatViewController.swift in Sources */,
 				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
+				FF0766E61DB423A1001B4104 /* MessageRouter.swift in Sources */,
 				FF0078511DA46967003D1610 /* AudioView.swift in Sources */,
 				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,
 				FF0078471DA318BF003D1610 /* MediaMessageCell.swift in Sources */,
@@ -634,10 +793,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
+					"$(PROJECT_DIR)/Pods/GoogleUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleSymbolUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleInterchangeUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleIPhoneUtilities/Frameworks",
 				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tcive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -654,10 +817,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/mp3lame-for-ios",
+					"$(PROJECT_DIR)/Pods/GoogleUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleSymbolUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleInterchangeUtilities/Frameworks",
+					"$(PROJECT_DIR)/Pods/GoogleIPhoneUtilities/Frameworks",
 				);
 				INFOPLIST_FILE = TelecareLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tcive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.telecarelive.tclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

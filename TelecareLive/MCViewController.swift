@@ -20,70 +20,15 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
     var currentConversation:Conversation? = Conversation()
     
     override func viewDidLoad() {
-        //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        navigationController?.navigationBar.topItem?.title = ""
         tabBarController?.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
     }
     
-    func closeNewConsultViewWhenTapped(){
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissNewConsultView))
-        view.addGestureRecognizer(tap)
-    }
-    
-    func removeCloseNewConsultViewWhenTapped(){
-        view.gestureRecognizers = []
-    }
-    
-    func dismissNewConsultView(){
-        if(newConsultView.isDescendant(of: self.view)){
-            newConsultView.hideView()
-        }
-    }
-    
     override func refreshData(){
         tableView.reloadData()
-    }
-    
-    func populate(restData: JSON){
-        //        print(restData)
-    }
-    
-    lazy var newConsultView: NewConsult = {
-        let newConsultView = NewConsult()
-        return newConsultView
-    }()
-    
-    
-    @IBAction func addNewConsult(_ sender: AnyObject) {
-        closeNewConsultViewWhenTapped()
-        self.newConsultView.displayView(onView: self.view)
-    }
-    
-    func addChargedConsult(title:String){
-        restManager?.launchNewConsult(charge: true, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
-    }
-    
-    func addFreeConsult(title:String){
-        restManager?.launchNewConsult(charge: false, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
-    }
-    
-    func finishAddingNewConsult(restData: JSON){
-        print(restData)
-        // Add a if(!super.backfromrest()){return/display error} validation
-        
-        //        let consult = Consult()
-        //        consult.entityId = restData["data"]["eid"].string!
-        //        consult.organizationId = restData["data"]["organization_id"].string!
-        //        consult.recipientId = restData["data"]["uid"].string!
-        //        consult.status = restData["data"]["status"].string!
-        //        consult.lastActivity = restData["data"]["last_activity"].string!
-        //        consult.issue = restData["data"]["issue"].string!
-        
-        self.refreshData()
     }
     
     func getConsultsFailed(){
