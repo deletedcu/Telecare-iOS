@@ -82,6 +82,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         currentConversation?.messages?.append(message)
 //        refreshData()
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.dismissKeyboard()
     }
     
     func scrollToBottom(){

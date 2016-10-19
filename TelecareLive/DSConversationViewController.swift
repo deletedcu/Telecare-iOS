@@ -78,6 +78,8 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
         currentConversation?.messages?.append(message)
         //        refreshData()
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.dismissKeyboard()
+        self.showWaitOverlayWithText("Sending your message...")
     }
     
     func scrollToBottom(){
@@ -90,6 +92,7 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
     func finishSendingMessage(message: Message, restData: JSON){
         ConversationManager.populateMessagesForConversation(conversation: (self.currentConversation)!)
         chatInputField.text = ""
+        self.removeAllOverlays()
     }
     
     func sendMessageFailed(message:Message){

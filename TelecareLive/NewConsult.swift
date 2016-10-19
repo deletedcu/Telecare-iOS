@@ -19,6 +19,12 @@ class NewConsult : UIView {
     @IBOutlet weak var chargeForConsultSwitch: UISwitch!
     
     @IBAction func startConsult(_ sender: AnyObject) {
+        if(issueTextField.text?.trimmingCharacters(in: .whitespaces) == ""){
+            (UIApplication.shared.delegate as! AppDelegate).errorManager?.currentErrorMessage = "Cannot start a consult if the issue field is blank"
+            (UIApplication.shared.delegate as! AppDelegate).errorManager?.postErrorMessage(controller: delegate!)
+            return;
+        }
+        
         if((UIApplication.shared.delegate as! AppDelegate).currentlyLoggedInPerson?.isDoctor)!{
             if(chargeForConsultSwitch.isOn){
                 delegate?.addChargedConsult(title: issueTextField.text!)

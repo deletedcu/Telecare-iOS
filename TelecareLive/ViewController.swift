@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import SwiftOverlays
 
 class ViewController: RestViewController {
     
@@ -28,7 +29,12 @@ class ViewController: RestViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func login(_ sender: AnyObject) {
+        self.showWaitOverlayWithText("Logging In...")
         restManager?.logIn(username: email.text!, password: password.text!, caller: self, callback:loginSuccessful)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeAllOverlays()
     }
     
     @IBAction func register(_ sender: AnyObject) {
@@ -53,6 +59,7 @@ class ViewController: RestViewController {
     }
 
     func loginFailed(){
+        self.removeAllOverlays()
         let message = "The service could not be reached. Please check you internet connection."
         errorManager?.postErrorMessage(controller: self, message: message)
     }

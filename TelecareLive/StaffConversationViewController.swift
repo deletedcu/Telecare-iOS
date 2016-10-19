@@ -11,6 +11,7 @@ import UIKit
 import SwiftyJSON
 import AVFoundation
 import AlamofireImage
+import SwiftOverlays
 
 class StaffConversationViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -152,6 +153,8 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         
         currentConversation?.messages?.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.dismissKeyboard()
+        self.showWaitOverlayWithText("Sending your message...")
     }
     
     func scrollToBottom(){
@@ -164,6 +167,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
     func finishSendingMessage(message: Message, restData: JSON){
         ConversationManager.populateMessagesForStaffConversation(conversation: (self.currentConversation)!)
         chatInputField.text = ""
+        self.removeAllOverlays()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -313,6 +317,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         if (self.isMovingFromParentViewController){
             delegate?.refreshData()
         }
+        self.removeAllOverlays()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -328,6 +333,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "showImage" :
+            self.showWaitOverlay()
             let localSender = sender as! MediaButton
             let destination = segue.destination as? ImageViewController
             (destination! as ImageViewController).currentMessage = localSender.message

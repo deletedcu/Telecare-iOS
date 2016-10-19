@@ -17,7 +17,7 @@ class RestManager {
     
     var errorManager:ErrorManager?
     
-    var baseUrl = "http://dev-telecarelive.pantheonsite.io/api/v1/"
+    var baseUrl = "http://live-telecarelive.pantheonsite.io/api/v1/"
     
     var endpoints = [
         "login"                 : "auth",
@@ -516,7 +516,7 @@ class RestManager {
         
         var status = 1
         
-        if consult.status == "0" {
+        if consult.status == "1" {
             status = 0
         }
         

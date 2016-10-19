@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import AVFoundation
+import SwiftOverlays
 
 class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -170,6 +171,8 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         
         currentConsult?.messages?.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.dismissKeyboard()
+        self.showWaitOverlayWithText("Sending your message...")
     }
     
     func scrollToBottom(){
@@ -182,6 +185,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     func finishSendingMessage(message: Message, restData: JSON){
         ConsultManager.populateMessagesForConsult(consult: (self.currentConsult)!)
         chatInputField.text = ""
+        self.removeAllOverlays()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -342,6 +346,8 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         if (self.isMovingFromParentViewController){
             delegate?.refreshData()
         }
+        
+        self.removeAllOverlays()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -357,6 +363,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "showImage" :
+            self.showWaitOverlay()
             let localSender = sender as! MediaButton
             let destination = segue.destination as? ImageViewController
             (destination! as ImageViewController).currentMessage = localSender.message
