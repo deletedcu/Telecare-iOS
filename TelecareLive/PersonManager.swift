@@ -77,9 +77,7 @@ class PersonManager : ModelManager{
         var userImage: UIImage?
         switch json["data"]["user_image"].type {
             case .string:
-                let image = UIImageView()
-                image.setImageFromURl(stringImageUrl: json["data"]["user_image"].string!)
-                userImage = image.image!
+                userImage = DynamicCacheManager.getImage(url: json["data"]["user_image"].string!)
                 person.userImageUrl = json["data"]["user_image"].string!
             case .array:
                 person.userImageUrl = ""

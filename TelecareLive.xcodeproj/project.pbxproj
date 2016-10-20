@@ -48,6 +48,7 @@
 		FF43B2491DB1807F00A64D22 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */; };
 		FF43B24A1DB1808A00A64D22 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */; };
 		FF43B24B1DB180AD00A64D22 /* GoogleIPhoneUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */; };
+		FF659CB61DB96A1E00337723 /* DynamicCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF659CB51DB96A1E00337723 /* DynamicCacheManager.swift */; };
 		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
 		FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */; };
 		FF8969871DA987030029F8FA /* AVCRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969861DA987030029F8FA /* AVCRestViewController.swift */; };
@@ -129,6 +130,7 @@
 		FF43B24F1DB180BA00A64D22 /* GCMReceiverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMReceiverDelegate.h; sourceTree = "<group>"; };
 		FF43B2501DB180BA00A64D22 /* GCMService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMService.h; sourceTree = "<group>"; };
 		FF43B2511DB180BA00A64D22 /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleCloudMessaging.h; sourceTree = "<group>"; };
+		FF659CB51DB96A1E00337723 /* DynamicCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheManager.swift; sourceTree = "<group>"; };
 		FF8969821DA8CFB10029F8FA /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		FF8969841DA982D30029F8FA /* StaffConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffConversationViewController.swift; sourceTree = "<group>"; };
 		FF8969861DA987030029F8FA /* AVCRestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCRestViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				FF108EE31DAC560C00C34DC5 /* RestConsultViewController.swift */,
 				FF43B2281DB041D800A64D22 /* ImageViewController.swift */,
 				FF0766E51DB423A1001B4104 /* MessageRouter.swift */,
+				FF659CB51DB96A1E00337723 /* DynamicCacheManager.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				FF108EDE1DAC4F3900C34DC5 /* DSConversationViewController.swift in Sources */,
 				FF9A3D951DA0833400D43119 /* Message.swift in Sources */,
 				FF00784D1DA46474003D1610 /* AudioSelectViewController.swift in Sources */,
+				FF659CB61DB96A1E00337723 /* DynamicCacheManager.swift in Sources */,
 				FF00893D1D935BB600127B66 /* AppDelegate.swift in Sources */,
 				FF19E3481D9B420C00375804 /* SessionManager.swift in Sources */,
 				FF9B4A7D1DA086310022A8B4 /* MessageCell.swift in Sources */,

@@ -65,9 +65,7 @@ class ConversationManager : ModelManager{
         var userImage: UIImage?
         switch json["user_image"].type {
         case .string:
-            let image = UIImageView()
-            image.setImageFromURl(stringImageUrl: json["user_image"].string!)
-            userImage = image.image!
+            userImage = DynamicCacheManager.getImage(url: json["user_image"].string!)
             person.userImageUrl = json["user_image"].string!
         case .array:
             person.userImageUrl = ""

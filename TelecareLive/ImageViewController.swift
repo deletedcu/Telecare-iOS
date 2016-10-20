@@ -21,8 +21,7 @@ class ImageViewController : RestViewController {
         super.viewDidLoad()
         
         if currentMessage?.mediaUrl != nil && currentMessage?.mediaUrl != "" {
-            imageView.setImageFromURl(stringImageUrl: (currentMessage?.mediaUrl!)!)
-    
+            imageView.image = DynamicCacheManager.getImage(url: (currentMessage?.mediaUrl!)!)
         }
         
     }

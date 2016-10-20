@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import AlamofireImage
+import SwiftOverlays
 
 class ConsultsViewController : RestConsultViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UIGestureRecognizerDelegate {
     
@@ -70,26 +71,34 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     func addChargedConsult(title:String){
+        self.showWaitOverlayWithText("Creating new paid consult...")
         restManager?.launchNewConsult(charge: true, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
     }
     
     func addFreeConsult(title:String){
+        self.showWaitOverlayWithText("Creating new free consult...")
         restManager?.launchNewConsult(charge: false, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
     }
     
     func finishAddingNewConsult(restData: JSON){
         print(restData)
-        // Add a if(!super.backfromrest()){return/display error} validation
+        ConsultManager.populateConsultsForConversation(conversation: currentConversation!, withCallback:finishGettingAllConsults)
+    }
+    
+    // SOOOO hacky... please fix... later
+    func finishGettingAllConsults(conversation: Conversation, restData: JSON){
+        var consults:[Consult] = []
         
-//        let consult = Consult()
-//        consult.entityId = restData["data"]["eid"].string!
-//        consult.organizationId = restData["data"]["organization_id"].string!
-//        consult.recipientId = restData["data"]["uid"].string!
-//        consult.status = restData["data"]["status"].string!
-//        consult.lastActivity = restData["data"]["last_activity"].string!
-//        consult.issue = restData["data"]["issue"].string!
+        for(_,subJson) in restData["data"]{
+            consults.append(ConsultManager.getConsultUsing(json: subJson))
+        }
         
-            self.refreshData()
+        conversation.consults = consults
+        
+        tableView.reloadData()
+        let selectedIndexPath = IndexPath.init(row: 0, section: 0)
+        tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.top)
+        performSegue(withIdentifier: "patientConsultChat", sender: nil)
     }
     
     func getConsultsFailed(){
@@ -130,6 +139,7 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.removeAllOverlays()
         switch segue.identifier! {
         case "patientConsultChat" :
             let destination = segue.destination as? ConsultChatViewController

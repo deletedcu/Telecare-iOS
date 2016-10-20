@@ -379,23 +379,25 @@ class RestManager {
         
         print(baseUrl + endpoints["getConsults"]! + currentUserId!)
         
-        Alamofire.request(baseUrl + endpoints["getConsults"]! + currentUserId! + endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                if(json["status"] == 200){
-                    callback(conversation, json)
-                } else {
-                    print("In the Error")
-                    print(json)
-                    self.errorManager?.currentErrorMessage = json["message"].string!
-//                    caller.getConsultsFailed() // Abstract this later
+        DispatchQueue.global(qos: .background).async {
+            Alamofire.request(self.baseUrl + self.endpoints["getConsults"]! + currentUserId! + self.endpoints["messagesP2"]!, headers: headers).validate().responseJSON{ response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+                        callback(conversation, json)
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+    //                    caller.getConsultsFailed() // Abstract this later
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
+                
             }
-            
         }
     }
     
@@ -409,23 +411,25 @@ class RestManager {
         
         print(baseUrl + endpoints["getConsults"]! + currentUserId!)
         
-        Alamofire.request(baseUrl + endpoints["getConsults"]! + currentUserId!, headers: headers).validate().responseJSON{ response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                if(json["status"] == 200){
-                    callback(person, json)
-                } else {
-                    print("In the Error")
-                    print(json)
-                    self.errorManager?.currentErrorMessage = json["message"].string!
-                    //                    caller.getConsultsFailed() // Abstract this later
+        DispatchQueue.global(qos: .background).async {
+            Alamofire.request(self.baseUrl + self.endpoints["getConsults"]! + currentUserId!, headers: headers).validate().responseJSON{ response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if(json["status"] == 200){
+                        callback(person, json)
+                    } else {
+                        print("In the Error")
+                        print(json)
+                        self.errorManager?.currentErrorMessage = json["message"].string!
+                        //                    caller.getConsultsFailed() // Abstract this later
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
+                
             }
-            
         }
     }
     

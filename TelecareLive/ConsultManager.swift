@@ -11,11 +11,16 @@ import SwiftyJSON
 import UIKit
 
 class ConsultManager : ModelManager{
+    
+
     static func getMessagesForConsult(consult: Consult) -> [Message]{
         return []
     }
     static func populateConsultsForConversation(conversation: Conversation){
         restManager?.getAllConsults(conversation: conversation, callback: self.finishGettingAllConsults)
+    }
+    static func populateConsultsForConversation(conversation: Conversation, withCallback: @escaping (Conversation, JSON)->()) {
+        restManager?.getAllConsults(conversation: conversation, callback: withCallback)
     }
     
     static func finishGettingAllConsults(conversation: Conversation, restData: JSON){
@@ -43,9 +48,7 @@ class ConsultManager : ModelManager{
         var userImage: UIImage?
         switch json["user_image"].type {
         case .string:
-            let image = UIImageView()
-            image.setImageFromURl(stringImageUrl: json["user_image"].string!)
-            userImage = image.image!
+            userImage = DynamicCacheManager.getImage(url: json["user_image"].string!)
             consult.userImageUrl = json["user_image"].string!
         case .array:
             consult.userImageUrl = ""
