@@ -16,9 +16,10 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var navTitle: UINavigationItem!
-        
+    
+    var patients:[Conversation] = []
+    
     override func viewDidLoad() {
-//        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,11 +34,17 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     override func refreshData(){
-        tableView.reloadData()
+        restManager?.getAllConversations(person: (appDelegate.currentlyLoggedInPerson)!, callback: refreshTable)
     }
     
-    func populate(restData: JSON){
-        print(restData)
+    func refreshTable(restData: JSON){
+        self.patients = []
+        
+        for(_,jsonSub) in restData["data"] {
+            self.patients.append(ConversationManager.getConversationUsing(json: jsonSub))
+        }
+        
+        tableView.reloadData()
     }
     
     func getConversationsFailed(){
@@ -46,20 +53,14 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let conversations = appDelegate.currentlyLoggedInPerson?.conversations
-        
-        if(conversations == nil){
-            return 0
-        } else {
-            return (conversations?.count)!
-        }
+        return self.patients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let conversation = appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row]
+        let conversation = self.patients[indexPath.row]
 
         let cell:ConversationCell = self.tableView.dequeueReusableCell(withIdentifier: "ConversationCell")! as! ConversationCell
-        let person = conversation?.person
+        let person = conversation.person
         let fullname = person?.fullName!
         
         cell.nameField.text = fullname
@@ -80,9 +81,8 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
             case "patientMessage" :
                 let destination = segue.destination as? ConversationViewController
                 let row = (tableView.indexPathForSelectedRow?.row)!
-                destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[row]
-                ConversationManager.currentRestController = destination // well... it will be by the time the request completes
-                ConversationManager.populateMessagesForConversation(conversation: (destination?.currentConversation)!)
+                destination?.currentEid = self.patients[row].entityId
+                destination?.currentConversation = self.patients[row]
         default:break
         }
     }

@@ -26,6 +26,8 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var attachmentButton: UIButton!
     
+    var messages:[Message] = []
+    
     var lastPlayedUrl: String? = ""
     
     func finishToggleConsult(restData: JSON){
@@ -68,6 +70,16 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
             chatInputField.isEnabled = false
         }
         
+        restManager?.getAllConsultMessages(entityId: currentEid!, callback: refreshTable)
+    }
+    
+    func refreshTable(restData:JSON){
+        self.messages = []
+        
+        for(_,subJson) in restData["data"]["messages"]{
+            messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
+        }
+        
         tableView.reloadData()
         // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
         scrollToBottom()
@@ -100,7 +112,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (currentConsult?.messages?.count)!
+        return messages.count
     }
     
     @IBAction func showAttachmentActions(_ sender: AnyObject) {
@@ -169,27 +181,27 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         
         message.consultId = currentConsult?.entityId
         
-        currentConsult?.messages?.append(message)
+        messages.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.tableView.reloadData()
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }
     
     func scrollToBottom(){
-        if((currentConsult?.messages?.count)! > 0){
-            tableView.scrollToRow(at: IndexPath.init(row: (currentConsult?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        if messages.count > 0 {
+            self.tableView.scrollToRow(at: IndexPath.init(row: messages.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
-        ConsultManager.populateMessagesForConsult(consult: (self.currentConsult)!)
+        refreshData()
         chatInputField.text = ""
         self.removeAllOverlays()
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
@@ -206,20 +218,16 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = currentConsult?.messages?[indexPath.row]
+        let message = messages[indexPath.row]
         
         print(message)
-        if(message?.hasMedia)!{
+        if(message.hasMedia)!{
             let cell:MediaMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultMediaMessageCell")! as! MediaMessageCell
             
             cell.media.message = Message()
             
-            if((message?.hasAudio)! && message?.imageMedia != nil){
+            if((message.hasAudio)! && message.imageMedia != nil){
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
@@ -227,15 +235,15 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
                 buttonFrame.size = CGSize(width: 200, height: 200)
                 cell.media.frame = buttonFrame
                 
-                let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
+                let image = message.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
                 cell.media.setBackgroundImage(image, for: UIControlState.normal)
-                cell.media.message?.mediaUrl = message?.mediaUrl
+                cell.media.message?.mediaUrl = message.mediaUrl
             }
-            cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+            cell.messageDate.text = message.messageDate?.toDateTimeReadable()
             
-            cell.messageText.text = message?.message
+            cell.messageText.text = message.message
             
-            if(message?.isCurrentUsers)!{
+            if(message.isCurrentUsers)!{
                 cell.messageDate.textAlignment = NSTextAlignment.right
                 cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
                 cell.messageText.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -259,10 +267,10 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         } else {
             
             let cell:ConsultMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultMessageCell")! as! ConsultMessageCell
-            cell.message.text = message?.message
-            cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+            cell.message.text = message.message
+            cell.messageDate.text = message.messageDate?.toDateTimeReadable()
             
-            if(message?.isCurrentUsers)!{
+            if(message.isCurrentUsers)!{
                 cell.messageDate.textAlignment = NSTextAlignment.right
                 cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
                 cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -342,11 +350,6 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     
     override func viewWillDisappear(_ animated : Bool) {
         super.viewWillDisappear(animated)
-        
-        if (self.isMovingFromParentViewController){
-            delegate?.refreshData()
-        }
-        
         self.removeAllOverlays()
     }
     

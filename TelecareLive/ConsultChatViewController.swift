@@ -28,7 +28,47 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     
     @IBOutlet weak var consultSwitch: UISwitch!
     
+    var messages:[Message] = []
+    
     var lastPlayedUrl: String? = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        navigationController?.navigationBar.topItem?.title = ""
+        self.tabBarController?.tabBar.isHidden = true
+        originalFrameOriginX = self.view.frame.origin.x
+        originalFrameOriginY = self.view.frame.origin.y
+        hideKeyboardWhenViewTapped()
+        audioView.delegate = self
+        picker.delegate = self
+        
+        if(currentConsult?.status == "1"){
+            consultSwitch.isOn = true
+        } else {
+            consultSwitch.isOn = false
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func refreshData(){
+        restManager?.getAllConsultMessages(entityId: currentEid!, callback: refreshTable)
+    }
+    
+    func refreshTable(restData:JSON){
+        self.messages = []
+        
+        for(_,subJson) in restData["data"]["messages"]{
+            messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
+        }
+        
+        tableView.reloadData()
+        scrollToBottom()
+    }
+
     
     @IBAction func toggleConsultSwitch(_ sender: AnyObject) {
         if consultSwitch.isOn {
@@ -74,40 +114,12 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         }
     }
     
-    override func refreshData(){
-        tableView.reloadData()
-        // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
-        scrollToBottom()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        navigationController?.navigationBar.topItem?.title = ""
-        self.tabBarController?.tabBar.isHidden = true
-        originalFrameOriginX = self.view.frame.origin.x
-        originalFrameOriginY = self.view.frame.origin.y
-        hideKeyboardWhenViewTapped()
-        audioView.delegate = self
-        picker.delegate = self
-                
-        if(currentConsult?.status == "1"){
-            consultSwitch.isOn = true
-        } else {
-            consultSwitch.isOn = false
-        }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
     deinit {
         audioView.purgeAudioFiles()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (currentConsult?.messages?.count)!
+        return messages.count
     }
     
     @IBAction func showAttachmentActions(_ sender: AnyObject) {
@@ -176,22 +188,22 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         
         message.consultId = currentConsult?.entityId
         
-        currentConsult?.messages?.append(message)
+        messages.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        self.tableView.reloadData()
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }
     
     func scrollToBottom(){
-        if((currentConsult?.messages?.count)! > 0){
-                    tableView.scrollToRow(at: IndexPath.init(row: (currentConsult?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        if messages.count > 0 {
+            self.tableView.scrollToRow(at: IndexPath.init(row: messages.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
-        ConsultManager.currentRestController = self
-        ConsultManager.populateMessagesForConsult(consult: (self.currentConsult)!)
+        self.refreshData()
         chatInputField.text = ""
         self.removeAllOverlays()
     }
@@ -219,15 +231,14 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = currentConsult?.messages?[indexPath.row]
+        let message = messages[indexPath.row]
         
-        print(message)
-        if(message?.hasMedia)!{
+        if(message.hasMedia)!{
             let cell:MediaMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MediaMessageCell")! as! MediaMessageCell
             
             cell.media.message = Message()
             
-            if((message?.hasAudio)! && message?.imageMedia != nil){
+            if((message.hasAudio)! && message.imageMedia != nil){
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
@@ -235,15 +246,15 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
                 buttonFrame.size = CGSize(width: 200, height: 200)
                 cell.media.frame = buttonFrame
                 
-                let image = message?.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
+                let image = message.imageMedia?.af_imageAspectScaled(toFit: cell.media.frame.size)
                 cell.media.setBackgroundImage(image, for: UIControlState.normal)
-                cell.media.message?.mediaUrl = message?.mediaUrl
+                cell.media.message?.mediaUrl = message.mediaUrl
             }
-            cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+            cell.messageDate.text = message.messageDate?.toDateTimeReadable()
 
-            cell.messageText.text = message?.message
+            cell.messageText.text = message.message
             
-            if(message?.isCurrentUsers)!{
+            if(message.isCurrentUsers)!{
                 cell.messageDate.textAlignment = NSTextAlignment.right
                 cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
                 cell.messageText.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -267,10 +278,10 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         } else {
             
             let cell:ConsultMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "ConsultMessageCell")! as! ConsultMessageCell
-            cell.message.text = message?.message
-            cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+            cell.message.text = message.message
+            cell.messageDate.text = message.messageDate?.toDateTimeReadable()
             
-            if(message?.isCurrentUsers)!{
+            if(message.isCurrentUsers)!{
                 cell.messageDate.textAlignment = NSTextAlignment.right
                 cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
                 cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)

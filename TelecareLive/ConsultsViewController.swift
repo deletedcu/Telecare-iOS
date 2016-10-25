@@ -18,10 +18,13 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     
     @IBOutlet weak var navTitle: UINavigationItem!
     
+    var refreshControl = UIRefreshControl()
+    
     var currentConversation:Conversation? = Conversation()
     
+    var consults:[Consult] = []
+    
     override func viewDidLoad() {
-        //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,9 +33,34 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         tabBarController?.hidesBottomBarWhenPushed = true
         navTitle.title = currentConversation?.person?.fullName
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(self.refreshData), for: UIControlEvents.valueChanged)
+        self.tableView?.addSubview(refreshControl)
+    }
+    
+    override func refreshData(){
+        // tell refresh control it can stop showing up now
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+        
+        restManager?.getAllConsults(userId: (currentConversation?.person?.userId)!, callback: refreshTable)
+    }
+    
+    func refreshTable(restData: JSON){
+        self.consults = []
+        
+        for(_,subJson) in restData["data"]{
+            consults.append(ConsultManager.getConsultUsing(json: subJson))
+        }
+        
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.refreshData()
         navTitle.title = currentConversation?.person?.fullName
     }
     
@@ -51,14 +79,6 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         }
     }
     
-    override func refreshData(){
-        tableView.reloadData()
-    }
-    
-    func populate(restData: JSON){
-//        print(restData)
-    }
-    
     lazy var newConsultView: NewConsult = {
         let newConsultView = NewConsult()
         return newConsultView
@@ -72,30 +92,22 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     
     func addChargedConsult(title:String){
         self.showWaitOverlayWithText("Creating new paid consult...")
-        restManager?.launchNewConsult(charge: true, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
+        restManager?.launchNewConsult(charge: true, title: title, conversation:(currentConversation)!, callback: finishAddingConsult)
     }
     
     func addFreeConsult(title:String){
         self.showWaitOverlayWithText("Creating new free consult...")
-        restManager?.launchNewConsult(charge: false, title: title, conversation:(currentConversation)!, callback: finishAddingNewConsult)
+        restManager?.launchNewConsult(charge: false, title: title, conversation:(currentConversation)!, callback: finishAddingConsult)
     }
     
-    func finishAddingNewConsult(restData: JSON){
-        print(restData)
-        ConsultManager.populateConsultsForConversation(conversation: currentConversation!, withCallback:finishGettingAllConsults)
+    func finishAddingConsult(restData: JSON){
+        restManager?.getAllConsults(userId: (currentConversation?.person?.userId)!, callback: refreshToAddedConsult)
+        
     }
     
-    // SOOOO hacky... please fix... later
-    func finishGettingAllConsults(conversation: Conversation, restData: JSON){
-        var consults:[Consult] = []
+    func refreshToAddedConsult(restData: JSON){
+        refreshTable(restData: restData)
         
-        for(_,subJson) in restData["data"]{
-            consults.append(ConsultManager.getConsultUsing(json: subJson))
-        }
-        
-        conversation.consults = consults
-        
-        tableView.reloadData()
         let selectedIndexPath = IndexPath.init(row: 0, section: 0)
         tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.top)
         performSegue(withIdentifier: "patientConsultChat", sender: nil)
@@ -107,25 +119,19 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let consults = currentConversation?.consults
-        
-        if(consults == nil){
-            return 0
-        } else {
-            return (consults?.count)!
-        }
+        return consults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let consult = currentConversation?.consults?[indexPath.row]
+        let consult = consults[indexPath.row]
         
         let cell:ConsultCell = self.tableView.dequeueReusableCell(withIdentifier: "ConsultCell")! as! ConsultCell
         
-        cell.issue.text = consult?.issue
-        cell.birthdateField.text = "Birth Date : " + (consult?.birthdate?.toReadable())!
-        cell.profileImage.image = consult?.userImage?.af_imageRoundedIntoCircle()
+        cell.issue.text = consult.issue
+        cell.birthdateField.text = "Birth Date : " + (consult.birthdate?.toReadable())!
+        cell.profileImage.image = consult.userImage?.af_imageRoundedIntoCircle()
         
-        if(consult?.status == "0"){
+        if(consult.status == "0"){
             cell.backgroundColor = UIColor.lightGray
         } else {
             cell.backgroundColor = UIColor.white
@@ -134,21 +140,15 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.removeAllOverlays()
         switch segue.identifier! {
         case "patientConsultChat" :
             let destination = segue.destination as? ConsultChatViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
+            destination?.currentEid = consults[row].entityId
+            destination?.currentConsult = consults[row]
             (destination! as AVCRestViewController).currentConversation = self.currentConversation
-            destination?.currentConsult = destination?.currentConversation?.consults?[row]
-            destination?.delegate = self
-            ConsultManager.currentRestController = destination // well... it will be by the time the request completes
-            ConsultManager.populateMessagesForConsult(consult: (destination?.currentConsult)!)
         default:break
         }
     }

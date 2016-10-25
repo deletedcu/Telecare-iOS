@@ -19,6 +19,8 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
     
     var errorManager: ErrorManager?
     
+    var currentEid:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         restManager = (UIApplication.shared.delegate as! AppDelegate).restManager!
@@ -26,6 +28,7 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
         errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager!
         PersonManager.currentRestController = self
         navigationController?.navigationBar.tintColor = UIColor.white;
+        refreshData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

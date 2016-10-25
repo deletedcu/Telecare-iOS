@@ -26,6 +26,8 @@ class AccountViewController : AVCRestViewController {
     var originalContentInset: UIEdgeInsets?
     var originalScrollIndicatorInsets: UIEdgeInsets?
     
+    var refreshControl = UIRefreshControl()
+
     lazy var photoView: PhotoView = {
         let photoView = PhotoView()
         return photoView

@@ -31,41 +31,66 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     let picker = UIImagePickerController()
     
     var firstLoad:Bool? = false
-
+    
+    var refreshControl = UIRefreshControl()
+    
+    var messages:[Message] = []
+    
     lazy var photoView: PhotoView = {
         let photoView = PhotoView()
         return photoView
     }()
     
     override func refreshData(){
+        // tell refresh control it can stop showing up now
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+        
+        restManager?.getAllMessages(entityId: currentEid!, callback: refreshTable)
+    }
+    
+    func refreshTable(restData: JSON){
+        self.messages = []
+        
+        for (_, subJson) in restData["data"]["messages"] {
+            messages.append(ConversationManager.getMessageUsing(json: subJson))
+        }
+        
         tableView.reloadData()
-        // TODO: FINISH THE KEYBOARD BUMPING THE TEXT FIELD UP
         scrollToBottom()
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController?.tabBar.isHidden = true
         originalFrameOriginX = self.view.frame.origin.x
         originalFrameOriginY = self.view.frame.origin.y
+
         navTitle.title = currentConversation?.person?.fullName
         hideKeyboardWhenViewTapped()
-//        scrollToBottom()
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         firstLoad = true
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(self.refreshData), for: UIControlEvents.valueChanged)
+        self.tableView?.addSubview(refreshControl)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.refreshData()
         navTitle.title = currentConversation?.person?.fullName
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (currentConversation?.messages?.count)!
+        return messages.count
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
@@ -79,21 +104,22 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         message.messageDate = Date()
         message.isCurrentUsers = true
         message.conversationId = currentConversation?.entityId
-        currentConversation?.messages?.append(message)
-//        refreshData()
+        messages.append(message)
+        self.tableView.reloadData()
+        
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
         self.dismissKeyboard()
     }
     
     func scrollToBottom(){
-        if((currentConversation?.messages?.count)! > 0){
-            tableView.scrollToRow(at: IndexPath.init(row: (currentConversation?.messages?.count)! - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: !firstLoad!)
+        if messages.count > 0 {
+            tableView.scrollToRow(at: IndexPath.init(row: messages.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: !firstLoad!)
         }
     }
     
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
-        ConversationManager.populateMessagesForConversation(conversation: (self.currentConversation)!)
+        self.refreshData()
         chatInputField.text = ""
     }
     
@@ -124,14 +150,14 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = currentConversation?.messages?[indexPath.row]
+        let message = messages[indexPath.row]
         
         let cell:MessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MessageCell")! as! MessageCell
 
-        cell.message.text = message?.message
-        cell.messageDate.text = message?.messageDate?.toDateTimeReadable()
+        cell.message.text = message.message
+        cell.messageDate.text = message.messageDate?.toDateTimeReadable()
         
-        if(message?.isCurrentUsers)!{
+        if(message.isCurrentUsers)!{
             cell.messageDate.textAlignment = NSTextAlignment.right
             cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
             cell.message.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -163,13 +189,13 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         switch segue.identifier! {
         case "viewPatientConsults" :
             let destination = segue.destination as? ConsultsViewController
-            ConsultManager.currentRestController = destination // well... it will be by the time the request completes
+            destination?.currentEid = self.currentConversation?.entityId
+//            ConsultManager.currentRestController = destination // well... it will be by the time the request completes
+//            ConsultManager.populateConsultsForConversation(conversation: (appDelegate.currentlyLoggedInPerson?.conversations?[self.currentRow!])!)
             destination?.currentConversation = self.currentConversation
-            ConsultManager.populateConsultsForConversation(conversation: (destination?.currentConversation)!)
         default:break
         }
     }
-    
     
     func getPhotoFromLibrary(){
         picker.allowsEditing = false //2

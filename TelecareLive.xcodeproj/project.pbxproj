@@ -42,6 +42,7 @@
 		FF19E34A1D9B422F00375804 /* RestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E3491D9B422F00375804 /* RestViewController.swift */; };
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
+		FF22DC221DBEAE6E00B60569 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22DC211DBEAE6E00B60569 /* DataManager.swift */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
 		FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */; };
@@ -111,6 +112,7 @@
 		FF19E3491D9B422F00375804 /* RestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestViewController.swift; sourceTree = "<group>"; };
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		FF22DC211DBEAE6E00B60569 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
 		FF43B2281DB041D800A64D22 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		FF43B2311DB1804D00A64D22 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				FF9A3D971DA0838600D43119 /* ConversationManager.swift */,
 				FF9A3D991DA083B800D43119 /* ConsultManager.swift */,
 				FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */,
+				FF22DC211DBEAE6E00B60569 /* DataManager.swift */,
 			);
 			name = ModelManagers;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				FF15475E1D9C7F4D00375F9A /* AccountViewController.swift in Sources */,
 				FF8969851DA982D30029F8FA /* StaffConversationViewController.swift in Sources */,
 				FF9B4A7F1DA087210022A8B4 /* ModelManager.swift in Sources */,
+				FF22DC221DBEAE6E00B60569 /* DataManager.swift in Sources */,
 				FF9A3D881DA05B6400D43119 /* ProactiveTabBarController.swift in Sources */,
 				FF108EDC1DAC4F2800C34DC5 /* DSViewController.swift in Sources */,
 				FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */,

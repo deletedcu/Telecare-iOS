@@ -15,57 +15,57 @@ class PersonManager : ModelManager{
         return []
     }
     
-    static func getConversations(person:Person){
-        restManager?.getAllConversations(person:person, callback: finishGetConversations)
-    }
-    
-    static func getStaffConversations(person: Person){
-        restManager?.getAllStaffConversations(person: person, callback: finishGetStaffConversations)
-    }
-    
-    static func finishGetStaffConversations(person: Person, restData: JSON){
-        print(restData)
-        var conversations: [Conversation] = []
-        
-        for(_,jsonSub) in restData["data"] {
-            if(jsonSub["staff_conversation"] != nil){
-                if(jsonSub["staff_conversation"] == "0"){
-                    continue
-                }
-            }
-            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
-        }
-        
-        person.staffConversations = conversations
-    }
-    
-    static func finishGetConversations(person: Person, restData: JSON){
-        var conversations: [Conversation] = []
-        
-        for(_,jsonSub) in restData["data"] {
-            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
-        }
-        
-        person.conversations = conversations
-        
-        currentRestController?.refreshData()
-    }
-    
-    static func getConsults(person:Person){
-        restManager?.getAllConsults(person: person, callback: finishGettingConsults)
-    }
-    
-    static func finishGettingConsults(person:Person, restData:JSON){
-        var consults: [Consult] = []
-        
-        for(_,jsonSub) in restData["data"] {
-            consults.append(ConsultManager.getConsultUsing(json: jsonSub))
-        }
-        
-        person.consults = consults
-        
-        currentRestController?.refreshData()
-    }
+//    static func getConversations(person:Person){
+//        restManager?.getAllConversations(person:person, callback: finishGetConversations)
+//    }
+//    
+//    static func getStaffConversations(person: Person){
+//        restManager?.getAllStaffConversations(person: person, callback: finishGetStaffConversations)
+//    }
+//    
+//    static func finishGetStaffConversations(person: Person, restData: JSON){
+//        print(restData)
+//        var conversations: [Conversation] = []
+//        
+//        for(_,jsonSub) in restData["data"] {
+//            if(jsonSub["staff_conversation"] != nil){
+//                if(jsonSub["staff_conversation"] == "0"){
+//                    continue
+//                }
+//            }
+//            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
+//        }
+//        
+//        person.staffConversations = conversations
+//    }
+//    
+//    static func finishGetConversations(person: Person, restData: JSON){
+//        var conversations: [Conversation] = []
+//        
+//        for(_,jsonSub) in restData["data"] {
+//            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
+//        }
+//        
+//        person.conversations = conversations
+//        
+//        currentRestController?.refreshData()
+//    }
+//    
+//    static func getConsults(person:Person){
+//        restManager?.getAllConsults(person: person, callback: finishGettingConsults)
+//    }
+//    
+//    static func finishGettingConsults(person:Person, restData:JSON){
+//        var consults: [Consult] = []
+//        
+//        for(_,jsonSub) in restData["data"] {
+//            consults.append(ConsultManager.getConsultUsing(json: jsonSub))
+//        }
+//        
+//        person.consults = consults
+//        
+//        currentRestController?.refreshData()
+//    }
     
     static func getPersonUsing(json: JSON) -> Person{
         let person = Person()
@@ -95,17 +95,17 @@ class PersonManager : ModelManager{
         person.lockCode = json["data"]["user_lock_code"].string!
         person.userId = json["data"]["uid"].string!
         
-        PersonManager.getConversations(person: person)
-        PersonManager.getStaffConversations(person: person)
+//        PersonManager.getConversations(person: person)
+//        PersonManager.getStaffConversations(person: person)
         
-        let currentLoggedInPerson = appDelegate.currentlyLoggedInPerson
+//        let currentLoggedInPerson = appDelegate.currentlyLoggedInPerson
         
-        if( currentLoggedInPerson == nil || (currentLoggedInPerson?.isDoctor)!
-&& appDelegate.currentlyLoggedInPerson?.email == person.email){
-            PersonManager.getConsults(person: person)
-        }
+//        if( currentLoggedInPerson == nil || (currentLoggedInPerson?.isDoctor)!
+//&& appDelegate.currentlyLoggedInPerson?.email == person.email){
+//            PersonManager.getConsults(person: person)
+//        }
         
-        person.consults = [Consult]()
+//        person.consults = [Consult]()
         
         return person
     }

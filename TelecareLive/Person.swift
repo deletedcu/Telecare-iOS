@@ -19,8 +19,5 @@ class Person {
     var notifications: Bool? = true
     var isDoctor: Bool? = false
     var lockCode: String?
-    var conversations: [Conversation]? = []
-    var consults: [Consult]? = []
     var userId:String?
-    var staffConversations:[Conversation]? = []
 }

@@ -19,15 +19,38 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
     
     var currentConversation:Conversation? = Conversation()
     
+    var refreshControl = UIRefreshControl()
+    
+    var consults:[Consult] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: UIControlEvents.valueChanged)
+        self.tableView?.addSubview(refreshControl)
     }
     
     override func refreshData(){
+        // tell refresh control it can stop showing up now
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+        restManager?.getAllConsultsForCurrent(userId: (appDelegate.currentlyLoggedInPerson?.userId)!, callback: refreshTable)
+    }
+    
+    func refreshTable(restData: JSON){
+        self.consults = []
+        
+        for(_,subJson) in restData["data"]{
+            consults.append(ConsultManager.getConsultUsing(json: subJson))
+        }
+        
         tableView.reloadData()
     }
     
@@ -37,25 +60,19 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let consults = appDelegate.currentlyLoggedInPerson?.consults
-        
-        if(consults == nil){
-            return 0
-        } else {
-            return (consults?.count)!
-        }
+        return consults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let consult = appDelegate.currentlyLoggedInPerson?.consults?[indexPath.row]
+        let consult = consults[indexPath.row]
         
         let cell:ConsultCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultCell")! as! ConsultCell
         
-        cell.issue.text = consult?.issue
-        cell.birthdateField.text = "Birth Date : " + (consult?.birthdate?.toReadable())!
-        cell.profileImage.image = consult?.userImage?.af_imageRoundedIntoCircle()
+        cell.issue.text = consult.issue
+        cell.birthdateField.text = "Birth Date : " + (consult.birthdate?.toReadable())!
+        cell.profileImage.image = consult.userImage?.af_imageRoundedIntoCircle()
         
-        if(consult?.status == "0"){
+        if(consult.status == "0"){
             cell.backgroundColor = UIColor.lightGray
         } else {
             cell.backgroundColor = UIColor.white
@@ -73,11 +90,9 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
         case "myConsult" :
             let destination = segue.destination as? MCChatViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
-            (destination! as AVCRestViewController).currentConversation = self.currentConversation
-            destination?.currentConsult = appDelegate.currentlyLoggedInPerson?.consults?[row]
+            destination?.currentEid = consults[row].entityId;
+            destination?.currentConsult = consults[row]
             destination?.delegate = self
-            ConsultManager.currentRestController = destination // well... it will be by the time the request completes
-            ConsultManager.populateMessagesForConsult(consult: (destination?.currentConsult)!)
         default:break
         }
     }

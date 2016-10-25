@@ -20,7 +20,7 @@ class MessageRouter {
     static var errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager
     
     static func routeMessage(messageData: FIRMessagingRemoteMessage){
-        let data = messageData.appData
+//        let data = messageData.appData
         
         let currentViewController = UIApplication.topViewController()
 

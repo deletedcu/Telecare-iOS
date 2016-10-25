@@ -17,6 +17,12 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var navTitle: UINavigationItem!
     
+    var refreshControl = UIRefreshControl()
+    
+    var conversations:[Conversation] = []
+    
+    // TODO: Add staff conversations var, add refreshTable Method, replace references to global person conversations to loaded conversations
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
@@ -24,14 +30,40 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.titleTextAttributes?["ForegroundColorAttributeName"] = UIColor.white
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: UIControlEvents.valueChanged)
+        self.tableView?.addSubview(refreshControl)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.refreshData()
     }
     
     override func refreshData(){
-        tableView.reloadData()
+        // tell refresh control it can stop showing up now
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+        
+        restManager?.getAllStaffConversations(callback: refreshTable)
+       
     }
     
-    func populate(restData: JSON){
-        print(restData)
+    func refreshTable(restData: JSON){
+        self.conversations = []
+        
+        for(_,jsonSub) in restData["data"] {
+            if(jsonSub["staff_conversation"] != nil){
+                if(jsonSub["staff_conversation"] == "0"){
+                    continue
+                }
+            }
+            conversations.append(ConversationManager.getConversationUsing(json: jsonSub))
+        }
+        
+        tableView.reloadData()
     }
     
     func getConversationsFailed(){
@@ -40,20 +72,14 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let conversations = appDelegate.currentlyLoggedInPerson?.conversations
-        
-        if(conversations == nil){
-            return 0
-        } else {
-            return (conversations?.count)!
-        }
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let conversation = appDelegate.currentlyLoggedInPerson?.conversations?[indexPath.row]
-        print(appDelegate.currentlyLoggedInPerson?.conversations)
+        let conversation = conversations[indexPath.row]
+        
         let cell:ConversationCell = self.tableView.dequeueReusableCell(withIdentifier: "ConversationCell")! as! ConversationCell
-        let person = conversation?.person
+        let person = conversation.person
         let fullname = person?.fullName!
         
         cell.nameField.text = fullname
@@ -62,11 +88,7 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(sender)
         print("ABOVE IS THE SENDER")
@@ -74,9 +96,8 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
         case "dsMessage" :
             let destination = segue.destination as? DSConversationViewController
             let row = (tableView.indexPathForSelectedRow?.row)!
-            destination?.currentConversation = appDelegate.currentlyLoggedInPerson?.conversations?[row]
-            ConversationManager.currentRestController = destination // well... it will be by the time the request completes
-            ConversationManager.populateMessagesForConversation(conversation: (destination?.currentConversation)!)
+            destination?.currentEid = conversations[row].entityId
+            destination?.currentConversation = conversations[row]
         default:break
         }
     }

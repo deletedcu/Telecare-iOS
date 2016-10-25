@@ -16,12 +16,12 @@ class ConsultManager : ModelManager{
     static func getMessagesForConsult(consult: Consult) -> [Message]{
         return []
     }
-    static func populateConsultsForConversation(conversation: Conversation){
-        restManager?.getAllConsults(conversation: conversation, callback: self.finishGettingAllConsults)
-    }
-    static func populateConsultsForConversation(conversation: Conversation, withCallback: @escaping (Conversation, JSON)->()) {
-        restManager?.getAllConsults(conversation: conversation, callback: withCallback)
-    }
+//    static func populateConsultsForConversation(conversation: Conversation){
+//        restManager?.getAllConsults(userId: conversation, callback: self.finishGettingAllConsults)
+//    }
+//    static func populateConsultsForConversation(conversation: Conversation, withCallback: @escaping (Conversation, JSON)->()) {
+//        restManager?.getAllConsults(userId: conversation, callback: withCallback)
+//    }
     
     static func finishGettingAllConsults(conversation: Conversation, restData: JSON){
         var consults:[Consult] = []
@@ -67,22 +67,22 @@ class ConsultManager : ModelManager{
         return consult
     }
     
-    static func populateMessagesForConsult(consult: Consult){
-        restManager?.getAllConsultMessages(consult: consult, callback: self.finishGettingAllConsultMessages)
-    }
+//    static func populateMessagesForConsult(consult: Consult){
+//        restManager?.getAllConsultMessages(entityId: consult.entityId, callback: self.finishGettingAllConsultMessages)
+//    }
     
-    static func finishGettingAllConsultMessages(consult: Consult, restData: JSON){
-
-        var messages:[Message] = []
-        
-        for(_,subJson) in restData["data"]["messages"]{
-            messages.append(self.getConsultMessageUsing(json: subJson))
-        }
-        
-        consult.messages = messages
-        
-        currentRestController?.refreshData()
-    }
+//    static func finishGettingAllConsultMessages(consult: Consult, restData: JSON){
+//
+//        var messages:[Message] = []
+//        
+//        for(_,subJson) in restData["data"]["messages"]{
+//            messages.append(self.getConsultMessageUsing(json: subJson))
+//        }
+//        
+//        consult.messages = messages
+//        
+//        currentRestController?.refreshData()
+//    }
     
     static func getConsultMessageUsing(json:JSON)->Message{
         let message = Message()

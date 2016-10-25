@@ -11,13 +11,13 @@ import UIKit
 import SwiftyJSON
 
 class ConversationManager : ModelManager{
-    static func populateMessagesForConversation(conversation: Conversation){
-        restManager?.getAllMessages(conversation: conversation, callback: finishGettingAllMessages)
-    }
-    
-    static func populateMessagesForStaffConversation(conversation: Conversation){
-        restManager?.getAllStaffMessages(conversation: conversation, callback: finishGettingAllStaffMessages)
-    }
+//    static func populateMessagesForConversation(conversation: Conversation){
+//        restManager?.getAllMessages(entityId: conversation, callback: finishGettingAllMessages)
+//    }
+//    
+//    static func populateMessagesForStaffConversation(conversation: Conversation){
+//        restManager?.getAllStaffMessages(conversation: conversation, callback: finishGettingAllStaffMessages)
+//    }
     
     static func finishGettingAllMessages(conversation: Conversation, restData: JSON){
         var messages: [Message] = []
