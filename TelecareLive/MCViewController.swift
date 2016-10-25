@@ -35,6 +35,11 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
         self.tableView?.addSubview(refreshControl)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navTitle.title = "My Consults"
+        self.refreshData()
+    }
+    
     override func refreshData(){
         // tell refresh control it can stop showing up now
         if self.refreshControl.isRefreshing
@@ -80,11 +85,7 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "myConsult" :

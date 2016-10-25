@@ -33,8 +33,8 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.refreshData()
         navTitle.title = "Staff"
+        self.refreshData()
     }
     
     override func refreshData(){

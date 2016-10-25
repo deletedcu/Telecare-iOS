@@ -21,11 +21,9 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
     
     var conversations:[Conversation] = []
     
-    // TODO: Add staff conversations var, add refreshTable Method, replace references to global person conversations to loaded conversations
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        tableView.register(ConversationCell.self, forCellReuseIdentifier: "ConversationCell")
+
         tableView.delegate = self
         tableView.dataSource = self
         tabBarController?.hidesBottomBarWhenPushed = true
@@ -37,6 +35,7 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.navTitle.title = "Doctors"
         self.refreshData()
     }
     
@@ -47,8 +46,7 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
             self.refreshControl.endRefreshing()
         }
         
-        restManager?.getAllStaffConversations(callback: refreshTable)
-       
+        restManager?.getAllConversations(person: appDelegate.currentlyLoggedInPerson!, callback: refreshTable)
     }
     
     func refreshTable(restData: JSON){
@@ -56,7 +54,7 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
         
         for(_,jsonSub) in restData["data"] {
             if(jsonSub["staff_conversation"] != nil){
-                if(jsonSub["staff_conversation"] == "0"){
+                if(jsonSub["staff_conversation"] == "1"){
                     continue
                 }
             }

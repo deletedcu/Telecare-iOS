@@ -31,6 +31,7 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         navTitle.title = "Patients"
+        self.refreshData()
     }
     
     override func refreshData(){

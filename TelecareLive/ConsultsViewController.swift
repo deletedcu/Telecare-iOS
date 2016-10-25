@@ -60,8 +60,8 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.refreshData()
         navTitle.title = currentConversation?.person?.fullName
+        self.refreshData()
     }
     
     func closeNewConsultViewWhenTapped(){

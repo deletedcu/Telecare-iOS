@@ -40,14 +40,14 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
     }()
     
     override func refreshData(){
-        restManager?.getAllStaffMessages(entityId: currentEid!, callback: refreshTable)
+        restManager?.getAllMessages(entityId: currentEid!, callback: refreshTable)
     }
     
     func refreshTable(restData: JSON){
         self.messages = []
         
         for (_, subJson) in restData["data"]["messages"] {
-            messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
+            messages.append(ConversationManager.getMessageUsing(json: subJson))
         }
         
         tableView.reloadData()

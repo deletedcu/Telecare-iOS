@@ -121,6 +121,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     func finishSendingMessage(message: Message, restData: JSON){
         self.refreshData()
         chatInputField.text = ""
+        scrollToBottom()
     }
     
     func sendMessageFailed(message:Message){
