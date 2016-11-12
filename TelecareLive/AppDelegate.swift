@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import UserNotifications
+import SwiftyJSON
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,10 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tabBarController:ProactiveTabBarController?
     
     var FBToken:String?
+    
+    var currentBackgroundNotificationPayload:[AnyHashable:Any]? = [:]
+    
+    var controllerStack:[UIViewController]? = []
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
         
         if #available(iOS 10.0, *) {
             let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -52,12 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
+        FIRApp.configure()
+        
         if FIRInstanceID.instanceID().token() != nil {
             FBToken = FIRInstanceID.instanceID().token()!
         } else {
             FBToken = ""
         }
-        
         
         print("TOKEN!" + FBToken!)
         
@@ -65,37 +71,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         restManager = RestManager()
         sessionManager = SessionManager()
         
+        let keychain = KeychainSwift()
+        let sid = keychain.get("sid")
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        
-        var firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
-        
-        if (sessionManager?.sessionIsActive())! {
-            firstViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as UIViewController
-        }
+        let firstViewController = storyBoard.instantiateViewController(withIdentifier: "loadingController") as! LoadingController
         
         self.window?.rootViewController = firstViewController
         self.window?.makeKeyAndVisible()
         
+        firstViewController.showTextOverlay("Loading...")
+        
+        restManager?.sidIsValid(sid: sid!, callback: finishLoadingFirstScreen)
+        
         return true
+    }
+    
+    func finishLoadingFirstScreen(restData: JSON){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if(restData["status"] == 200){
+            currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
+            resetViewToRootViewController()
+            
+            sessionManager?.lockSession = 1
+            
+            let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
+            
+            window?.rootViewController?.present(pinViewController, animated: true, completion: nil)
+            
+            pinViewIsUp = true
+        } else {
+            let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+           window?.rootViewController = firstViewController
+        }
+        
+        self.window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
+
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
         let topViewController = UIApplication.topViewController()
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
         
-        if topViewController == self.window?.rootViewController || pinViewIsUp! {
+        let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+
+        if topViewController == firstViewController || pinViewIsUp! {
             return
         }
         
         sessionManager?.lockSession = 1
-
+        
         pinViewController.delegate = topViewController
         topViewController?.present(pinViewController, animated: false, completion: nil)
         pinViewIsUp = true
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
+        
+        self.currentBackgroundNotificationPayload = [:]
+        
         FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM.")
     }
@@ -118,6 +154,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         self.window?.rootViewController = firstViewController
         self.window?.makeKeyAndVisible()
+    }
+    
+    func resetViewToRootViewController(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
+        (tabBarViewController as! ProactiveTabBarController).trimTabBarController()
+        window?.rootViewController = nil
+        window?.rootViewController = tabBarViewController
+        window?.makeKeyAndVisible()
     }
     
     func tokenRefreshNotification(_ notification: Notification) {
@@ -151,7 +196,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print full message.
         print("%@", userInfo)
         print("YEEERRRRRRRRRP")
-
+        
+        self.currentBackgroundNotificationPayload = userInfo
+        // Actually handled in the pinController
     }
 }
 
@@ -164,13 +211,14 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
+        let data = notification.request.content.userInfo
         // Print message ID.
-        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        print("Message ID: \(data["gcm.message_id"]!)")
         
         // Print full message.
-        print("%@", userInfo)
+        print("%@", data)
         print("YEEESSSS")
+        MessageRouter.routeMessage(messageData: data, directRoute: false)
     }
 }
 
@@ -178,7 +226,7 @@ extension AppDelegate : FIRMessagingDelegate {
     // Receive data message on iOS 10 devices.
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
         print("UHHHHH")
-        MessageRouter.routeMessage(messageData: remoteMessage)
+        //MessageRouter.routeMessage(messageData: remoteMessage, directRoute: false)
     }
 }
 

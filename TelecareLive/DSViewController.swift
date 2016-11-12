@@ -99,4 +99,11 @@ class DSViewController : RestViewController, UITableViewDelegate, UITableViewDat
         default:break
         }
     }
+    
+    override func handleDirectMessage(restData: JSON) {
+        let viewController:DSConversationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DoctorMessagesViewController") as! DSConversationViewController
+        viewController.currentEid = restData["data"]["eid"].string!
+        viewController.currentConversation = ConversationManager.getConversationUsing(json: restData["data"])
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }

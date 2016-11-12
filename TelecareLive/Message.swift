@@ -21,6 +21,8 @@ class Message {
     var mediaUrl:String? = ""
     var hasMedia:Bool? = false
     var imageMedia:UIImage?
+    var imageThumb:UIImage?
+    var mediaThumbUrl:String? = ""
     var hasAudio:Bool? = false
     var fileMime:String? = ""
     var fileId:String? = ""

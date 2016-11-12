@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class RestViewController : UIViewController, UITabBarControllerDelegate {
     
@@ -20,6 +21,8 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
     var errorManager: ErrorManager?
     
     var currentEid:String?
+    
+    var controllerStack:[UIViewController]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,10 @@ class RestViewController : UIViewController, UITabBarControllerDelegate {
     func refreshData(){
         
     }
+    
+    func handleDirectMessage(restData: JSON){}
+    
+    func handleDirectMessage(){}
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        self.refreshData()

@@ -40,25 +40,33 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func playAudio(_ sender: MediaButton) {
-        if(!(sender.message?.hasAudio)! || currentConsult?.status == "0"){
+        if !(sender.message?.hasMedia)! {
             return
         }
         
-        if audioPlayer == nil || lastPlayedUrl != sender.message?.mediaUrl! {
-            let sender = sender
-            
-            print((sender.message?.mediaUrl!)!)
-            let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
-            audioPlayer = AVPlayer(url: mediaUrl!)
-            audioPlayer.play()
-            lastPlayedUrl = (sender.message?.mediaUrl!)!
-            
+        self.showWaitOverlayWithText("Loading Image...")
+        
+        if(!(sender.message?.hasAudio)!){
+            if (sender.message?.hasMedia)! {
+                openImage(message: sender.message!)
+            }
         } else {
-            if (audioPlayer.rate != 0.0) {
-                audioPlayer.pause()
-            } else {
-                audioPlayer.seek(to: CMTimeMake(0, 1))
+            if audioPlayer == nil || lastPlayedUrl != sender.message?.mediaUrl! {
+                let sender = sender
+                
+                print((sender.message?.mediaUrl!)!)
+                let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
+                audioPlayer = AVPlayer(url: mediaUrl!)
                 audioPlayer.play()
+                lastPlayedUrl = (sender.message?.mediaUrl!)!
+                
+            } else {
+                if (audioPlayer.rate != 0.0) {
+                    audioPlayer.pause()
+                } else {
+                    audioPlayer.seek(to: CMTimeMake(0, 1))
+                    audioPlayer.play()
+                }
             }
         }
     }
@@ -76,8 +84,16 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     func refreshTable(restData:JSON){
         self.messages = []
         
+        self.currentConsult = ConsultManager.getConsultUsing(json: restData["data"])
+        
         for(_,subJson) in restData["data"]["messages"]{
             messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
+        }
+        
+        if currentConsult?.status == "1" {
+            chatInputField.isEnabled = true
+        } else {
+            chatInputField.isEnabled = false
         }
         
         tableView.reloadData()
@@ -226,8 +242,11 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
             let cell:MediaMessageCell = self.tableView.dequeueReusableCell(withIdentifier: "MyConsultMediaMessageCell")! as! MediaMessageCell
             
             cell.media.message = Message()
+            cell.media.message?.hasMedia = message.hasMedia
             
             if((message.hasAudio)! && message.imageMedia != nil){
+                cell.media.message?.hasAudio = message.hasAudio
+                cell.media.message?.imageMedia = message.imageMedia
                 cell.media.setBackgroundImage(UIImage(named: "AudioIcon"), for: UIControlState.normal)
                 cell.media.message = message
             } else {
@@ -244,6 +263,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
             cell.messageText.text = message.message
             
             if(message.isCurrentUsers)!{
+                cell.media.message?.isCurrentUsers = message.isCurrentUsers
                 cell.messageDate.textAlignment = NSTextAlignment.right
                 cell.layoutMargins = UIEdgeInsetsMake(40, 100, 40, 10)
                 cell.messageText.layoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
@@ -353,25 +373,13 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         self.removeAllOverlays()
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let localSender = sender as! MediaButton
-        
-        if (localSender.message?.hasAudio)!{
-            return false
+    func openImage(message: Message){
+        DispatchQueue.main.async {
+            let destination = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+            (destination as ImageViewController).currentMessage = message
+            destination.delegate = self
+            self.present(destination, animated: true, completion: nil)
         }
-        
-        return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "showImage" :
-            self.showWaitOverlay()
-            let localSender = sender as! MediaButton
-            let destination = segue.destination as? ImageViewController
-            (destination! as ImageViewController).currentMessage = localSender.message
-            destination?.delegate = self
-        default:break
-        }
-    }
 }

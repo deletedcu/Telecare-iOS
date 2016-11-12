@@ -16,10 +16,12 @@ class PinViewController : RestViewController {
     @IBOutlet weak var pinNumberField: UITextField!
     
     @IBAction func submitPin(_ sender: AnyObject) {
+        view.endEditing(true)
+        
         if(pinNumberField.text == appDelegate.currentlyLoggedInPerson?.lockCode){
             sessionManager?.lockSession = 0
             appDelegate.pinViewIsUp = false
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: routeDirectMessageData)
         } else {
             errorManager?.postErrorMessage(controller: self, message: "Incorrect Pin Code. Please try again")
         }
@@ -37,5 +39,13 @@ class PinViewController : RestViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func routeDirectMessageData(){
+        let messageData = (UIApplication.shared.delegate as! AppDelegate).currentBackgroundNotificationPayload
+        
+        
+        
+        MessageRouter.routeMessage(messageData: messageData!, directRoute: true)
     }
 }

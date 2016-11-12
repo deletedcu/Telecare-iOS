@@ -22,21 +22,25 @@ class SessionManager{
         restManager = (UIApplication.shared.delegate as! AppDelegate).restManager
     }
     
-    func sessionIsActive() -> Bool{
-        
-        primeManager()
-        
-        let keychain = KeychainSwift()
-        let sid = keychain.get("sid")
-        
-        if (sid != nil) {
-            if (restManager?.sidIsValid(sid: sid!))! {
-                return true
-            }
-        }
-        
-        return false
-    }
+//    func sessionIsActive() -> Bool{
+//        
+//        primeManager()
+//        
+//        let keychain = KeychainSwift()
+//        let sid = keychain.get("sid")
+//        
+//        if (sid != nil) {
+//            if (restManager?.sidIsValid(sid: sid!))! {
+//                return true
+//            }
+//        }
+//        
+//        return false
+//    }
+    
+//    func finishIsSessionActive(){
+//        
+//    }
     
     func clearSession(){
         let keychain = KeychainSwift()

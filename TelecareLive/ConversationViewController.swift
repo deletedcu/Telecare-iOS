@@ -54,6 +54,11 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     func refreshTable(restData: JSON){
         self.messages = []
         
+        print(restData["data"])
+        
+//        self.currentConversation = ConversationManager.getConversationUsing(json: restData["data"])
+        navTitle.title = currentConversation?.person?.fullName
+        
         for (_, subJson) in restData["data"]["messages"] {
             messages.append(ConversationManager.getMessageUsing(json: subJson))
         }
@@ -232,5 +237,18 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     @IBAction func replaceImage(_ sender: UIButton) {
         photoView.displayView(onView: view)
+    }
+    
+    override func handleDirectMessage(restData: JSON) {
+        if(restData["data"]["staff_conversation"] == nil){
+            let viewController:ConsultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConsultsViewController") as! ConsultsViewController
+            viewController.currentEid = restData["data"]["eid"].string!
+            viewController.currentConversation = currentConversation
+            self.navigationController?.pushViewController(viewController, animated: true)
+            viewController.handleDirectMessage()
+        } else {
+            appDelegate.tabBarController?.selectedIndex = 1
+            (UIApplication.topViewController() as! StaffViewController).handleDirectMessage(restData: restData)
+        }
     }
 }

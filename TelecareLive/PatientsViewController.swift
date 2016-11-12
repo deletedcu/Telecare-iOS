@@ -87,4 +87,14 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         default:break
         }
     }
+    
+    override func handleDirectMessage(restData: JSON) {
+        let viewController:ConversationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as! ConversationViewController
+        viewController.currentEid = restData["data"]["eid"].string!
+        viewController.currentConversation = ConversationManager.getConversationUsing(json: restData["data"])
+        self.navigationController?.pushViewController(viewController, animated: true)
+        if appDelegate.currentBackgroundNotificationPayload?["type"] as! String == "consult" {
+            viewController.handleDirectMessage(restData: restData)
+        }
+    }
 }

@@ -41,18 +41,21 @@ class ConsultManager : ModelManager{
         consult.issue = json["issue"].string!
         consult.organizationId = json["organization_id"].string!
         consult.status = json["status"].string!
-        consult.userImageUrl = json["user_image"].string!
         consult.userId = json["uid"].string!
         
-        // Refactor this at some point
         var userImage: UIImage?
-        switch json["user_image"].type {
-        case .string:
-            userImage = DynamicCacheManager.getImage(url: json["user_image"].string!)
+        
+        // Refactor this at some point
+        if(json["user_image"] != nil){
             consult.userImageUrl = json["user_image"].string!
-        case .array:
-            consult.userImageUrl = ""
-        default:break
+            switch json["user_image"].type {
+            case .string:
+                userImage = DynamicCacheManager.getImage(url: json["user_image"].string!)
+                consult.userImageUrl = json["user_image"].string!
+            case .array:
+                consult.userImageUrl = ""
+            default:break
+            }
         }
         
         if(userImage == nil){
@@ -60,7 +63,12 @@ class ConsultManager : ModelManager{
         }
         
         consult.userImage = userImage
-        consult.birthdate = Date.init(timeIntervalSince1970: Double(json["user_birthdate"].string!)!)
+        
+        if(json["user_birthdate"] != nil){
+            consult.birthdate = Date.init(timeIntervalSince1970: Double(json["user_birthdate"].string!)!)
+        } else {
+            consult.birthdate = Date.init(timeIntervalSince1970: 0)
+        }
         
 //        self.populateMessagesForConsult(consult: consult)
         
@@ -101,6 +109,7 @@ class ConsultManager : ModelManager{
         
         if json["message_image"].string != nil {
             message.mediaUrl = json["message_image"].string!
+            message.mediaThumbUrl = json["message_image_thumb"].string!
         }
         
         if json["filemime"].string != nil {
@@ -111,11 +120,11 @@ class ConsultManager : ModelManager{
             
             switch json["filemime"].string! {
             case "image/png":
-                imageView.image = UIImage(named: "Default")
+                imageView.image = DynamicCacheManager.getImage(url: message.mediaThumbUrl!)
             case "image/jpg":
-                imageView.image = UIImage(named: "Default")
+                imageView.image = DynamicCacheManager.getImage(url: message.mediaThumbUrl!)
             case "image/jpeg":
-                imageView.image = UIImage(named: "Default")
+                imageView.image = DynamicCacheManager.getImage(url: message.mediaThumbUrl!)
             case "audio/ogg":
                 imageView.image = UIImage(named: "AudioIcon")
                 message.hasAudio = true

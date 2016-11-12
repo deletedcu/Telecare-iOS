@@ -17,7 +17,7 @@ class RestManager {
     
     var errorManager:ErrorManager?
     
-    var baseUrl = "http://live-telecarelive.pantheonsite.io/api/v1/"
+    var baseUrl = "https://live-telecarelive.pantheonsite.io/api/v1/"
     
     var endpoints = [
         "login"                 : "auth",
@@ -581,10 +581,75 @@ class RestManager {
         }
     }
     
-    func sidIsValid(sid: String) -> Bool{
+    func getConsult(entityId: String, callback: @escaping (JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getConsultMessagesP1"]! + entityId, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getConversation(entityId: String, callback: @escaping (JSON)->()){
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["messagesP1"]! + entityId, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if(json["status"] == 200){
+                    callback(json)
+                } else {
+                    print("In the Error")
+                    print(json)
+                    self.errorManager?.currentErrorMessage = json["message"].string!
+                    //                    caller.getConversationsFailed() // Abstract this later
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    func sidIsValid(sid: String, callback: @escaping (JSON)->()){
         
         primeManager()
         
-        return false
+        let headers: HTTPHeaders = [
+            "NYTECHSID": getSid(),
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(baseUrl + endpoints["getAccountData"]!, headers: headers).validate().responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                callback(json)
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
     }
 }

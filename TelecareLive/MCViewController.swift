@@ -18,7 +18,7 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var navTitle: UINavigationItem!
     
     var currentConversation:Conversation? = Conversation()
-    
+        
     var refreshControl = UIRefreshControl()
     
     var consults:[Consult] = []
@@ -51,11 +51,11 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
     
     func refreshTable(restData: JSON){
         self.consults = []
-        
+                
         for(_,subJson) in restData["data"]{
             consults.append(ConsultManager.getConsultUsing(json: subJson))
         }
-        
+
         tableView.reloadData()
     }
     
@@ -98,7 +98,14 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    
+    override func handleDirectMessage(restData: JSON) {
+        let viewController:MCChatViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MCChatViewController") as! MCChatViewController
+        viewController.currentEid = restData["data"]["eid"].string!
+        self.currentEid = restData["data"]["eid"].string!
+        viewController.currentConversation = ConversationManager.getConversationUsing(json: restData["data"])
+        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.handleDirectMessage()
+    }
     
 }
 

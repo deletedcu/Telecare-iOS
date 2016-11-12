@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftOverlays
 
 class ImageViewController : RestViewController {
     
@@ -17,13 +18,17 @@ class ImageViewController : RestViewController {
     
     var delegate:RestViewController?
     
+    @IBAction func done(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
         if currentMessage?.mediaUrl != nil && currentMessage?.mediaUrl != "" {
             imageView.image = DynamicCacheManager.getImage(url: (currentMessage?.mediaUrl!)!)
         }
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,12 +40,12 @@ class ImageViewController : RestViewController {
     }
 
     @IBAction func scaleImage(_ sender: UIPinchGestureRecognizer) {
-        self.view.transform = self.view.transform.scaledBy(x: sender.scale, y: sender.scale)
+        self.imageView.transform = self.imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
         sender.scale = 1
     }
     
     @IBAction func rotateImage(_ sender: UIRotationGestureRecognizer) {
-        self.view.transform = self.view.transform.rotated(by: sender.rotation)
+        self.imageView.transform = self.imageView.transform.rotated(by: sender.rotation)
         sender.rotation = 0
     }
     @IBAction func panImage(_ sender: UIPanGestureRecognizer) {

@@ -153,6 +153,13 @@ class ConsultsViewController : RestConsultViewController, UITableViewDelegate, U
         }
     }
     
-
+    override func handleDirectMessage() {
+        let viewController:ConsultChatViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConsultChatViewController") as! ConsultChatViewController
+        viewController.currentEid = currentEid
+        self.currentEid = currentConversation?.entityId
+        viewController.currentConversation = currentConversation
+        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.handleDirectMessage()
+    }
     
 }

@@ -96,4 +96,13 @@ class StaffViewController : RestViewController, UITableViewDelegate, UITableView
         default:break
         }
     }
+    
+    override func handleDirectMessage(restData: JSON) {
+        print(restData)
+        let viewController:StaffConversationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StaffConversationViewController") as! StaffConversationViewController
+        viewController.currentEid = restData["data"]["eid"].string!
+        viewController.currentConversation = ConversationManager.getConversationUsing(json: restData["data"])
+        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.handleDirectMessage()
+    }
 }
