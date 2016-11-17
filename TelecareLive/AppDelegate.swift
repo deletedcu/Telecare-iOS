@@ -82,7 +82,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         firstViewController.showTextOverlay("Loading...")
         
-        restManager?.sidIsValid(sid: sid!, callback: finishLoadingFirstScreen)
+        if(sid != nil){
+            restManager?.sidIsValid(sid: sid!, callback: finishLoadingFirstScreen)
+        } else {
+            var restData = JSON([])
+            restData["status"] = 500
+            finishLoadingFirstScreen(restData: restData)
+        }
         
         return true
     }

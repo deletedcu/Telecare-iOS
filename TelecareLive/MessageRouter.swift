@@ -98,7 +98,17 @@ class MessageRouter {
     }
     
     static func finishDirectRouteMessageForConversation(restData: JSON){
-        if(appDelegate.currentlyLoggedInPerson?.isDoctor)!{
+        print(restData["data"])
+        
+        var isStaffConversation = false
+        
+        if let staffConversation = restData["data"]["staff_conversation"].string {
+            if staffConversation == "1" {
+                isStaffConversation = true
+            }
+        }
+        
+        if (appDelegate.currentlyLoggedInPerson?.isDoctor)! && !isStaffConversation{
             appDelegate.tabBarController?.selectedIndex = 0
         } else {
             appDelegate.tabBarController?.selectedIndex = 1

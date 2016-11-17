@@ -74,6 +74,8 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         for (_, subJson) in restData["data"]["messages"] {
             messages.append(ConsultManager.getConsultMessageUsing(json: subJson))
         }
+        
+        navTitle.title = currentConversation?.person?.fullName
         tableView.reloadData()
         scrollToBottom()
     }
@@ -165,7 +167,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         }
         
         messages.append(message)
-        restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        restManager?.sendStaffMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView?.reloadData()
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")

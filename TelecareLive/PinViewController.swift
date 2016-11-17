@@ -21,6 +21,7 @@ class PinViewController : RestViewController {
         if(pinNumberField.text == appDelegate.currentlyLoggedInPerson?.lockCode){
             sessionManager?.lockSession = 0
             appDelegate.pinViewIsUp = false
+            restManager?.updateFBToken()
             self.dismiss(animated: true, completion: routeDirectMessageData)
         } else {
             errorManager?.postErrorMessage(controller: self, message: "Incorrect Pin Code. Please try again")
