@@ -37,7 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        FIRApp.configure()
+
         if #available(iOS 10.0, *) {
             let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -57,16 +59,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
-        FIRApp.configure()
-        
-        if FIRInstanceID.instanceID().token() != nil {
-            FBToken = FIRInstanceID.instanceID().token()!
+        let token = FIRInstanceID.instanceID().token()
+
+        if token != nil {
+            FBToken = token!
         } else {
             FBToken = ""
         }
         
         print("TOKEN!" + FBToken!)
-        
+
+        NotificationCenter.default.addObserver(self,
+                selector: #selector(self.tokenRefreshNotification),
+                name: .firInstanceIDTokenRefresh,
+                object: nil)
+
+
         errorManager = ErrorManager()
         restManager = RestManager()
         sessionManager = SessionManager()
@@ -151,11 +159,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let keychain = KeychainSwift()
         let sid = keychain.get("sid")
                 
-        if FIRInstanceID.instanceID().token() != nil {
-            FBToken = FIRInstanceID.instanceID().token()!
-        } else {
-            FBToken = ""
-        }
+//        if FIRInstanceID.instanceID().token() != nil {
+//            FBToken = FIRInstanceID.instanceID().token()!
+//        } else {
+//            FBToken = ""
+//        }
         
         if(sid != nil){
             restManager?.sidIsValid(sid: sid!, callback: finishLoadingFirstScreen)
@@ -195,6 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func tokenRefreshNotification(_ notification: Notification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
+            FBToken = refreshedToken
             print("InstanceID token: \(refreshedToken)")
         }
         
@@ -210,6 +219,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Connected to FCM.")
             }
         }
+    }
+
+    func application(_: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken as Data, type: FIRInstanceIDAPNSTokenType.sandbox)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -247,6 +261,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("%@", data)
         print("YEEESSSS")
         MessageRouter.routeMessage(messageData: data, directRoute: false)
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Handle push from background or closed" );
+        print("%@", response.notification.request.content.userInfo);
     }
 }
 

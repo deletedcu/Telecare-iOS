@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)io.syworks.TelecareLive</string>
+		<string>$(AppIdentifierPrefix)com.telecarelive.tclive</string>
 	</array>
 </dict>
 </plist>
