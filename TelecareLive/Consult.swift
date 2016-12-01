@@ -21,4 +21,5 @@ class Consult {
     var birthdate:Date?
     var messages:[Message]? = []
     var userId: String?
+    var unreadCount: Int = 0
 }

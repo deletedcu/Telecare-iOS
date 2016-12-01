@@ -113,6 +113,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         self.tableView.reloadData()
         
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
+        chatInputField.text = ""
         self.dismissKeyboard()
     }
     
@@ -125,7 +126,6 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
         self.refreshData()
-        chatInputField.text = ""
         scrollToBottom()
     }
     

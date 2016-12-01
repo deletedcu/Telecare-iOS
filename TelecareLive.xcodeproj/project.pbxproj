@@ -43,6 +43,7 @@
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
 		FF22DC221DBEAE6E00B60569 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22DC211DBEAE6E00B60569 /* DataManager.swift */; };
+		FF3347B51DEFA90A001E7783 /* NoSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF3347B41DEFA90A001E7783 /* NoSound.mp3 */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
 		FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */; };
@@ -114,6 +115,7 @@
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		FF22DC211DBEAE6E00B60569 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FF3347B41DEFA90A001E7783 /* NoSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NoSound.mp3; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
 		FF43B2281DB041D800A64D22 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		FF43B2311DB1804D00A64D22 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				FF8969861DA987030029F8FA /* AVCRestViewController.swift */,
 				FF9A3D871DA05B6400D43119 /* ProactiveTabBarController.swift */,
 				FF0089401D935BB600127B66 /* Main.storyboard */,
+				FF3347B41DEFA90A001E7783 /* NoSound.mp3 */,
 				FF0089431D935BB600127B66 /* Assets.xcassets */,
 				FF19E3461D96043600375804 /* TelecareLive.entitlements */,
 				FF0089451D935BB600127B66 /* LaunchScreen.storyboard */,
@@ -575,6 +578,7 @@
 				FF0EEF1A1D9F67BC00F25356 /* PhotoView.xib in Resources */,
 				FFB7A5761DA5E46300EFCE35 /* NewConsult.xib in Resources */,
 				FF0766E41DB19095001B4104 /* GoogleService-Info.plist in Resources */,
+				FF3347B51DEFA90A001E7783 /* NoSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

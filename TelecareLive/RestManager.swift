@@ -17,7 +17,11 @@ class RestManager {
     
     var errorManager:ErrorManager?
     
-    var baseUrl = "https://live-telecarelive.pantheonsite.io/api/v1/"
+    var site = "https://live-telecarelive.pantheonsite.io"
+    
+    var apiUrl = "/api/v1/"
+    
+    var baseUrl = ""
     
     var endpoints = [
         "login"                 : "auth",
@@ -35,6 +39,7 @@ class RestManager {
     var keychain = KeychainSwift()
     
     init(){
+        baseUrl = site + apiUrl
         errorManager = (UIApplication.shared.delegate as! AppDelegate).errorManager
     }
     
@@ -197,11 +202,15 @@ class RestManager {
     func updateFBToken(){
         // Refactor data handling to controller later
         
-        let parameters = [
-            "registration_id":(UIApplication.shared.delegate as! AppDelegate).FBToken!,
-        ] as Dictionary<String,Any>
+        var fbtoken = ""
         
-        print(parameters["encoded"])
+        if let fbt = (UIApplication.shared.delegate as! AppDelegate).FBToken {
+            fbtoken = fbt
+        }
+        
+        let parameters = [
+            "registration_id": fbtoken,
+        ] as Dictionary<String,Any>
         
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),

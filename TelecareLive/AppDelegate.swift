@@ -97,16 +97,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         if(restData["status"] == 200){
-            currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
-            resetViewToRootViewController()
+            if(currentlyLoggedInPerson == nil){
+                currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
+                resetViewToRootViewController()
+            }
             
-            sessionManager?.lockSession = 1
-            
-            let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
-            
-            window?.rootViewController?.present(pinViewController, animated: true, completion: nil)
-            
-            pinViewIsUp = true
+            if(sessionManager?.lockSession != 1 && !pinViewIsUp!){
+                sessionManager?.lockSession = 1
+                
+                let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
+                
+                window?.rootViewController?.present(pinViewController, animated: true, completion: nil)
+                
+                pinViewIsUp = true
+            }
         } else {
             let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
            window?.rootViewController = firstViewController
@@ -124,9 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let pinViewController = storyBoard.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
         
-        let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
-
-        if topViewController == firstViewController || pinViewIsUp! {
+        print(String(describing: type(of: topViewController)))
+        
+        if topViewController is ViewController || pinViewIsUp! {
             return
         }
         
@@ -144,7 +148,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let keychain = KeychainSwift()
+        let sid = keychain.get("sid")
+                
+        if FIRInstanceID.instanceID().token() != nil {
+            FBToken = FIRInstanceID.instanceID().token()!
+        } else {
+            FBToken = ""
+        }
         
+        if(sid != nil){
+            restManager?.sidIsValid(sid: sid!, callback: finishLoadingFirstScreen)
+        } else {
+            var restData = JSON([])
+            restData["status"] = 500
+            finishLoadingFirstScreen(restData: restData)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -156,6 +175,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func resetViewToLogin(){
+        FBToken = ""
+        restManager?.updateFBToken()
+        sessionManager?.clearSession()
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let firstViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         self.window?.rootViewController = firstViewController

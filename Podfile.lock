@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.0.0)
   - AlamofireImage (3.0.0):
     - Alamofire (~> 4.0)
+  - BadgeSwift (4.0.0)
   - Chatto (3.0.0)
   - ChattoAdditions (3.0.0):
     - Chatto
@@ -39,6 +40,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - BadgeSwift (~> 4.0)
   - Chatto
   - ChattoAdditions
   - Firebase/Core
@@ -50,6 +52,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   AlamofireImage: 6594aa1139a67dcd36cde6da79ea4e5b318e60fb
+  BadgeSwift: b291cf8ca88674d61cd781f14988272988f4dff4
   Chatto: c6b8f22892f8b4899d161984b882da69e61d3906
   ChattoAdditions: 262514a5d932ad1c04966319b99226416aec46b1
   Firebase: 34187200ef4979dbd485c7aa685ef078bf587c86
@@ -64,6 +67,6 @@ SPEC CHECKSUMS:
   SwiftOverlays: 317afbb3eeb7f9d8545b1e6592500c89aadb6d8f
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: a258f770deaae1b5a2a8b0c9ab09fd06a9f71516
+PODFILE CHECKSUM: 524a80fe59749b81faafc3c324b67d70daab90b0
 
 COCOAPODS: 1.1.0.rc.2

@@ -55,7 +55,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
                 let sender = sender
                 
                 print((sender.message?.mediaUrl!)!)
-                let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
+                let mediaUrl = URL(string: (restManager?.site)! + (sender.message?.mediaUrl!)!)
                 audioPlayer = AVPlayer(url: mediaUrl!)
                 audioPlayer.play()
                 lastPlayedUrl = (sender.message?.mediaUrl!)!
@@ -198,8 +198,10 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         message.consultId = currentConsult?.entityId
         
         messages.append(message)
-        restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView.reloadData()
+        
+        restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
+        chatInputField.text = ""
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }
@@ -213,7 +215,6 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
         refreshData()
-        chatInputField.text = ""
         self.removeAllOverlays()
     }
     

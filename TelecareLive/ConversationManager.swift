@@ -61,6 +61,10 @@ class ConversationManager : ModelManager{
         conversation.status = json["status"].string!
         conversation.lastActivity = json["last_activity"].string!
         
+        if let unreadCount = json["unread_count"].int {
+            conversation.unreadCount = unreadCount
+        }
+        
         let person = Person()
         person.userImage = UIImage(named: "Default")
         person.userId = json["user_id"].string!

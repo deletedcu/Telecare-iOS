@@ -47,7 +47,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
                 let sender = sender
                 
                 print((sender.message?.mediaUrl!)!)
-                let mediaUrl = URL(string: (sender.message?.mediaUrl!)!)
+                let mediaUrl = URL(string: (restManager?.site)! + (sender.message?.mediaUrl!)!)
                 audioPlayer = AVPlayer(url: mediaUrl!)
                 audioPlayer.play()
                 lastPlayedUrl = (sender.message?.mediaUrl!)!
@@ -169,6 +169,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         messages.append(message)
         restManager?.sendStaffMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView?.reloadData()
+        chatInputField.text = ""
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }
@@ -182,7 +183,6 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
         self.refreshData()
-        chatInputField.text = ""
         self.removeAllOverlays()
     }
     

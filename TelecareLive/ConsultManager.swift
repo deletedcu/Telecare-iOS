@@ -43,6 +43,10 @@ class ConsultManager : ModelManager{
         consult.status = json["status"].string!
         consult.userId = json["uid"].string!
         
+        if let unreadCount = json["unread_count"].int {
+            consult.unreadCount = unreadCount
+        }
+        
         var userImage: UIImage?
         
         // Refactor this at some point

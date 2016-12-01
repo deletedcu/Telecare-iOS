@@ -68,6 +68,13 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
         cell.birthdateField.text = "Birth Date : " + (person?.birthdate?.toReadable())!
         cell.profileImage.image = person?.userImage?.af_imageRoundedIntoCircle()
         
+        if conversation.unreadCount != 0 {
+            cell.accessoryView = UIView()
+            createBadge(text: String(conversation.unreadCount), view: cell.accessoryView!)
+        } else {
+            cell.accessoryView = UIView()
+        }
+        
         return cell
     }
     
@@ -76,7 +83,11 @@ class PatientsViewController : RestViewController, UITableViewDelegate, UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(sender)
+        let cell = sender as! ConversationCell
+        if cell.accessoryView != nil {
+            cell.accessoryView = UIView()
+        }
+        
         print("ABOVE IS THE SENDER")
         switch segue.identifier! {
             case "patientMessage" :

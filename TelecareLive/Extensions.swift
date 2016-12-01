@@ -81,9 +81,15 @@ extension Date {
         }
 
         let day = String(dateComponents.day!)
-        let minute = String(dateComponents.minute!)
+        let minute = dateComponents.minute!
+        var minuteString = String(minute)
+
+        if(minute < 10){
+            minuteString = "0" + String(minute)
+        }
+
         let part1 = monthName + "/" + day
-        let part2 = String(hour) + ":" + minute
+        let part2 = String(hour) + ":" + minuteString
         
         return part1 + " " + part2 + " " + ampm
     }

@@ -18,4 +18,5 @@ class Conversation {
     var messages: [Message]? = []
     var consults: [Consult]? = []
     var staffConversation: Bool = false
+    var unreadCount: Int = 0
 }

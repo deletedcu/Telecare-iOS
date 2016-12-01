@@ -83,10 +83,22 @@ class MCViewController : RestViewController, UITableViewDelegate, UITableViewDat
             cell.backgroundColor = UIColor.white
         }
         
+        if consult.unreadCount != 0 {
+            cell.accessoryView = UIView()
+            createBadge(text: String(consult.unreadCount), view: cell.accessoryView!)
+        } else {
+            cell.accessoryView = UIView()
+        }
+        
         return cell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! ConsultCell
+        if cell.accessoryView != nil {
+            cell.accessoryView = UIView()
+        }
+        
         switch segue.identifier! {
         case "myConsult" :
             let destination = segue.destination as? MCChatViewController
