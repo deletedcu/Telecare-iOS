@@ -38,8 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        FIRApp.configure()
-
         if #available(iOS 10.0, *) {
             let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -58,7 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
+
+        FIRApp.configure()
+
         let token = FIRInstanceID.instanceID().token()
 
         if token != nil {
@@ -67,11 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FBToken = ""
         }
         
-        print("TOKEN!" + FBToken!)
+        print("TOKEN! " + FBToken!)
 
         NotificationCenter.default.addObserver(self,
                 selector: #selector(self.tokenRefreshNotification),
-                name: .firInstanceIDTokenRefresh,
+                name: NSNotification.Name.firInstanceIDTokenRefresh,
                 object: nil)
 
 
@@ -206,7 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FBToken = refreshedToken
             print("InstanceID token: \(refreshedToken)")
         }
-        
+
         // Connect to FCM since connection may have failed when attempted before having a token.
         connectToFcm()
     }

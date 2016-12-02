@@ -17,8 +17,8 @@ class MediaMessageCell : UITableViewCell {
     @IBOutlet weak var messageDate: UILabel!
     
     var message:Message? = Message()
-    
-    
+
+
     override func layoutMarginsDidChange() {
         contentView.layoutMargins = layoutMargins
     }

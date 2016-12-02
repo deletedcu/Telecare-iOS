@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import Firebase
 
 class RestManager {
     
@@ -203,6 +204,8 @@ class RestManager {
         // Refactor data handling to controller later
         
         var fbtoken = ""
+        
+        (UIApplication.shared.delegate as! AppDelegate).FBToken = FIRInstanceID.instanceID().token()
         
         if let fbt = (UIApplication.shared.delegate as! AppDelegate).FBToken {
             fbtoken = fbt

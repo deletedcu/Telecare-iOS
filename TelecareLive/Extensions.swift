@@ -75,9 +75,14 @@ extension Date {
         var hour = Int(dateComponents.hour!)
         
         var ampm = "AM"
+
         if(hour > 11){
             ampm = "PM"
             hour -= 12
+        }
+
+        if(hour == 0){
+            hour = 12
         }
 
         let day = String(dateComponents.day!)
@@ -111,12 +116,11 @@ extension UILabel{
     
     func requiredHeight() -> CGFloat{
         
-        let label:UILabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let label = UILabel(frame: CGRect.init(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = self.font
         label.text = self.text
-        
         label.sizeToFit()
         
         return label.frame.height

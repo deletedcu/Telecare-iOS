@@ -46,10 +46,8 @@
 		FF3347B51DEFA90A001E7783 /* NoSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF3347B41DEFA90A001E7783 /* NoSound.mp3 */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
-		FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */; };
 		FF43B2491DB1807F00A64D22 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */; };
 		FF43B24A1DB1808A00A64D22 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */; };
-		FF43B24B1DB180AD00A64D22 /* GoogleIPhoneUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */; };
 		FF54D06B1DD5812C00A251F9 /* loadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF54D06A1DD5812C00A251F9 /* loadingController.swift */; };
 		FF659CB61DB96A1E00337723 /* DynamicCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF659CB51DB96A1E00337723 /* DynamicCacheManager.swift */; };
 		FF8969831DA8CFB10029F8FA /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8969821DA8CFB10029F8FA /* StaffViewController.swift */; };
@@ -127,9 +125,7 @@
 		FF43B23A1DB1804D00A64D22 /* libGcmLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGcmLib.a; sourceTree = "<group>"; };
 		FF43B23B1DB1804D00A64D22 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF43B23E1DB1804D00A64D22 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
 		FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		FF43B24D1DB180BA00A64D22 /* GCMConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMConfig.h; sourceTree = "<group>"; };
 		FF43B24E1DB180BA00A64D22 /* GCMPubSub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMPubSub.h; sourceTree = "<group>"; };
 		FF43B24F1DB180BA00A64D22 /* GCMReceiverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCMReceiverDelegate.h; sourceTree = "<group>"; };
@@ -153,7 +149,6 @@
 		FF9B4A7A1DA085FD0022A8B4 /* ConsultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultCell.swift; sourceTree = "<group>"; };
 		FF9B4A7C1DA086310022A8B4 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FF9B4A7E1DA087210022A8B4 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
-		FFB7A5711DA49B3700EFCE35 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = lame.framework; path = "Pods/mp3lame-for-ios/lame.framework"; sourceTree = "<group>"; };
 		FFB7A5731DA5E45200EFCE35 /* NewConsult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConsult.swift; sourceTree = "<group>"; };
 		FFB7A5751DA5E46300EFCE35 /* NewConsult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConsult.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,10 +158,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF43B24B1DB180AD00A64D22 /* GoogleIPhoneUtilities.framework in Frameworks */,
 				FF43B24A1DB1808A00A64D22 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				FF43B2491DB1807F00A64D22 /* GoogleSymbolUtilities.framework in Frameworks */,
-				FF43B2481DB1807400A64D22 /* GoogleUtilities.framework in Frameworks */,
 				FF19E3421D95F66100375804 /* Alamofire.framework in Frameworks */,
 				FF19E3431D95F66100375804 /* SwiftyJSON.framework in Frameworks */,
 				FF19E33D1D95F55900375804 /* Pods_TelecareLive.framework in Frameworks */,
@@ -184,10 +177,7 @@
 				FF43B24C1DB180BA00A64D22 /* Public */,
 				FF43B2301DB1804D00A64D22 /* GoogleCloudMessaging */,
 				FF43B23C1DB1804D00A64D22 /* GoogleInterchangeUtilities */,
-				FF43B23F1DB1804D00A64D22 /* GoogleIPhoneUtilities */,
 				FF43B2421DB1804D00A64D22 /* GoogleSymbolUtilities */,
-				FF43B2451DB1804D00A64D22 /* GoogleUtilities */,
-				FFB7A5711DA49B3700EFCE35 /* lame.framework */,
 				FF19E3441D95FED300375804 /* SwiftyBase64.framework */,
 				FF19E3401D95F66100375804 /* Alamofire.framework */,
 				FF19E3411D95F66100375804 /* SwiftyJSON.framework */,
@@ -392,23 +382,6 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF43B23F1DB1804D00A64D22 /* GoogleIPhoneUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				FF43B2401DB1804D00A64D22 /* Frameworks */,
-			);
-			name = GoogleIPhoneUtilities;
-			path = Pods/GoogleIPhoneUtilities;
-			sourceTree = "<group>";
-		};
-		FF43B2401DB1804D00A64D22 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF43B2411DB1804D00A64D22 /* GoogleIPhoneUtilities.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		FF43B2421DB1804D00A64D22 /* GoogleSymbolUtilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,23 +395,6 @@
 			isa = PBXGroup;
 			children = (
 				FF43B2441DB1804D00A64D22 /* GoogleSymbolUtilities.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		FF43B2451DB1804D00A64D22 /* GoogleUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				FF43B2461DB1804D00A64D22 /* Frameworks */,
-			);
-			name = GoogleUtilities;
-			path = Pods/GoogleUtilities;
-			sourceTree = "<group>";
-		};
-		FF43B2461DB1804D00A64D22 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF43B2471DB1804D00A64D22 /* GoogleUtilities.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
