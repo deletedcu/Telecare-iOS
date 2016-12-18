@@ -169,7 +169,14 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         messages.append(message)
         restManager?.sendStaffMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView?.reloadData()
+        
         chatInputField.text = ""
+
+        attachmentImage = nil
+        attachmentType = ""
+        hasAttachment = false
+        audioUrl = nil
+        
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }

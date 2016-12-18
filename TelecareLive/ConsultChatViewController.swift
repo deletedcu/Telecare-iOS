@@ -203,8 +203,14 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         
         messages.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
-        self.tableView.reloadData()
         chatInputField.text = ""
+        self.tableView.reloadData()
+        
+        attachmentImage = nil
+        attachmentType = ""
+        hasAttachment = false
+        audioUrl = nil
+        
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }

@@ -202,6 +202,12 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
         chatInputField.text = ""
+        
+        attachmentImage = nil
+        attachmentType = ""
+        hasAttachment = false
+        audioUrl = nil
+
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }

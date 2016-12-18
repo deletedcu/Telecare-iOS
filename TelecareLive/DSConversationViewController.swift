@@ -90,6 +90,8 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView.reloadData()
         
+        chatInputField.text = ""
+        
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
     }
