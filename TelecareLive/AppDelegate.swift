@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func finishLoadingFirstScreen(restData: JSON){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        if(restData["status"] == 200){
+        if(restData["status"] == 200 && restData["uid"].string! != "0"){
             if(currentlyLoggedInPerson == nil){
                 currentlyLoggedInPerson = PersonManager.getPersonUsing(json: restData)
                 resetViewToRootViewController()

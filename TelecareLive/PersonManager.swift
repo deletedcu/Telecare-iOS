@@ -69,7 +69,8 @@ class PersonManager : ModelManager{
     
     static func getPersonUsing(json: JSON) -> Person{
         let person = Person()
-        
+
+        print(json)
         person.fullName = json["data"]["user_full_name"].string!
         person.phone = json["data"]["user_phone"].string!
         person.email = json["data"]["mail"].string!
