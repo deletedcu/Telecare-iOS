@@ -18,7 +18,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     
     var currentConversation:Conversation? = Conversation()
     
-    @IBOutlet weak var chatInputField: UITextField!
+    @IBOutlet weak var chatInputView: MultilineChatTextView!
     
     @IBOutlet weak var chatBarView: UIView!
     
@@ -99,12 +99,12 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if(chatInputField.text! == ""){
+        if(chatInputView.text! == ""){
             return
         }
         
         let message = Message()
-        let messageText = chatInputField.text! as String
+        let messageText = chatInputView.text! as String
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
@@ -113,7 +113,7 @@ class ConversationViewController : RestViewController, UITableViewDataSource, UI
         self.tableView.reloadData()
         
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
-        chatInputField.text = ""
+        chatInputView.text = ""
         self.dismissKeyboard()
     }
     

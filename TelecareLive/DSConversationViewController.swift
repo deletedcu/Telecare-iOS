@@ -18,7 +18,7 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
     
     var currentConversation:Conversation? = Conversation()
     
-    @IBOutlet weak var chatInputField: UITextField!
+    @IBOutlet weak var chatInputView: MultilineChatTextView!
     
     @IBOutlet weak var chatBarView: UIView!
     
@@ -75,12 +75,12 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if(chatInputField.text! == ""){
+        if(chatInputView.text! == ""){
             return
         }
         
         let message = Message()
-        let messageText = chatInputField.text! as String
+        let messageText = chatInputView.text! as String
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
@@ -90,7 +90,7 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
         restManager?.sendMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView.reloadData()
         
-        chatInputField.text = ""
+        chatInputView.text = ""
         
         self.dismissKeyboard()
         self.showWaitOverlayWithText("Sending your message...")
@@ -105,7 +105,7 @@ class DSConversationViewController : RestViewController, UITableViewDataSource, 
     // Refactor later... just get it done son(json.. haha... oh boy i've been at this too long)!
     func finishSendingMessage(message: Message, restData: JSON){
         self.refreshData()
-        chatInputField.text = ""
+        chatInputView.text = ""
         self.removeAllOverlays()
     }
     

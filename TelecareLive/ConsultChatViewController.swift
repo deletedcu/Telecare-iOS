@@ -18,7 +18,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     
     @IBOutlet weak var navTitle: UINavigationItem!
             
-    @IBOutlet weak var chatInputField: UITextField!
+    @IBOutlet weak var chatInputView: MultilineChatTextView!
     
     @IBOutlet weak var chatBarView: UIView!
     
@@ -87,10 +87,10 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     func finishToggleConsult(restData: JSON){
         if consultSwitch.isOn {
             currentConsult?.status = "1"
-            chatInputField.isEnabled = true
+            chatInputView.isEditable = true
         } else {
             currentConsult?.status = "0"
-            chatInputField.isEnabled = false
+            chatInputView.isEditable = false
         }
         self.refreshData()
     }
@@ -175,12 +175,12 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if((chatInputField.text! == "" && hasAttachment == false) || (consultSwitch.isOn == false)){
+        if((chatInputView.text! == "" && hasAttachment == false) || (consultSwitch.isOn == false)){
             return
         }
         
         let message = Message()
-        let messageText = chatInputField.text! as String
+        let messageText = chatInputView.text! as String
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
@@ -203,7 +203,7 @@ class ConsultChatViewController : AVCRestViewController, UITableViewDataSource, 
         
         messages.append(message)
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
-        chatInputField.text = ""
+        chatInputView.text = ""
         self.tableView.reloadData()
         
         attachmentImage = nil

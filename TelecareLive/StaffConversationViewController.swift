@@ -13,19 +13,19 @@ import AVFoundation
 import AlamofireImage
 import SwiftOverlays
 
-class StaffConversationViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate {
+class StaffConversationViewController : AVCRestViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var navTitle: UINavigationItem!
             
-    @IBOutlet weak var chatInputField: UITextField!
-    
-    @IBOutlet weak var chatBarView: UIView!
+    @IBOutlet weak var chatInputView: MultilineChatTextView!
     
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var attachmentButton: UIButton!
+    
+    @IBOutlet weak var bottomChatConstraint: NSLayoutConstraint!
     
     var messages:[Message] = []
     
@@ -99,6 +99,8 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+//        chatInputView.sizeThatFits(CGSize(width: chatInputView.frame.size.width, height: chatInputView.maxHeight))
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,12 +144,12 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if((chatInputField.text! == "" && hasAttachment == false)){
+        if((chatInputView.text! == "" && hasAttachment == false)){
             return
         }
         
         let message = Message()
-        let messageText = chatInputField.text! as String
+        let messageText = chatInputView.text! as String
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
@@ -170,7 +172,7 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
         restManager?.sendStaffMessage(caller: self, message: message, callback: finishSendingMessage)
         self.tableView?.reloadData()
         
-        chatInputField.text = ""
+        chatInputView.text = ""
 
         attachmentImage = nil
         attachmentType = ""
@@ -350,5 +352,4 @@ class StaffConversationViewController : AVCRestViewController, UITableViewDataSo
             self.present(destination, animated: true, completion: nil)
         }
     }
-    
 }

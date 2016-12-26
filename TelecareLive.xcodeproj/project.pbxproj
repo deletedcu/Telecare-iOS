@@ -43,6 +43,9 @@
 		FF19E34C1D9B426E00375804 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34B1D9B426E00375804 /* RestManager.swift */; };
 		FF19E3501D9B733E00375804 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19E34F1D9B733E00375804 /* PinViewController.swift */; };
 		FF22DC221DBEAE6E00B60569 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22DC211DBEAE6E00B60569 /* DataManager.swift */; };
+		FF28C0E51E116EBF006AE382 /* MultilineChatTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28C0E41E116EBF006AE382 /* MultilineChatTextView.swift */; };
+		FF28C0E71E116F6C006AE382 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28C0E61E116F6C006AE382 /* Constants.swift */; };
+		FF28C0E91E11A621006AE382 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF28C0E81E11A621006AE382 /* GrowingTextView.swift */; };
 		FF3347B51DEFA90A001E7783 /* NoSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FF3347B41DEFA90A001E7783 /* NoSound.mp3 */; };
 		FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */; };
 		FF43B2291DB041D800A64D22 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43B2281DB041D800A64D22 /* ImageViewController.swift */; };
@@ -113,6 +116,9 @@
 		FF19E34B1D9B426E00375804 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		FF19E34F1D9B733E00375804 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		FF22DC211DBEAE6E00B60569 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FF28C0E41E116EBF006AE382 /* MultilineChatTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineChatTextView.swift; sourceTree = "<group>"; };
+		FF28C0E61E116F6C006AE382 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FF28C0E81E11A621006AE382 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		FF3347B41DEFA90A001E7783 /* NoSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NoSound.mp3; sourceTree = "<group>"; };
 		FF3D1A361DA2F427003B8009 /* ConsultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultsViewController.swift; sourceTree = "<group>"; };
 		FF43B2281DB041D800A64D22 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +286,7 @@
 				FF0766E51DB423A1001B4104 /* MessageRouter.swift */,
 				FF659CB51DB96A1E00337723 /* DynamicCacheManager.swift */,
 				FF54D06A1DD5812C00A251F9 /* loadingController.swift */,
+				FF28C0E61E116F6C006AE382 /* Constants.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -437,6 +444,8 @@
 				FF9A3D8E1DA0807500D43119 /* Conversation.swift */,
 				FF9A3D921DA0832000D43119 /* Consult.swift */,
 				FF9A3D941DA0833400D43119 /* Message.swift */,
+				FF28C0E41E116EBF006AE382 /* MultilineChatTextView.swift */,
+				FF28C0E81E11A621006AE382 /* GrowingTextView.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -616,7 +625,9 @@
 				FF0EEF231D9F711500F25356 /* PhotoView.swift in Sources */,
 				FF9A3D8F1DA0807500D43119 /* Conversation.swift in Sources */,
 				FF12D8BC1DA22F3500D3B23C /* MessageLabel.swift in Sources */,
+				FF28C0E71E116F6C006AE382 /* Constants.swift in Sources */,
 				FF1547601D9C865400375F9A /* Extensions.swift in Sources */,
+				FF28C0E91E11A621006AE382 /* GrowingTextView.swift in Sources */,
 				FF9A3D8D1DA07AB200D43119 /* Person.swift in Sources */,
 				FF3D1A371DA2F427003B8009 /* ConsultsViewController.swift in Sources */,
 				FF0078451DA31358003D1610 /* ConsultChatViewController.swift in Sources */,
@@ -626,6 +637,7 @@
 				FF9A3D8B1DA079FC00D43119 /* PatientsViewController.swift in Sources */,
 				FF108EE21DAC4F6B00C34DC5 /* MCChatViewController.swift in Sources */,
 				FF9A3D931DA0832000D43119 /* Consult.swift in Sources */,
+				FF28C0E51E116EBF006AE382 /* MultilineChatTextView.swift in Sources */,
 				FF0766E61DB423A1001B4104 /* MessageRouter.swift in Sources */,
 				FF0078511DA46967003D1610 /* AudioView.swift in Sources */,
 				FF12D8B81DA0BCD800D3B23C /* ErrorManager.swift in Sources */,

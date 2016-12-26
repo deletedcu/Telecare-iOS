@@ -39,7 +39,6 @@ class AccountViewController : AVCRestViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerForKeyboardNotifications()
         
         fullName.delegate = self
         email.delegate = self
@@ -51,6 +50,11 @@ class AccountViewController : AVCRestViewController {
         originalContentInset = scrollView.contentInset
         originalScrollIndicatorInsets = scrollView.scrollIndicatorInsets
         populateFromLoggedInPerson()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+        hideKeyboardWhenViewTapped()
     }
     
     override func refreshData(){
@@ -161,8 +165,7 @@ class AccountViewController : AVCRestViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
-    
+
     func deregisterFromKeyboardNotifications(){
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)

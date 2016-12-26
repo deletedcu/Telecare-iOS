@@ -18,7 +18,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var navTitle: UINavigationItem!
     
-    @IBOutlet weak var chatInputField: UITextField!
+    @IBOutlet weak var chatInputView: MultilineChatTextView!
     
     @IBOutlet weak var chatBarView: UIView!
     
@@ -32,9 +32,9 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     
     func finishToggleConsult(restData: JSON){
         if currentConsult?.status == "1" {
-            chatInputField.isEnabled = true
+            chatInputView.isEditable = true
         } else {
-            chatInputField.isEnabled = false
+            chatInputView.isEditable = false
         }
         self.refreshData()
     }
@@ -73,9 +73,9 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     
     override func refreshData(){
         if currentConsult?.status == "1" {
-            chatInputField.isEnabled = true
+            chatInputView.isEditable = true
         } else {
-            chatInputField.isEnabled = false
+            chatInputView.isEditable = false
         }
         
         restManager?.getAllConsultMessages(entityId: currentEid!, callback: refreshTable)
@@ -91,9 +91,9 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         }
         
         if currentConsult?.status == "1" {
-            chatInputField.isEnabled = true
+            chatInputView.isEditable = true
         } else {
-            chatInputField.isEnabled = false
+            chatInputView.isEditable = false
         }
         
         tableView.reloadData()
@@ -114,9 +114,9 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         picker.delegate = self
         
         if currentConsult?.status == "1" {
-            chatInputField.isEnabled = true
+            chatInputView.isEditable = true
         } else {
-            chatInputField.isEnabled = false
+            chatInputView.isEditable = false
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -171,12 +171,12 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        if((chatInputField.text! == "" && hasAttachment == false) || currentConsult?.status == "0"){
+        if((chatInputView.text! == "" && hasAttachment == false) || currentConsult?.status == "0"){
             return
         }
         
         let message = Message()
-        let messageText = chatInputField.text! as String
+        let messageText = chatInputView.text! as String
         message.message = messageText
         message.messageDate = Date()
         message.isCurrentUsers = true
@@ -201,7 +201,7 @@ class MCChatViewController : AVCRestViewController, UITableViewDataSource, UITab
         self.tableView.reloadData()
         
         restManager?.sendConsultMessage(caller: self, message: message, callback: finishSendingMessage)
-        chatInputField.text = ""
+        chatInputView.text = ""
         
         attachmentImage = nil
         attachmentType = ""
