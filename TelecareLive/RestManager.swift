@@ -162,17 +162,17 @@ class RestManager {
         
         let image = caller.profileImage.backgroundImage(for: UIControlState.normal)
         
+        let FBToken = (UIApplication.shared.delegate as! AppDelegate).FBToken == nil ? "" : (UIApplication.shared.delegate as! AppDelegate).FBToken!
+        
         let parameters = [
-            "registration_id":(UIApplication.shared.delegate as! AppDelegate).FBToken!,
+            "registration_id":FBToken,
             "user_image":"data:image/png;base64," + (image?.toBase64())!,
             "user_full_name":caller.fullName.text!,
             "user_phone":caller.phone.text!,
             "user_birthdate":date.fromString(string: caller.birthday.text!).timeIntervalSince1970,
-            "user_notifications":Int(notifications),
+            "user_notifications":notifications,
             "user_lock_code":caller.lockCode.text!
         ] as Dictionary<String,Any>
-        
-        print(parameters["encoded"])
         
         let headers: HTTPHeaders = [
             "NYTECHSID": getSid(),
